@@ -1,0 +1,20 @@
+.theme{
+    background-color: #3a492a;
+    color: white;
+}
+.navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar {
+    position: relative; /* Ensure the navbar is a positioned parent for the logo */
+    z-index: 1; /* Ensure the navbar stays below the logo */
+  }
+
+.logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000; /*to stay on the safe side (keeping the logo overlayed above all sections)*/
+  }
+  
