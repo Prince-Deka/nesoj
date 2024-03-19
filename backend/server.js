@@ -1,57 +1,51 @@
-
-const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
+
 const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = 'mongodb+srv://asuj:Asuj321@asujcluster.uglyh6t.mongodb.net/';
 const cors = require('cors');
 
 app.use(cors({
     origin: 'http://localhost:5173' // Replace with your frontend origin
 }));
-const url = 'mongodb+srv://asuj:Asuj321@asujcluster.uglyh6t.mongodb.net/nesoj';
-mongoose.connect(url);
 
-app.use(bodyParser.urlencoded({ extended: true }));
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => console.log('Connected to MongoDB'));
 
-const registrationSchema = new mongoose.Schema({
-
-    email: {
-        type: String,
-
-    },
-    password: {
-        type: String
-    }
-
+// Define a schema for the user
+const userSchema = new mongoose.Schema({
+  email: String,
+  password: String,
 });
 
-const Registration = mongoose.model('Registration', registrationSchema);
+const User = mongoose.model('User', userSchema);
 
+// Body parsing middleware
+app.use(express.json());
 
-
+// Registration endpoint
 app.post('/register', async (req, res) => {
-    try {
-        const email = req.body.email;
-        const password = req.body.password;
-        const user = await new Registration({
-            email,
-            password
-        })
-        await user.save();
-        res.status(201).send('User registered successfully');
-
-        res.send('data saved succesfully');
-    } catch (error) {
-        console.error('Error registering user:', error);
-        res.status(500).send('Error registering user');
-    }
-
-
-
+  try {
+    const { email, password } = req.body;
+    // Create a new user instance
+    const newUser = new User({ email, password });
+    // Save the user to the database
+    await newUser.save();
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (error) {
+    console.error('Error registering user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
 
-app.listen(4000, () => {
-    console.log('Server listening on port 3000');
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
-
