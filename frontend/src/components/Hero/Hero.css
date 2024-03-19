@@ -1,3 +1,7 @@
 .btn{
     padding-inline: 6vw;
 }
+.btn:hover{
+    background-color: black;
+    color: white;
+}

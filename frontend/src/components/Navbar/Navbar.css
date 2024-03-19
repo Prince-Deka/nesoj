@@ -1,9 +1,9 @@
 .theme{
-    background-color: #3a492a;
-    color: white;
+    background-color: white;
+    
 }
 .navbar-nav .nav-link {
-    color: white;
+    color: black;
 }
 
 .navbar {
@@ -18,3 +18,14 @@
     z-index: 1000; /*to stay on the safe side (keeping the logo overlayed above all sections)*/
   }
   
+
+.vl {
+  border-left: 4px solid #59c1aa;
+  height: 5rem;
+  margin-right: 1rem;
+}
+
+.btns{
+  background-color: black;
+  color: white;
+}

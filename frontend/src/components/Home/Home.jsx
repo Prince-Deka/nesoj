@@ -4,7 +4,7 @@ import Hero from '../Hero/Hero'
 
 function Home() {
   return (
-    <div>
+    <div >
         <Navbar/>
         <Hero/>
     </div>
