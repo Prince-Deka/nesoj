@@ -1,0 +1,80 @@
+/* Root Variables */
+:root {
+  --primary-color: #0ac5ab;
+}
+
+/* Reset Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Background */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: 0;
+}
+
+/* Set background color to white */
+#registerContainer {
+  background-color: white !important;
+}
+/* Top Section */
+.top-section {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  height: 25px;
+  line-height: 25px;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+h5 {
+  font-weight: 400;
+}
+
+.container {
+  margin-top: 80px;
+  width: 400px;
+  max-width: 100%; /* Added for responsiveness */
+  height: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row{
+  margin: 0;
+}
+
+.tabs .indicator {
+  background-color: #0ac5ab;
+  height: 60px;
+  opacity: 0.3;
+}
+
+.form-container {
+  padding: 40px;
+  padding-top: 10px;
+}
+
+.confirmation-tabs-btn {
+  position: absolute;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .container {
+      width: 90%;
+  }
+}
