@@ -1,23 +1,15 @@
+// Register.js
 import React, { useState } from 'react';
 import './Register.css';
-import axios from "axios";
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-<<<<<<< HEAD
-=======
-    const [isLoginForm, setIsLoginForm] = useState(true); // State to track active form
->>>>>>> 8a4b1352a7278c8afcaa5979fadc40a98409f207
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         try {
-<<<<<<< HEAD
-            const response = await axios.post('http://localhost:3000/register', {
-                email,
-                password,
-=======
             const response = await fetch('http://localhost:4000/register', {
                 method: 'POST',
                 headers: {
@@ -27,136 +19,131 @@ const Signup = () => {
                     email: email, 
                     password: password
                 }),
->>>>>>> 8a4b1352a7278c8afcaa5979fadc40a98409f207
             });
-            console.log(response.data); // Assuming the server returns some data upon successful registration
+
+            if (response.ok) {
+                console.log('User registered successfully');
+            } else {
+                console.error('Failed to register user');
+            }
         } catch (error) {
-            console.error('Error registering:', error);
+            console.error('Error registering user:', error);
         }
-    };
-<<<<<<< HEAD
-    return (
-
-        <form className="flex justify-center items-center h-screen" onSubmit={handleSubmit}>
-            <div className="w-96 p-6 shadow-lg bg-white rounded-md">
-                <div className='flex justify-center items-center'>
-                    <img src="/assets/logo3.png" alt="" width="120vw" />
-                </div>
-                <h1 className="text-3xl block text-center font-semibold"><i className="fa-solid fa-user"></i> Login</h1>
-                <hr className="mt-3" />
-                <div className="mt-3">
-                    <label htmlFor="email" className="block text-base mb-2">Email</label>
-                    <input type="email" id="email" name='email' className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" onChange={(e) => setEmail(e.target.value)} placeholder="Enter Username..." />
-                </div>
-                <div className="mt-3">
-                    <label htmlFor="password" className="block text-base mb-2">Password</label>
-                    <input type="password" id="password" name='password' className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600" onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password..." />
-                </div>
-                <div className="mt-3 flex justify-between items-center">
-                    <div>
-                        <input type="checkbox" />
-                        <label>Remember Me</label>
-                    </div>
-                    <div>
-                        <a href="#" className="text-indigo-800 font-semibold">Forgot Password?</a>
-                    </div>
-                </div>
-                <div className="mt-5">
-                    <button type="submit" className="border-2 border-indigo-700 bg-#f4f6f8-700 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold"><i className="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login</button>
-                </div>
-=======
-
-    const switchForm = () => {
-        setIsLoginForm(!isLoginForm);
     };
 
     return (
         <div>
-            <div className="bg"></div>
-            <div className="top-section">
-                neso@jalandhar.org ||| Phone: 9999900000
->>>>>>> 8a4b1352a7278c8afcaa5979fadc40a98409f207
+        <div class="bg"></div>
+        <div class="container">
+            <h2 class="mt-5">Signup Form</h2>
+            <form onSubmit={handleSubmit}>
+                <div class="form-row">
+                    <div class="form-group col-md-4 input-container">
+                        <input type="text" class="form-control input-field" id="firstName" required />
+                        <label for="firstName" class="label-field">First Name</label>
+                    </div>
+                    <div class="form-group col-md-4 input-container">
+                        <input type="text" class="form-control input-field" id="middleName" required />
+                        <label for="middleName" class="label-field">Middle Name</label>
+                    </div>
+                    <div class="form-group col-md-4 input-container">
+                        <input type="text" class="form-control input-field" id="lastName" required />
+                        <label for="lastName" class="label-field">Last Name</label>
+                    </div>
+                </div>
+                <div class="form-row">
+            <div class="form-group col-md-6 input-container">
+                <input type="text" class="form-control input-field" id="username" required/>
+                <label for="username" class="label-field">Username</label>
             </div>
-            <div id="registerContainer" className="container white z-depth-2">
-                <ul className="tabs teal">
-                    <li className={`tab col s3 ${isLoginForm ? 'active' : ''}`}><a className="white-text" href="#" onClick={switchForm}>login</a></li>
-                    <li className={`tab col s3 ${!isLoginForm ? 'active' : ''}`}><a className="white-text" href="#" onClick={switchForm}>register</a></li>
-                </ul>
-                {isLoginForm ? (
-                    <div id="login" className="col s12">
-                        <form onSubmit={handleSubmit} className="col s12">
-                            <div className="form-container">
-                                <h3 className="teal-text">Hello</h3>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <input id="email" type="email" className="validate" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                        <label htmlFor="email">Email</label>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <input id="password" type="password" className="validate" value={password} onChange={(e) => setPassword(e.target.value)} />
-                                        <label htmlFor="password">Password</label>
-                                    </div>
-                                </div>
-                                <br />
-                                <center>
-                                    <button className="btn waves-effect waves-light teal" type="submit" name="action">Connect</button>
-                                    <br />
-                                    <br />
-                                    <a href="">Forgotten password?</a>
-                                </center>
-                            </div>
-                        </form>
-                    </div>
-                ) : (
-                    <div id="register" className="col s12">
-                        <form onSubmit={handleSubmit} className="col s12">
-                            <div className="form-container">
-                                <h3 className="teal-text">Welcome</h3>
-                                <div className="row">
-                                    <div className="input-field col s6">
-                                        <input id="first_name" type="text" className="validate" />
-                                        <label htmlFor="first_name">First Name</label>
-                                    </div>
-                                    <div className="input-field col s6">
-                                        <input id="last_name" type="text" className="validate" />
-                                        <label htmlFor="last_name">Last Name</label>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <input id="register-email" type="email" className="validate" />
-                                        <label htmlFor="register-email">Email</label>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <input id="email-confirm" type="email" className="validate" />
-                                        <label htmlFor="email-confirm">Email Confirmation</label>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <input id="register-password" type="password" className="validate" />
-                                        <label htmlFor="register-password">Password</label>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <input id="password-confirm" type="password" className="validate" />
-                                        <label htmlFor="password-confirm">Password Confirmation</label>
-                                    </div>
-                                </div>
-                                <center>
-                                    <button className="btn waves-effect waves-light teal" type="submit" name="action">Submit</button>
-                                </center>
-                            </div>
-                        </form>
-                    </div>
-                )}
+            <div class="form-group col-md-6 input-container">
+                <input type="email" class="form-control input-field" id="email" required/>
+                <label for="email" class="label-field">Email</label>
             </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-md-6 input-container">
+                <input type="text" class="form-control input-field" id="university" required/>
+                <label for="university" class="label-field">University</label>
+            </div>
+            <div class="form-group col-md-6 input-container">
+                <input type="text" class="form-control input-field" id="universityID" required/>
+                <label for="universityID" class="label-field">University ID/Registration ID</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="course">Course</label>
+                <select id="course" class="form-control" required>
+                    <option id="Default">Select Course</option>
+                    <option id="BTech-CSE">B.Tech(CSE)</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="year">Year</label>
+                <input type="number" class="form-control" id="year" required/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="residence">Residence</label><br/>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="residence" id="hosteller" value="Hosteller" required/>
+                    <label class="form-check-label" for="hosteller">Hosteller</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="residence" id="outsider" value="Outsider" required/>
+                    <label class="form-check-label" for="outsider">Outsider</label>
+                </div>
+            </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">             
+                <label for="gender">Gender</label><br/>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="Male" required/>
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="Female" required/>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>    
+            </div>  
+        </div>
+            <div class="form-group col-md-6 input-container">
+                <input type="number" class="form-control input-field" id="aadharID" required/>
+                <label for="aadharID" class="label-field">Aadhar ID</label>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dob">Date-of-Birth </label>
+                <input type="date" class="form-control" id="dob" required/>
+            </div>
+            
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6 input-container">
+                <input type="password" class="form-control input-field" id="password" required/>
+                <label for="password" class="label-field">Password</label>
+            </div>
+            <div class="form-group col-md-6 input-container">
+                <input type="password" class="form-control input-field" id="confPassword" required/>
+                <label for="confPassword" class="label-field">Confirm Password</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="terms" required/>
+                    <label class="form-check-label" for="terms">
+                        I agree to the <a href="terms.html">terms and conditions</a>
+                    </label>
+                </div>
+            </div>                
+        </div>
+        <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+        </div>
+    </div>
+                
     );
 }
 
