@@ -22,6 +22,10 @@ function Navbar() {
         navigate('/register');
     };
 
+    const handleLogin = () => {
+        navigate('/login');
+    };
+
 
 
 
@@ -67,7 +71,7 @@ function Navbar() {
                             </div>
                             <div className=''>
                                 <div style={{ display: "flex", justifyContent: "center" }}>
-                                    <button className="btn btns me-md-2" type="button">Login</button>
+                                    <button className="btn btns me-md-2" type="button" onClick={handleLogin}>Login</button>
                                     <button className="btn btns" type="button" onClick={handleClickSingup}>Register</button>
                                 </div>
                             </div>
