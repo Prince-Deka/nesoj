@@ -6,7 +6,7 @@ const MONGODB_URI = 'mongodb+srv://asuj:Asuj321@asujcluster.uglyh6t.mongodb.net/
 const cors = require('cors');
 
 app.use(cors({
-    origin: 'http://localhost:5173' // Replace with your frontend origin
+  origin: 'http://localhost:5173' // Replace with your frontend origin
 }));
 
 // Connect to MongoDB
@@ -21,7 +21,22 @@ db.once('open', () => console.log('Connected to MongoDB'));
 // Define a schema for the user
 const userSchema = new mongoose.Schema({
   email: String,
+  firstName: String,
+  middleName: String,
+  lastName: String,
+  userName: String,
   password: String,
+  confPassword: String,
+  university: String,
+  universityID: String,
+  course: String,
+  year: Number,
+  aadhar: Number,
+  gender:  String,
+  residence: String
+
+
+
 });
 
 const User = mongoose.model('User', userSchema);
@@ -32,9 +47,9 @@ app.use(express.json());
 // Registration endpoint
 app.post('/register', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, firstName, middleName, lastName, password, userName, university, universityID, course, year, aadhar ,gender , residence } = req.body;
     // Create a new user instance
-    const newUser = new User({ email, password });
+    const newUser = new User({ email, firstName, middleName, lastName, password, userName, university, universityID, course, year, aadhar, gender, residence });
     // Save the user to the database
     await newUser.save();
     res.status(201).json({ message: 'User registered successfully' });
