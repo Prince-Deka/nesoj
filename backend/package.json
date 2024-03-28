@@ -1,6 +1,6 @@
 {
 
-  "main": "server.js",
+  "main": "index.js",
 
   "dependencies": {
 
