@@ -24,7 +24,7 @@ const Signup = () => {
         try {
 
             //link of backend origin http://localhost:3000/register
-            const response = await fetch('https://nesoj-ojhdk4tfq-princedekas-projects.vercel.app/register', {
+            const response = await fetch('https://nesoj-princedekas-projects.vercel.app/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
