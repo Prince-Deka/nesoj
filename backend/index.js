@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(cors({
-  origin: 'http://localhost:5173' // Replace with your frontend origin
+  origin: 'https://nesoj.netlify.app/register' // Replace with your frontend origin http://localhost:5173
 }));
 
 // Connect to MongoDB
