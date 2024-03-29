@@ -8,10 +8,25 @@ const cors = require('cors');
 let bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+// Set up CORS middleware
 app.use(cors());
 
+// Specify allowed origins
+const allowedOrigins = [
+  'http://localhost:5173', // Add your local frontend origin
+  'https://nesoj.netlify.app', // Add your Netlify frontend origin
+];
+
+// Configure CORS with dynamic origin based on request origin
 app.use(cors({
-  origin: 'https://nesoj.netlify.app' // Replace with your frontend origin http://localhost:5173
+  origin: function (origin, callback) {
+    // Check if the request origin is allowed
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 // Connect to MongoDB
@@ -20,10 +35,9 @@ app.use(cors({
 //   useUnifiedTopology: true,
 // });
 
-
 const register = require('./controllers/registrationController.js');
-app.use('/register',register);
+app.use('/register', register);
 
-app.listen(PORT,()=>{
-    console.log("The server is running at Port No 3000...")
-})
+app.listen(PORT, () => {
+  console.log("The server is running at Port No 3000...")
+});
