@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const app = express();
 const mongoDb = require('./dbconnect.js');
 const PORT = process.env.PORT || 3000;
-const MONGODB_URI = 'mongodb+srv://asuj:Asuj321@asujcluster.uglyh6t.mongodb.net/nesoj';
+
+
+
+
 const cors = require('cors');
 let bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -13,9 +16,9 @@ app.use(cors());
 
 // Specify allowed origins
 const allowedOrigins = [
-  'http://localhost:5173', // Add your local frontend origin
+  // 'http://localhost:5173', // Add your local frontend origin
   'https://nesoj.netlify.app', 
-  'https://nesoj.onrender.com',// Add your Netlify frontend origin
+  
 ];
 
 // Configure CORS with dynamic origin based on request origin
