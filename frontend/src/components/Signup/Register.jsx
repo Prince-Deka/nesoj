@@ -24,7 +24,7 @@ const Signup = () => {
         try {
 
             //link of backend origin http://localhost:3000/register
-            const response = await fetch('https://nesoj.onrender.com/register', {
+            const response = await fetch('https://nesojbackend.onrender.com/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

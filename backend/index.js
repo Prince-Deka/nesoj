@@ -34,7 +34,9 @@ app.use((req, res, next) => {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 // });
-
+app.get('/register', (req, res)=>{ 
+   res.send("register working")
+})
 const register = require('./controllers/registrationController.js');
 app.use('/register', register);
 
