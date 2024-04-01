@@ -78,7 +78,7 @@ const Login = () => {
                 </label>
               </div>
               <button type="submit" class="btn btn-primary custom-btn">
-                Signup
+                Login
               </button>
               <p class="text-center">
                 {" "}
@@ -86,7 +86,7 @@ const Login = () => {
               </p>
               <p class="text-center mb-3">
                 Not a member?{' '}
-                <Link to="/register">Sign Up</Link> {/* Replaced <a> with Link */}
+                <Link to="/register">Register</Link> {/* Replaced <a> with Link */}
               </p>
             </form>
           </div>
