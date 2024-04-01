@@ -43,8 +43,8 @@ const Login = () => {
 
 
 
-  const[email,SetEmail]= useState("");
-  const[password,SetPassword]= useState("");
+  const[email,setEmail]= useState("");
+  const[password,setPassword]= useState("");
   const [msg, setMessage] = useState("");
   const navigate = useNavigate();
   const handleSubmit=(evt)=>{
@@ -64,8 +64,8 @@ const Login = () => {
      .catch(err=>{
       setMessage('INVALID UID OR PASSWORD')
      })
-     SetEmail('');
-     SetPassword('');
+     setEmail('');
+     setPassword('');
   }
   const adminpage=()=>{
     navigate('/adminlog')
@@ -91,7 +91,7 @@ const Login = () => {
                   }}
                   required
                 />
-                <label htmlForor="email" className="label-field custom-label-field">
+                <label htmlFor="email" className="label-field custom-label-field">
                   Email
                 </label>
               </div>
@@ -102,11 +102,11 @@ const Login = () => {
                   id="password"
                   name="password"
                   onChange={(e) => {
-                    setpassword(e.target.value);
+                    setPassword(e.target.value);
                   }}
                   required
                 />
-                <label htmlForfor="password" className="label-field custom-label-field">
+                <label htmlFor="password" className="label-field custom-label-field">
                   Password
                 </label>
               </div>
