@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const RegisterModel = require('../models/userSchema');
 
-router.post('/logincheck',(req,res)=>{
+router.post('/login',(req,res)=>{
     RegisterModel.find({"email": req.body.email , "password": req.body.password})
     .then(getsearchDocument=>{
         if(getsearchDocument.length > 0){
