@@ -29,16 +29,18 @@ app.use((req, res, next) => {
   next();
 });
 
-// Connect to MongoDB
-// mongoose.connect(MONGODB_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-app.get('/', (req, res)=>{ 
-   res.send("backend server working")
+
+//for checking on render (testing purpose only)
+app.get('/register', (req, res)=>{ 
+   res.send("backend register server working")
 })
+
+
 const register = require('./controllers/registrationController.js');
 app.use('/register', register);
+
+const login = require( './controllers/loginCheck.js' );
+app.use("/login", login);
 
 app.listen(PORT, () => {
   console.log("The server is running at Port No 3000...")
