@@ -8,68 +8,70 @@ import "./scriptLogin";
  
 
 const Login = () => {
-  // const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
 
-  // const [password, setpassword] = useState("");
+  const [password, setPassword] = useState("");
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await fetch("http://localhost:3000/login", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         email: email,
-
-  //         password: password,
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       console.log("User registered successfully");
-  //       window.alert("Login Successful");
-  //       window.location.replace("/");
-  //     } else {
-  //       console.error("Failed to login");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error login:", error);
-  //   }
-  // };
-
-
-
-
-  const[email,setEmail]= useState("");
-  const[password,setPassword]= useState("");
-  const [msg, setMessage] = useState("");
   const navigate = useNavigate();
-  const handleSubmit=(evt)=>{
-     evt.preventDefault();
-     //creating Json Object;
-     const checkLog = {
-      email : email,
-      password : password
-     } 
-     axios.post('https://nesojbackend.onrender.com/login',checkLog)//backend login route
-     .then(res=>{
-     sessionStorage.setItem("User Type",'User')
-     sessionStorage.setItem("User Name",res.data[0].userName)
-     sessionStorage.setItem("Userdetails", JSON.stringify(res.data[0]))
-     navigate('/')
-     })
-     .catch(err=>{
-      setMessage('INVALID UID OR PASSWORD')
-     })
-     setEmail('');
-     setPassword('');
-  }
-  const adminpage=()=>{
-    navigate('/adminlog')
-  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("https://nesojbackend.onrender.com/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+
+          password: password,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("User registered successfully");
+        window.alert("Login Successful");
+        navigate("/");
+      } else {
+        console.error("Failed to login");
+      }
+    } catch (error) {
+      console.error("Error login:", error);
+    }
+  };
+
+
+
+
+  // const[email,setEmail]= useState("");
+  // const[password,setPassword]= useState("");
+  // const [msg, setMessage] = useState("");
+  // const navigate = useNavigate();
+  // const handleSubmit=(evt)=>{
+  //    evt.preventDefault();
+  //    //creating Json Object;
+  //    const checkLog = {
+  //     email : email,
+  //     password : password
+  //    } 
+  //    axios.post('https://nesojbackend.onrender.com/login',checkLog)//backend login route
+  //    .then(res=>{
+  //    sessionStorage.setItem("User Type",'User')
+  //    sessionStorage.setItem("User Name",res.data[0].userName)
+  //    sessionStorage.setItem("Userdetails", JSON.stringify(res.data[0]))
+  //    navigate('/')
+  //    })
+  //    .catch(err=>{
+  //     setMessage('INVALID UID OR PASSWORD')
+  //    })
+  //    setEmail('');
+  //    setPassword('');
+  // }
+  // const adminpage=()=>{
+  //   navigate('/adminlog')
+  // }
 
   return (
     <div>
@@ -86,6 +88,7 @@ const Login = () => {
                   type="email"
                   className="form-control input-field custom-input-field"
                   id="email"
+                  name="email"
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
