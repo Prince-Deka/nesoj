@@ -91,7 +91,7 @@ const Login = () => {
                   }}
                   required
                 />
-                <label for="email" className="label-field custom-label-field">
+                <label htmlForor="email" className="label-field custom-label-field">
                   Email
                 </label>
               </div>
@@ -106,7 +106,7 @@ const Login = () => {
                   }}
                   required
                 />
-                <label for="password" className="label-field custom-label-field">
+                <label htmlForfor="password" className="label-field custom-label-field">
                   Password
                 </label>
               </div>
