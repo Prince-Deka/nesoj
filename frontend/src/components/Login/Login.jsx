@@ -74,61 +74,30 @@ const Login = () => {
   // }
 
   return (
-    <div>
-      <div className="bg"></div>
-      <div className="parent-container">
-        <div className="login-container custom-login-container">
-          <div className="container custom-container">
-            <img src="/assets/nesoj2.png" alt="Logo" height="100px" />
-
-            <h2 className="mt-5 custom-heading">Sign In to your Account</h2>
-            <form onSubmit={handleSubmit} className="custom-form">
-              <div className="form-group input-container custom-input-container">
-                <input
-                  type="email"
-                  className="form-control input-field custom-input-field"
-                  id="email"
-                  name="email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  required
-                />
-                <label htmlFor="email" className="label-field custom-label-field">
-                  Email
-                </label>
-              </div>
-              <div className="form-group input-container custom-input-container">
-                <input
-                  type="password"
-                  className="form-control input-field custom-input-field"
-                  id="password"
-                  name="password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  required
-                />
-                <label htmlFor="password" className="label-field custom-label-field">
-                  Password
-                </label>
-              </div>
-              <button type="submit" className="btn btn-primary custom-btn">
-                Login
-              </button>
-              <p className="text-center">
-                {" "}
-                <a href="#">Forgot Password</a>
-              </p>
-              <p className="text-center mb-3">
-                Not a member?{' '}
-                <Link to="/register">Register</Link> 
-              </p>
+    <div className="outer">
+      <div className="out-container"> {/* Changed class to className */}
+        <header>Login</header>
+        <form onSubmit={handleSubmit} className="login-form"> {/* Changed class to className */}
+            <div className="field-input"> {/* Changed class to className */}
+                <span className="logo"><i className="fa-solid fa-user"></i></span> {/* Changed class to className */}
+                <input type="email" id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/> {/* Added value and onChange handlers */}
+            </div>
+            <div className="field-input"> {/* Changed class to className */}
+                <span className="logo"><i className="fa-solid fa-lock"></i></span> {/* Changed class to className */}
+                <input type="password" id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)}/> {/* Added value and onChange handlers */}
+                <span className="toggle-password"><i className="fa-solid fa-eye"></i></span> {/* Changed class to className */}
+            </div>
+            <div className="forgot-password"> {/* Changed class to className */}
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button className="login-btn" onClick={handleSubmit}>Login</button> {/* Changed class to className */}
+           
+            <div className="signup-link"> {/* Changed class to className */}
+                New User?&nbsp;<a href="#">Signup</a>
+            </div>
             </form>
-          </div>
         </div>
       </div>
-    </div>
   );
 };
 
