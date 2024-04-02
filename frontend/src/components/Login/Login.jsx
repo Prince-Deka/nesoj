@@ -11,6 +11,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     try {
       const response = await fetch("https://nesojbackend.onrender.com/login", {
         method: "POST",
@@ -77,7 +78,7 @@ const Login = () => {
             </div>
             <button className="login-btn" onClick={handleSubmit}>Login</button>
             <div className="signup-link">
-              New User?&nbsp;<a href="#">Signup</a>
+              New User?&nbsp;<a href="/register">Signup</a>
             </div>
           </form>
         </div>
