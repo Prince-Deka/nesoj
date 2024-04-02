@@ -1,17 +1,11 @@
-// Register.js
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import "./Login.css";
-import "./scriptLogin";
- 
 
 const Login = () => {
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,7 +19,6 @@ const Login = () => {
         },
         body: JSON.stringify({
           email: email,
-
           password: password,
         }),
       });
@@ -42,62 +35,54 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const handleClick = (e) => {
+      // Toggle the type attribute
+      const passwordInput = document.getElementById('password');
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
 
+      // Toggle the eye icon
+      const eyeIcon = e.currentTarget.querySelector('i');
+      eyeIcon.classList.toggle('fa-eye');
+      eyeIcon.classList.toggle('fa-eye-slash');
+    };
 
+    const togglePassword = document.querySelector('.toggle-password');
+    togglePassword.addEventListener('click', handleClick);
 
-  // const[email,setEmail]= useState("");
-  // const[password,setPassword]= useState("");
-  // const [msg, setMessage] = useState("");
-  // const navigate = useNavigate();
-  // const handleSubmit=(evt)=>{
-  //    evt.preventDefault();
-  //    //creating Json Object;
-  //    const checkLog = {
-  //     email : email,
-  //     password : password
-  //    } 
-  //    axios.post('https://nesojbackend.onrender.com/login',checkLog)//backend login route
-  //    .then(res=>{
-  //    sessionStorage.setItem("User Type",'User')
-  //    sessionStorage.setItem("User Name",res.data[0].userName)
-  //    sessionStorage.setItem("Userdetails", JSON.stringify(res.data[0]))
-  //    navigate('/')
-  //    })
-  //    .catch(err=>{
-  //     setMessage('INVALID UID OR PASSWORD')
-  //    })
-  //    setEmail('');
-  //    setPassword('');
-  // }
-  // const adminpage=()=>{
-  //   navigate('/adminlog')
-  // }
+    // Cleanup function to remove event listener
+    return () => {
+      togglePassword.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   return (
-    <div className="outer">
-      <div className="out-container"> {/* Changed class to className */}
-        <header>Login</header>
-        <form onSubmit={handleSubmit} className="login-form"> {/* Changed class to className */}
-            <div className="field-input"> {/* Changed class to className */}
-                <span className="logo"><i className="fa-solid fa-user"></i></span> {/* Changed class to className */}
-                <input type="email" id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/> {/* Added value and onChange handlers */}
+    <div>
+      <div className="outer">
+        <div className="out-container">
+          <header>Login</header>
+          <form onSubmit={handleSubmit} className="login-form">
+            <div className="field-input">
+              <span className="logo"><i className="fa-solid fa-user"></i></span>
+              <input type="email" id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </div>
-            <div className="field-input"> {/* Changed class to className */}
-                <span className="logo"><i className="fa-solid fa-lock"></i></span> {/* Changed class to className */}
-                <input type="password" id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)}/> {/* Added value and onChange handlers */}
-                <span className="toggle-password"><i className="fa-solid fa-eye"></i></span> {/* Changed class to className */}
+            <div className="field-input">
+              <span className="logo"><i className="fa-solid fa-lock"></i></span>
+              <input type="password" id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+              <span className="toggle-password"><i className="fa-solid fa-eye"></i></span>
             </div>
-            <div className="forgot-password"> {/* Changed class to className */}
-                <a href="#">Forgot Password?</a>
+            <div className="forgot-password">
+              <a href="#">Forgot Password?</a>
             </div>
-            <button className="login-btn" onClick={handleSubmit}>Login</button> {/* Changed class to className */}
-           
-            <div className="signup-link"> {/* Changed class to className */}
-                New User?&nbsp;<a href="#">Signup</a>
+            <button className="login-btn" onClick={handleSubmit}>Login</button>
+            <div className="signup-link">
+              New User?&nbsp;<a href="#">Signup</a>
             </div>
-            </form>
+          </form>
         </div>
       </div>
+    </div>
   );
 };
 
