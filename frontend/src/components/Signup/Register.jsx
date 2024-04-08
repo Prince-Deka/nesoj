@@ -133,7 +133,7 @@ const Signup = () => {
                       <option value="passport">Indian Passport</option>
                       <option value="pan">PAN Card</option>
                       <option value="driving-license">Driving License</option>
-                      <option value="ration">Ration Card</option>\
+                      <option value="ration">Ration Card</option>
                     </select>
                   </div>
                   <div className="input-field">

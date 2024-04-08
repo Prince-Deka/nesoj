@@ -405,6 +405,11 @@
     resize: none;
   }
 
+  .contact-right-side .contact-input-box input:focus-visible,
+  .contact-right-side .contact-input-box textarea:focus-visible{
+    border: 2px solid #0ac5ab;
+  }
+
   .contact-right-side .message-box{
     min-height: 150px;
 }
