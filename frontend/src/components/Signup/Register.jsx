@@ -55,7 +55,6 @@ const Signup = () => {
     } catch (error) {
       console.error("Error registering user:", error);
     }
-
     
   };
 

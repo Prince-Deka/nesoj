@@ -44,7 +44,6 @@
     margin-top: 16px;
     min-height: 490px;
     overflow: hidden;
-    overflow-y: scroll;
 }
 
 .field-input{

@@ -1,0 +1,39 @@
+.home-footer{
+    min-height: 150px;
+    background: #0ac5ab;
+    display: flex;
+    justify-content: center;
+}
+
+.home-footer-content .social-icons{
+    margin: 20px;
+} 
+
+.home-footer-content .social-icons a{
+    padding: 0 30px;
+} 
+
+.home-footer-content .social-icons a i{
+    font-size: 50px;
+    color: #fff;
+}
+
+
+.footer-links {
+    display: flex; /* Use Flexbox to align items */
+    align-items: center;
+    flex-direction: column; /* Stack items vertically */
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.home-copyright{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    color: #fff;
+}
