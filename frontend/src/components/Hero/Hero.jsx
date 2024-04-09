@@ -18,7 +18,7 @@ function Hero() {
             <nav className="navbar bg-body-tertiary logo-bar">
                 <div className="container-fluid logo-div">
                     <a className="navbar-brand logo-click" href="#">
-                        <img src="nesoj.png" alt="@" height="150px" className="d-inline-block align-text-top"/>
+                        <img src="/public/assets/nesoj150x150.png" alt="@" height="150px" className="d-inline-block align-text-top"/>
                         <div className='bar-after-logo'></div>
                         <div className="text">
                             <span className="neso">NORTH-EAST</span>
@@ -80,35 +80,35 @@ function Hero() {
                 <h2 className="org-section-title">Organizations under NESOJ</h2>
                 <div className="organizations-container">
                     <div className="organization">
-                        <img src="StateLogos/500x500/ASUJ/ASUJ_500x500.jpg"  alt="Organization 1" />
+                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg"  alt="Organization 1" />
                         <p>Arunachal Students’ Club Jalandhar</p>
                     </div>
                     <div className="organization">
-                        <img src="StateLogos/500x500/ASUJ/ASUJ_colorful.jpg" alt="Organization 2" />
+                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="Organization 2" />
                         <p>Assam Students' Union Jalandhar</p>
                     </div>
                     <div className="organization">
-                        <img src="StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
                         <p>Jalandhar Mizo Zirlai Pawl</p>
                     </div>
                     <div className="organization">
-                        <img src="StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
                         <p>Manipur Students' Union Phagwara</p>
                     </div>
                     <div className="organization">
-                        <img src="StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
                         <p>Meghalaya Students Union Jalandhar</p>
                     </div>
                     <div className="organization">
-                        <img src="StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
                         <p>Naga Students Union Phagwara</p>
                     </div>
                     <div className="organization">
-                        <img src="StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
                         <p>Sikkimese Gorkha Students Union Jalandhar</p>
                     </div>
                     <div className="organization">
-                        <img src="StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
                         <p>Tripura Students’ Association Jalandhar</p>
                     </div>
                 </div>
@@ -167,13 +167,13 @@ function Hero() {
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                    <img className="d-block w-100" src="/src/components/Hero/hero.jpg" alt="First slide"/>
+                    <img className="d-block w-100" src="/public/assets/hero.jpg" alt="First slide"/>
                     </div>
                     <div className="carousel-item">
-                    <img className="d-block w-100" src="/src/components/Hero/hero.jpg" alt="Second slide"/>
+                    <img className="d-block w-100" src="/public/assets/hero.jpg" alt="Second slide"/>
                     </div>
                     <div className="carousel-item">
-                    <img className="d-block w-100" src="/src/components/Hero/hero.jpg" alt="Third slide"/>
+                    <img className="d-block w-100" src="/public/assets/hero.jpg" alt="Third slide"/>
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
