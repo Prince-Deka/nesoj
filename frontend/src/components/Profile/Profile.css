@@ -90,7 +90,7 @@
     height: max-content;
 }
 
-.account-header, .notifications-header{
+.account-header, .notifications-header, .approvals-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -98,7 +98,7 @@
     border-bottom: 1px solid #768499;
 }
 
-.account-title, .notifications-title{
+.account-title, .notifications-title, .approvals-title{
     font-family: 'Poppins',sans-serif;
     font-size: 20px;
     color: #1e293b;
@@ -106,7 +106,7 @@
     margin-left: 10px;
 }
 
-.button-container{
+.profile-button-container{
     margin-right: 5px;
 }
 
@@ -273,8 +273,13 @@
 
 .notification-item{
     width: 100%;
-    border-bottom: 1px solid #d8d8d8;
-    padding-top: 20px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.notification-item:hover{
+    background-color: #f1f5f9;
+    border-radius: 6px;
 }
 
 .notification-upper{
@@ -323,4 +328,113 @@
     height: 10px;
     background-color: red;
     border-radius: 50%;
+}
+
+
+/* ------------- Approval Style Starts ------------- */
+
+.approval-itembox, .approval-itembox h5, .approval-itembox button, .approval-itembox table, .approval-itembox tr{
+    width: 100%;
+    padding: 0;
+}
+
+.app-item-head {
+    border-collapse: collapse; /* Collapse borders for consistent spacing */
+    width: 100%; /* Ensure the table occupies full width */
+}
+
+.app-col-table-data {
+    padding: 0;
+    text-align: center; /* Center-align content */
+}
+
+.app-col-table-data p{
+    margin: 0;
+    margin-left: 5px;
+    padding: 0;
+    display: inline;
+
+}
+
+
+.approval-table-row img{
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.details-tab {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.details-tab {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.detail-row {
+    flex: 0 0 50%; /* Two items per row */
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.detail-label {
+    font-weight: bold;
+}
+
+.detail-value {
+    margin-left: 10px; /* Adjust as needed for spacing between label and value */
+}
+
+/* Media query for screens below 900px */
+@media screen and (max-width: 1020px) {
+    .detail-row {
+        flex: 0 0 100%; /* Display one item per row below 900px */
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.button-wrapper {
+    margin: 0 10px; /* Adjust margin between buttons */
+}
+
+.approve-button,
+.reject-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.approve-button {
+    background-color: #11a116 !important;
+    border: none !important;
+    color: white;
+}
+
+.reject-button {
+    background-color: #f65549 !important;
+    border: none !important;
+    color: white;
+}
+
+.approve-button:hover,
+.reject-button:hover {
+    opacity: 0.8;
+}
+
+.remark-textarea{
+    padding: 5px 8px;
+    height: 42.5px;
 }

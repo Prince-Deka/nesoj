@@ -13,6 +13,11 @@ function Hero() {
         navigate('/login');
     };
 
+    // FOR TESTING PURPOSE
+    const handleProfile = () => {
+        navigate('/profile');
+    };
+
     return (
         <div className='hero-outer'>
             <nav className="navbar bg-body-tertiary logo-bar">
@@ -42,17 +47,17 @@ function Hero() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav main-list">
-                    <li className="nav-item active">
-                        <a className="nav-link" href="#">Who are we? <span className="sr-only">(current)</span></a>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#who-are-we">Who are we? </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#who-are-we">What we Do?</a>
+                        <a className="nav-link" href="#what-we-do">What we Do?</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Gallery</a>
+                        <a className="nav-link" href="#carouselExampleIndicators">Gallery</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Contact Us</a>
+                        <a className="nav-link" href="#contact-us-form">Contact Us</a>
                     </li>
                     </ul>
                 </div>
@@ -189,7 +194,7 @@ function Hero() {
 
 
             {/* COntact Us */}
-            <section className='contact-us-section'>
+            <section className='contact-us-section' id='contact-us-form'>
                 <div className="contact-container">
                     <div className="contact-content">
                         <div className="contact-left-side">
@@ -226,7 +231,7 @@ function Hero() {
                                     <textarea></textarea>
                                 </div>
                                 <div className="contact-button">
-                                    <input type="button" value={"Send Now"}/>
+                                    <input type="button" value={"Send Now"} onClick={handleProfile}/>
                                 </div>
                             </form>
                         </div>

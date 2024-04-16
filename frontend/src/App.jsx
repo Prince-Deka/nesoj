@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Home />} /> {/* 👈 Renders at /app/ */}
         <Route path="/register" element={<Signup/>}/>
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />ß
       </Routes>
 
     </BrowserRouter>
