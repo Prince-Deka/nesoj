@@ -3,20 +3,19 @@ import React, { useState } from "react";
 import "./Register.css";
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [middleName, setmiddleName] = useState("");
   const [lastName, setlastName] = useState("");
-  const [userName, setuserName] = useState("");
-  const [password, setpassword] = useState("");
-  const [confPassword, setconfPassword] = useState("");
-  const [university, setuniversity] = useState("");
-  const [universityID, setuniversityID] = useState("");
+  const [email, setEmail] = useState("");
+  const [confEmail, setconfEmail] = useState("");
+  const [gender, setGender] = useState("");
+  const [phone, setPhone] = useState("");
+  const [confPhone, setConfPhone] = useState("");
+  const [residence, setResidence] = useState("");
+  
   const [course, setcourse] = useState("");
   const [year, setYear] = useState("");
   const [aadhar, setAadhar] = useState(0);
-  const [gender, setGender] = useState("");
-  const [residence, setResidence] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,19 +27,15 @@ const Signup = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: email,
           firstName: firstName,
           middleName: middleName,
           lastName: lastName,
-          userName: userName,
-          password: password,
-          confPassword: confPassword,
-          university: university,
-          universityID: universityID,
-          course: course,
-          year: year,
-          aadhar: aadhar,
+          email: email,
+          confEmail: confEmail,
+          
           gender: gender,
+          phone: phone,
+          confPhone: confPhone,
           residence: residence,
         }),
       });
@@ -63,7 +58,7 @@ const Signup = () => {
         <div className="bg" />
         <div className="signup-container">
           <header>Registration</header>
-          <form action="#">
+          <form method="POST" onSubmit={()=>handleSubmit()}>
             <div className="form first">
               <div className="details personal">
                 <span className="title">Personal Details</span>
@@ -75,23 +70,23 @@ const Signup = () => {
                   </div>
                   <div className="input-field">
                     <label htmlFor="First Name">First Name</label>
-                    <input type="text" placeholder="First Name" required />
+                    <input type="text" placeholder="First Name" onChange={(e)=>setFirstName(e.target.value)} required />
                   </div>
                   <div className="input-field">
                     <label htmlFor="Middle Name">Middle Name</label>
-                    <input type="text" placeholder="Middle Name" />
+                    <input type="text" placeholder="Middle Name" onChange={(e)=>setmiddleName(e.target.value)}/>
                   </div>
                   <div className="input-field">
                     <label htmlFor="Last Name">Last Name</label>
-                    <input type="text" placeholder="Last Name" required />
+                    <input type="text" placeholder="Last Name"  onChange={(e)=>setlastName(e.target.value)} required/>
                   </div>
                   <div className="input-field">
                     <label htmlFor="Email">Email</label>
-                    <input type="email" placeholder="Email" required />
+                    <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)} required />
                   </div>
                   <div className="input-field">
                     <label htmlFor="Confirm-Email">Confirm Email</label>
-                    <input type="email" placeholder="Confirm Email" required />
+                    <input type="email" placeholder="Confirm Email" onChange={(e)=>setEmail(e.target.value)} required />
                   </div>
                   <div className="input-field">
                     <label htmlFor="gender">Gender</label>
@@ -102,11 +97,11 @@ const Signup = () => {
                   </div>
                   <div className="input-field">
                     <label htmlFor="phone">Phone</label>
-                    <input type="tel" pattern="\+91[0-9]{10}" placeholder="Phone" required />
+                    <input type="tel" pattern="\+91[0-9]{10}" placeholder="Phone" onChange={(e)=>setPhone(e.target.value)} required />
                   </div>
                   <div className="input-field">
                     <label htmlFor="phone">Confirm Phone</label>
-                    <input type="tel" pattern="\+91[0-9]{10}" placeholder="Phone" required />
+                    <input type="tel" pattern="\+91[0-9]{10}" placeholder="Phone" onChange={(e)=>setConfPhone(e.target.value)} required />
                   </div>
                   <div className="input-field">
                     <label htmlFor="residence">Residence</label>

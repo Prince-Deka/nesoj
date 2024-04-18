@@ -84,7 +84,7 @@ function Profile() {
               <div className="notification-item" onClick={handleClick}>
                 <div className="notification-main">
                   <div className="notification-upper">
-                    <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" className="user-img" />
+                    <img src="assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" className="user-img" />
                     <h2 className='sender-name'>Assam Students Union Jalandhar <div className="red"></div></h2>
                     <div className="date-time">
                       <span className="notification-time">HH:MM</span>
@@ -100,7 +100,7 @@ function Profile() {
               <div className="notification-item" onClick={handleClick}>
                 <div className="notification-main">
                   <div className="notification-upper">
-                    <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" className="user-img" />
+                    <img src="assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" className="user-img" />
                     <h2 className='sender-name'>Assam Students Union Jalandhar <div className="red"></div></h2>
                     <div className="date-time">
                       <span className="notification-time">HH:MM</span>
@@ -127,15 +127,15 @@ function Profile() {
             </div>
             <div className="approvals-container">
               <div id="accordion">
-                <div class="card">
-                  <div class="card-header approval-itembox" id="headingOne">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div className="card">
+                  <div className="card-header approval-itembox" id="headingOne">
+                    <h5 className="mb-0">
+                      <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <table>
                             <tr className='app-item-head approval-table-row'>
                               <td className='app-col-table-data'>
                                 <div>
-                                  <img src="public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt=""/>
+                                  <img src="assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt=""/>
                                   <p>Name Name Name</p>
                                 </div>
                               </td>
@@ -148,63 +148,63 @@ function Profile() {
                     </h5>
                   </div>
 
-                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body details-tab">
-                      <div class="detail-row">
-                          <span class="detail-label">Name:</span>
-                          <span class="detail-value">First Name Middle Name Last Name</span>
+                  <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div className="card-body details-tab">
+                      <div className="detail-row">
+                          <span className="detail-label">Name:</span>
+                          <span className="detail-value">First Name Middle Name Last Name</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Email:</span>
-                          <span class="detail-value">nnnn@nnn.com</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Email:</span>
+                          <span className="detail-value">nnnn@nnn.com</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Phone:</span>
-                          <span class="detail-value">+91 9999999999</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Phone:</span>
+                          <span className="detail-value">+91 9999999999</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Gender:</span>
-                          <span class="detail-value">Male</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Gender:</span>
+                          <span className="detail-value">Male</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Residence:</span>
-                          <span class="detail-value">Hosteller</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Residence:</span>
+                          <span className="detail-value">Hosteller</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Date of Birth:</span>
-                          <span class="detail-value">11/11/1111</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Date of Birth:</span>
+                          <span className="detail-value">11/11/1111</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Id Type:</span>
-                          <span class="detail-value">Aadhaar</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Id Type:</span>
+                          <span className="detail-value">Aadhaar</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">ID Number:</span>
-                          <span class="detail-value">77777777777</span>
+                      <div className="detail-row">
+                          <span className="detail-label">ID Number:</span>
+                          <span className="detail-value">77777777777</span>
                       </div>
-                      <div class="button-container">
+                      <div className="button-container-approve">
                         <div className="remark-box">
                           <textarea name="" id="" cols="45" rows="1" placeholder='Remarks' className='remark-textarea'></textarea>
                         </div>
-                        <div class="button-wrapper">
-                            <button class="approve-button">Approve</button>
+                        <div className="button-wrapper-approve">
+                            <button className="approve-button">Approve</button>
                         </div>
-                        <div class="button-wrapper">
-                            <button class="reject-button">Reject</button>
+                        <div className="button-wrapper-approve">
+                            <button className="reject-button">Reject</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="card">
-                  <div class="card-header approval-itembox" id="headingTwo">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div className="card">
+                  <div className="card-header approval-itembox" id="headingTwo">
+                    <h5 className="mb-0">
+                      <button className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                       <table>
                             <tr className='app-item-head approval-table-row'>
                               <td className='app-col-table-data'>
                                 <div>
-                                  <img src="public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt=""/>
+                                  <img src="assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt=""/>
                                   <p>Name Name Name</p>
                                 </div>
                               </td>
@@ -216,63 +216,63 @@ function Profile() {
                       </button>
                     </h5>
                   </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="card-body details-tab">
-                      <div class="detail-row">
-                          <span class="detail-label">Name:</span>
-                          <span class="detail-value">First Name Middle Name Last Name</span>
+                  <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div className="card-body details-tab">
+                      <div className="detail-row">
+                          <span className="detail-label">Name:</span>
+                          <span className="detail-value">First Name Middle Name Last Name</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Email:</span>
-                          <span class="detail-value">nnnn@nnn.com</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Email:</span>
+                          <span className="detail-value">nnnn@nnn.com</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Phone:</span>
-                          <span class="detail-value">+91 9999999999</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Phone:</span>
+                          <span className="detail-value">+91 9999999999</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Gender:</span>
-                          <span class="detail-value">Male</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Gender:</span>
+                          <span className="detail-value">Male</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Residence:</span>
-                          <span class="detail-value">Hosteller</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Residence:</span>
+                          <span className="detail-value">Hosteller</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Date of Birth:</span>
-                          <span class="detail-value">11/11/1111</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Date of Birth:</span>
+                          <span className="detail-value">11/11/1111</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Id Type:</span>
-                          <span class="detail-value">Aadhaar</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Id Type:</span>
+                          <span className="detail-value">Aadhaar</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">ID Number:</span>
-                          <span class="detail-value">77777777777</span>
+                      <div className="detail-row">
+                          <span className="detail-label">ID Number:</span>
+                          <span className="detail-value">77777777777</span>
                       </div>
-                      <div class="button-container">
+                      <div className="button-container-approve">
                         <div className="remark-box">
                           <textarea name="" id="" cols="45" rows="1" placeholder='Remarks' className='remark-textarea'></textarea>
                         </div>
-                        <div class="button-wrapper">
-                            <button class="approve-button">Approve</button>
+                        <div className="button-wrapper-approve">
+                            <button className="approve-button">Approve</button>
                         </div>
-                        <div class="button-wrapper">
-                            <button class="reject-button">Reject</button>
+                        <div className="button-wrapper-approve">
+                            <button className="reject-button">Reject</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="card">
-                  <div class="card-header approval-itembox" id="headingThree">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <div className="card">
+                  <div className="card-header approval-itembox" id="headingThree">
+                    <h5 className="mb-0">
+                      <button className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                       <table>
                             <tr className='app-item-head approval-table-row'>
                               <td className='app-col-table-data'>
                                 <div>
-                                  <img src="public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt=""/>
+                                  <img src="assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt=""/>
                                   <p>Name Name Name</p>
                                 </div>
                               </td>
@@ -284,49 +284,49 @@ function Profile() {
                       </button>
                     </h5>
                   </div>
-                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                  <div class="card-body details-tab">
-                      <div class="detail-row">
-                          <span class="detail-label">Name:</span>
-                          <span class="detail-value">First Name Middle Name Last Name</span>
+                  <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div className="card-body details-tab">
+                      <div className="detail-row">
+                          <span className="detail-label">Name:</span>
+                          <span className="detail-value">First Name Middle Name Last Name</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Email:</span>
-                          <span class="detail-value">nnnn@nnn.com</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Email:</span>
+                          <span className="detail-value">nnnn@nnn.com</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Phone:</span>
-                          <span class="detail-value">+91 9999999999</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Phone:</span>
+                          <span className="detail-value">+91 9999999999</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Gender:</span>
-                          <span class="detail-value">Male</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Gender:</span>
+                          <span className="detail-value">Male</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Residence:</span>
-                          <span class="detail-value">Hosteller</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Residence:</span>
+                          <span className="detail-value">Hosteller</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Date of Birth:</span>
-                          <span class="detail-value">11/11/1111</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Date of Birth:</span>
+                          <span className="detail-value">11/11/1111</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">Id Type:</span>
-                          <span class="detail-value">Aadhaar</span>
+                      <div className="detail-row">
+                          <span className="detail-label">Id Type:</span>
+                          <span className="detail-value">Aadhaar</span>
                       </div>
-                      <div class="detail-row">
-                          <span class="detail-label">ID Number:</span>
-                          <span class="detail-value">77777777777</span>
+                      <div className="detail-row">
+                          <span className="detail-label">ID Number:</span>
+                          <span className="detail-value">77777777777</span>
                       </div>
-                      <div class="button-container">
+                      <div className="button-container-approve">
                         <div className="remark-box">
                           <textarea name="" id="" cols="45" rows="1" placeholder='Remarks' className='remark-textarea'></textarea>
                         </div>
-                        <div class="button-wrapper">
-                            <button class="approve-button">Approve</button>
+                        <div className="button-wrapper-approve">
+                            <button className="approve-button">Approve</button>
                         </div>
-                        <div class="button-wrapper">
-                            <button class="reject-button">Reject</button>
+                        <div className="button-wrapper">
+                            <button className="reject-button">Reject</button>
                         </div>
                       </div>
                     </div>

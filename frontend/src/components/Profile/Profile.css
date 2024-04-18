@@ -396,14 +396,14 @@
     }
 }
 
-.button-container {
+.button-container-approve {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-.button-wrapper {
+.button-wrapper-approve {
     margin: 0 10px; /* Adjust margin between buttons */
 }
 
