@@ -1,26 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
-  
-  useEffect(() => {
-    // Get all navbar links
-    var navLinks = document.querySelectorAll(".nav-link");
+  const location = useLocation();
 
-    // Loop through each link
-    navLinks.forEach(function(link) {
-      // Add click event listener to each link
-      link.addEventListener("click", function(event) {
-        // Remove 'active' class from all links
-        navLinks.forEach(function(link) {
-          link.classList.remove("active");
-        });
-        // Add 'active' class to clicked link
-        this.classList.add("active");
-      });
-    });
-  }, []);
+  // Function to determine if a link should be active based on its path
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
 
   return (
     <div className='custom-navbar-outer'>
@@ -56,35 +44,27 @@ function Navbar() {
           </button>
           <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul className="navbar-nav nav-pills">
-              <span></span>
               <li className="nav-item">
-                <Link to="/" className="nav-link active" aria-current="page" href="#">Home</Link>
+                <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`} aria-current="page">Home</Link>
               </li>
-              <span></span>
+              <li className={`nav-item `}>
+                <Link to="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>About Us</Link>
+              </li>
               <li className="nav-item">
-                <Link to="/about" className="nav-link" href="#">About Us</Link>
+                <Link to="/activities" className={`nav-link ${isActive('/activities') ? 'active' : ''}`}>Activities</Link>
               </li>
-              <span></span>
+              <li className={`nav-item ${isActive('/news') ? 'active' : ''}`}>
+                <Link to="/news" className={`nav-link ${isActive('/news') ? 'active' : ''}`}>News</Link>
+              </li>
               <li className="nav-item">
-                <Link to="/activities" className="nav-link" href="#">Activities</Link>
+                <Link to="/gallery" className={`nav-link ${isActive('/gallery') ? 'active' : ''}`}>Gallery</Link>
               </li>
-              <span></span>
               <li className="nav-item">
-                <Link to="/news" className="nav-link" href="#">News</Link>
+                <Link to="/posts" className={`nav-link ${isActive('/posts') ? 'active' : ''}`}>Posts</Link>
               </li>
-              <span></span>
               <li className="nav-item">
-                <Link to="/gallery" className="nav-link" href="#">Gallery</Link>
+                <Link to="/state" className={`nav-link ${isActive('/state') ? 'active' : ''}`}>STATE</Link>
               </li>
-              <span></span>
-              <li className="nav-item">
-                <Link to="/posts" className="nav-link" href="#">Posts</Link>
-              </li>
-              <span></span>
-              <li className="nav-item">
-                <Link to="/state" className="nav-link" href="#">STATE</Link>
-              </li>
-              <span></span>
             </ul>
           </div>
         </div>
