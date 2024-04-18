@@ -1,106 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-.bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('background.jpg');
-    /* background-size: cover;
-    background-position: center; */
-    filter: blur(10px);
-    z-index: -1;
-  }
 
-.parent-container {
+  .outer{
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
+    justify-content: center;
+    background-color: #0ac5ab;
 }
 
-.custom-login-container {
-    width: 80%;
-    max-width: 400px; /* Adjust max-width for responsiveness */
-}
-
-.custom-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.custom-input-container {
+.out-container{
     position: relative;
-    margin-bottom: 20px; /* Add margin for spacing */
-}
-
-.custom-btn {
+    max-width: 450px; /* ADJUSTED */
+    height: 470px;
     width: 100%;
-    margin-top: 20px; /* Add margin for spacing */
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.out-container header{
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color:#333;
+    display: grid; /* NEW */
+    justify-content: center;   /* NEW */
+
+    margin-bottom: 50px;
+}
+
+.out-container form{
+    position: relative;
+    margin-top: 16px;
+    min-height: 490px;
+    overflow: hidden;
+}
+
+.field-input{
+  box-sizing: border-box; /* Ensures padding does not add to the width of the div */
+  margin-bottom: 30px; /* Optional: Adds space between the divs */
+  display: flex; /* Enables flexbox layout */
+  align-items: center; /* Centers the items vertically */
+  width: 100%; /* Takes full width of its parent */
+  border: 1px solid #333;
+  border-radius: 10px;
+  height: 50px;
+  position: relative;
+  
 }
 
 
-.custom-input-field {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    outline: none;
+.field-input .logo{
+    width: 40px; /* Sets the fixed width for the logo span */
+  flex-shrink: 0; /* Prevents the logo from shrinking */
+  display: flex; /* Enables flexbox within the logo span to center the icon */
+  justify-content: center; /* Centers the icon horizontally */
+  align-items: center; /* Centers the icon vertically */
+  background-color: #c7c7c7;
+    border-radius: 10px 0px 0px 10px;
+    height: 100%;
 }
-
-.custom-label-field {
+  
+.toggle-password {
     position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: #999;
-    pointer-events: none;
-    transition: 0.3s;
-    width: calc(100% - 20px); /* Adjusted width */
-    box-sizing: border-box; /* Ensure padding is included in width */
+    right: 10px;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
-.custom-input-field:focus + .custom-label-field,
-.custom-input-field:valid + .custom-label-field,
-.custom-input-field.has-value + .custom-label-field {
-    top: 0;
-    font-size: 12px;
-    color: #0ac5ab;
-    text-transform: uppercase;
+.field-input input{
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    padding-left: 10px;
+    height: 100%;
+    width: calc(100% - 50px); /* Takes the remaining width minus the span width and some margin */
+    flex-grow: 1; /* Allows the input to grow and fill the available space */
 }
 
-.custom-input-field:focus{
-    border-bottom: 2px solid #0ac5ab !important;
-        outline: none !important;
-        box-shadow: 0 0 0 0px #0ac5ab;
-      
+.field-input input, .field-input select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    padding: 0 15px;
 }
 
-.custom-heading {
-    font-family: "Varela Round", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-    text-align: center;
-    margin-top: 20px !important;
+.field-input input:is(:focus, :valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+
 }
 
-.custom-bg {
-    /* Add your custom background styles here */
+.login-btn{
+    height: 50px;
+    width: 100%;
+    margin-top: 50px;
+    border: none;
+    background-color: #0ac5ab;
+    color: #fff;
+    border-radius: 10px;
 }
 
-.text-center {
-    margin: 13px;
-}
-
-.logo-container {
+.signup-link{
+    margin-top: 40px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100px; /* Adjust as needed */
-    margin-bottom: 20px;
-  }
-  
+}
+
+.signup-link a, .forgot-password a{
+    text-decoration: none;
+}

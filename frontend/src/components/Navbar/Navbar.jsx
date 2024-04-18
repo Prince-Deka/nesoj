@@ -23,7 +23,7 @@ function Navbar() {
     };
 
     const handleLogin = () => {
-        navigate('/login');
+        navigate('/profile');
     };
 
     
