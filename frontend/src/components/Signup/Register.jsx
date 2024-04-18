@@ -1,6 +1,7 @@
 // Register.js
 import React, { useState } from 'react';
 import './Register.css';
+import Navbar from '../Navbar/Navbar';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -63,6 +64,7 @@ const Signup = () => {
 
     return (
         <div>
+            <Navbar/>
             <div className="bg"></div>
             <div className="container">
                 <h2 className="mt-5">Signup Form</h2>

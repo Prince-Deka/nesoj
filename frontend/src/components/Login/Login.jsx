@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import "./scriptLogin";
+import Navbar from '../Navbar/Navbar'
  
 
 const Login = () => {
@@ -75,6 +76,8 @@ const Login = () => {
 
   return (
     <div>
+
+      <Navbar/>
       <div className="bg"></div>
       <div className="parent-container">
         <div className="login-container custom-login-container">
