@@ -1,0 +1,213 @@
+/*** VARS ***/
+/*** GENERAL STYLES ***/
+.clear {
+    clear: both;
+}
+
+/*** CARD STLES ***/
+.cardsContainer {
+    width: 80%;
+    max-width: 100%;
+}
+
+.cardTwo {
+    position: relative;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    width: 300px;
+    background: #fff;
+    box-shadow: 7px 7px 7px -5px rgb(96 96 96 / 40%), -7px -7px 7px -5px rgb(96 96 96 / 40%);
+}
+
+.cardTwo .watermark{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 270px;
+    opacity: 0.07;
+}
+
+.cardTwo header {
+    border-top-right-radius: 12px;
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background-color: #87dfff;
+}
+.cardTwo header::after {
+
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: inherit;
+    -webkit-transform: skewY(8deg);
+    transform: skewY(8deg);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+}
+.cardTwo header .avatar {
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    margin-left: -50px;
+    z-index: 5;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ccc;
+    border: 3px solid #fff;
+}
+.cardTwo header .avatar img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: auto;
+}
+.cardTwo h3,h4 {
+    position: relative;
+    text-align: center;
+    margin: 0;
+}
+
+.cardTwo h3 {
+    margin: 80px 0 0 0;
+}
+
+.cardTwo h4 {
+    margin: 5px 0 30px 0;
+    font-weight: normal;
+    font-family: "DM Mono", monospace;
+    color: #777;
+}
+.cardTwo h4::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -15px !important;
+    left: 50% !important;
+    margin-left: -15px !important;
+    width: 30px !important;
+    height: 1px !important;
+    background: #000 !important;
+}
+
+.cardTwo .contacts {
+    width: 250px;
+    max-width: 100%;
+    margin: 0 auto 3.5rem;
+  display: flex;
+  justify-content:center;
+}
+
+.cardTwo .contacts a {
+    display: inline;
+    width: 25%;
+    float: left;
+    text-align: center;
+    color: #000;
+}
+
+.cardTwo .contacts a:hover {
+    color: #333 !important;
+}
+.cardTwo .fa::before {
+    color: #fff !important;
+}
+.cardTwo .fa::after {
+    top: 0 !important;
+}
+/* .cardTwo .favicons {
+    position: relative !important;
+    width: 40px !important;
+    height: 40px !important;
+    line-height: 39px !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    border: 2px solid #5d0909 !important;
+    border-radius: 50% !important;
+} */
+
+
+.cardTwo .contacts a .fa:before {
+    position: relative !important;
+    z-index: 1 !important;
+}
+.cardTwo .contacts a .fa::after {
+    content: '' !important;
+    position: absolute !important;
+    top: -50px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: top 0.3s !important;
+    background: #ee7752 !important;
+}
+.cardTwo .contacts a:last-of-type .fa {
+    line-height: 36px !important;
+}
+.cardTwo footer {
+    border-bottom-left-radius: 12px;
+    position: relative;
+    height: 45px;
+    background-color: #000;
+    text-align: center;
+}
+.cardTwo footer p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+.cardTwo footer p a {
+    padding: 0 .5rem !important;
+    color: #e2e2e2 !important;
+    transition: color 0.4s !important;
+}
+.cardTwo footer p a:hover {
+    color: #0ac5ab !important;
+}
+.cardTwo footer::before {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: inherit;
+    -webkit-transform: skewY(8deg);
+    transform: skewY(8deg);
+    -webkit-transform-origin: 100%;
+    transform-origin: 100%;
+}
+/*** RESPONSIVE ***/
+@media only screen and (max-width: 810px) {
+    .card {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+   }
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

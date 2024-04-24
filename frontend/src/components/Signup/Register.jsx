@@ -97,11 +97,11 @@ const Signup = () => {
                   </div>
                   <div className="input-field">
                     <label htmlFor="phone">Phone</label>
-                    <input type="tel" pattern="\+91[0-9]{10}" placeholder="Phone" onChange={(e)=>setPhone(e.target.value)} required />
+                    <input type="tel" placeholder="Phone" onChange={(e)=>setPhone(e.target.value)} required />
                   </div>
                   <div className="input-field">
                     <label htmlFor="phone">Confirm Phone</label>
-                    <input type="tel" pattern="\+91[0-9]{10}" placeholder="Phone" onChange={(e)=>setConfPhone(e.target.value)} required />
+                    <input type="tel" placeholder="Phone" onChange={(e)=>setConfPhone(e.target.value)} required />
                   </div>
                   <div className="input-field">
                     <label htmlFor="residence">Residence</label>

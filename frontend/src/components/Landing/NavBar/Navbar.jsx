@@ -45,7 +45,7 @@ function Navbar() {
           <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul className="navbar-nav nav-pills">
               <li className="nav-item">
-                <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`} aria-current="page">Home</Link>
+                <Link to="/homemain" className={`nav-link ${isActive('/homemain') ? 'active' : ''}`} aria-current="page">Home</Link>
               </li>
               <li className={`nav-item `}>
                 <Link to="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>About Us</Link>
