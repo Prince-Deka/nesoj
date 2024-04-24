@@ -1,0 +1,72 @@
+/* ABOUT US in BRIEF */
+.topRowAbout{
+  height: 500px;
+  margin: 30px;
+  border: 2px solid #0ac5ab;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 30px;
+}
+
+.topRowAbout h2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topRowAbout p{
+  text-align: justify;
+}
+
+/* EXECUTIVE-CAROUSEL */
+@media (max-width: 768px) {
+  .carousel-inner-aboutUs-Landing .carousel-item > div {
+      display: none;
+  }
+  .carousel-inner-aboutUs-Landing .carousel-item > div:first-child {
+      display: block;
+  }
+}
+
+.carousel-inner-aboutUs-Landing .carousel-item.active,
+.carousel-inner-aboutUs-Landing .carousel-item-next,
+.carousel-inner-aboutUs-Landing .carousel-item-prev {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  
+  .carousel-inner-aboutUs-Landing .carousel-item-right.active,
+  .carousel-inner-aboutUs-Landing .carousel-item-next {
+    transform: translateX(33.333%);
+  }
+  
+  .carousel-inner-aboutUs-Landing .carousel-item-left.active, 
+  .carousel-inner-aboutUs-Landing .carousel-item-prev {
+    transform: translateX(-33.333%);
+  }
+}
+
+
+.carousel-inner-aboutUs-Landing .carousel-item-right,
+.carousel-inner-aboutUs-Landing .carousel-item-left{ 
+transform: translateX(0);
+}
+
+.slick-next:before, .slick-prev:before {
+  content: none !important;
+}
+
+.slick-dots{
+  display: none !important;
+}
+
+
+.cards-aboutUs-Landing{
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

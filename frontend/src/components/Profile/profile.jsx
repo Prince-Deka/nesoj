@@ -31,7 +31,7 @@ function Profile() {
           <form action="#" className="account-form">
                 <div className="account-header">
                     <h1 className="account-title">Account Settings</h1>
-                    <div className="button-container">
+                    <div className="profile-button-container">
                         <button className="button-cancel">Cancel</button>
                         <button className="button-save">Save</button>
                     </div>
@@ -76,15 +76,31 @@ function Profile() {
           <div className="notifications">
             <div className="notifications-header">
                     <h1 className="notifications-title">Notifications</h1>
-                    <div className="button-container">
+                    <div className="profile-button-container">
                         <button className="button-maar">Mark All As Read</button>
                     </div>
             </div>
-            <div className="notification-container" onClick={handleClick}>
-              <div className="notification-item">
+            <div className="notification-container">
+              <div className="notification-item" onClick={handleClick}>
                 <div className="notification-main">
                   <div className="notification-upper">
-                    <img src="StateLogos/500x500/ASUJ_500x500.jpg" alt="" className="user-img" />
+                    <img src="assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" className="user-img" />
+                    <h2 className='sender-name'>Assam Students Union Jalandhar <div className="red"></div></h2>
+                    <div className="date-time">
+                      <span className="notification-time">HH:MM</span>
+                      <span className="date-time-differentiator">•</span>
+                      <span className="notification-date">DD/MM/YYYY</span>
+                    </div>
+                  </div>
+                  <div className="notification-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem iure corrupti ab eum, molestiae non?</p>
+                  </div>
+                </div>
+              </div>
+              <div className="notification-item" onClick={handleClick}>
+                <div className="notification-main">
+                  <div className="notification-upper">
+                    <img src="assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" className="user-img" />
                     <h2 className='sender-name'>Assam Students Union Jalandhar <div className="red"></div></h2>
                     <div className="date-time">
                       <span className="notification-time">HH:MM</span>
@@ -104,7 +120,222 @@ function Profile() {
 
 
       case "approvals":
-        return <div className="approvals">Approvals Content Here</div>;
+        return (
+          <div className="approvals">
+            <div className="approvals-header">
+                <h1 className="approvals-title">Approvals</h1>
+            </div>
+            <div className="approvals-container">
+              <div id="accordion">
+                <div className="card">
+                  <div className="card-header approval-itembox" id="headingOne">
+                    <h5 className="mb-0">
+                      <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <table>
+                            <tr className='app-item-head approval-table-row'>
+                              <td className='app-col-table-data'>
+                                <div>
+                                  <img src="assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt=""/>
+                                  <p>Name Name Name</p>
+                                </div>
+                              </td>
+                              <td className='app-col-table-data'>email</td> 
+                              <td className='app-col-table-data'>Town/City</td>
+                              <td className='app-col-table-data'>Reg No</td>
+                            </tr>
+                          </table>
+                      </button>
+                    </h5>
+                  </div>
+
+                  <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div className="card-body details-tab">
+                      <div className="detail-row">
+                          <span className="detail-label">Name:</span>
+                          <span className="detail-value">First Name Middle Name Last Name</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Email:</span>
+                          <span className="detail-value">nnnn@nnn.com</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Phone:</span>
+                          <span className="detail-value">+91 9999999999</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Gender:</span>
+                          <span className="detail-value">Male</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Residence:</span>
+                          <span className="detail-value">Hosteller</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Date of Birth:</span>
+                          <span className="detail-value">11/11/1111</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Id Type:</span>
+                          <span className="detail-value">Aadhaar</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">ID Number:</span>
+                          <span className="detail-value">77777777777</span>
+                      </div>
+                      <div className="button-container-approve">
+                        <div className="remark-box">
+                          <textarea name="" id="" cols="45" rows="1" placeholder='Remarks' className='remark-textarea'></textarea>
+                        </div>
+                        <div className="button-wrapper-approve">
+                            <button className="approve-button">Approve</button>
+                        </div>
+                        <div className="button-wrapper-approve">
+                            <button className="reject-button">Reject</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header approval-itembox" id="headingTwo">
+                    <h5 className="mb-0">
+                      <button className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <table>
+                            <tr className='app-item-head approval-table-row'>
+                              <td className='app-col-table-data'>
+                                <div>
+                                  <img src="assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt=""/>
+                                  <p>Name Name Name</p>
+                                </div>
+                              </td>
+                              <td className='app-col-table-data'>email</td> 
+                              <td className='app-col-table-data'>Town/City</td>
+                              <td className='app-col-table-data'>Reg No</td>
+                            </tr>
+                          </table>
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div className="card-body details-tab">
+                      <div className="detail-row">
+                          <span className="detail-label">Name:</span>
+                          <span className="detail-value">First Name Middle Name Last Name</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Email:</span>
+                          <span className="detail-value">nnnn@nnn.com</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Phone:</span>
+                          <span className="detail-value">+91 9999999999</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Gender:</span>
+                          <span className="detail-value">Male</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Residence:</span>
+                          <span className="detail-value">Hosteller</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Date of Birth:</span>
+                          <span className="detail-value">11/11/1111</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Id Type:</span>
+                          <span className="detail-value">Aadhaar</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">ID Number:</span>
+                          <span className="detail-value">77777777777</span>
+                      </div>
+                      <div className="button-container-approve">
+                        <div className="remark-box">
+                          <textarea name="" id="" cols="45" rows="1" placeholder='Remarks' className='remark-textarea'></textarea>
+                        </div>
+                        <div className="button-wrapper-approve">
+                            <button className="approve-button">Approve</button>
+                        </div>
+                        <div className="button-wrapper-approve">
+                            <button className="reject-button">Reject</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header approval-itembox" id="headingThree">
+                    <h5 className="mb-0">
+                      <button className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <table>
+                            <tr className='app-item-head approval-table-row'>
+                              <td className='app-col-table-data'>
+                                <div>
+                                  <img src="assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt=""/>
+                                  <p>Name Name Name</p>
+                                </div>
+                              </td>
+                              <td className='app-col-table-data'>email</td> 
+                              <td className='app-col-table-data'>Town/City</td>
+                              <td className='app-col-table-data'>Reg No</td>
+                            </tr>
+                          </table>
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div className="card-body details-tab">
+                      <div className="detail-row">
+                          <span className="detail-label">Name:</span>
+                          <span className="detail-value">First Name Middle Name Last Name</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Email:</span>
+                          <span className="detail-value">nnnn@nnn.com</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Phone:</span>
+                          <span className="detail-value">+91 9999999999</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Gender:</span>
+                          <span className="detail-value">Male</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Residence:</span>
+                          <span className="detail-value">Hosteller</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Date of Birth:</span>
+                          <span className="detail-value">11/11/1111</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">Id Type:</span>
+                          <span className="detail-value">Aadhaar</span>
+                      </div>
+                      <div className="detail-row">
+                          <span className="detail-label">ID Number:</span>
+                          <span className="detail-value">77777777777</span>
+                      </div>
+                      <div className="button-container-approve">
+                        <div className="remark-box">
+                          <textarea name="" id="" cols="45" rows="1" placeholder='Remarks' className='remark-textarea'></textarea>
+                        </div>
+                        <div className="button-wrapper-approve">
+                            <button className="approve-button">Approve</button>
+                        </div>
+                        <div className="button-wrapper">
+                            <button className="reject-button">Reject</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
       default:
         return <div>Content not found!</div>;
     }

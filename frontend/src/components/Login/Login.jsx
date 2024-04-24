@@ -8,9 +8,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+    const handleClickSignup = () => {
+        navigate('/register');
+    };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
 
     try {
       const response = await fetch("https://nesojbackend.onrender.com/login", {
@@ -27,7 +31,7 @@ const Login = () => {
       if (response.ok) {
         console.log("User registered successfully");
         window.alert("Login Successful");
-        navigate("/");
+        navigate("/landing");
       } else {
         console.error("Failed to login");
       }
