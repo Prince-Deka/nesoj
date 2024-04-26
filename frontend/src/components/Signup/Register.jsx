@@ -1,8 +1,9 @@
 // Register.js
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Register.css";
 
 const Signup = () => {
+
   const [firstName, setFirstName] = useState("");
   const [middleName, setmiddleName] = useState("");
   const [lastName, setlastName] = useState("");
@@ -52,6 +53,7 @@ const Signup = () => {
     }
     
   };
+
 
   return (
     <div className="signup-outer">
@@ -141,12 +143,6 @@ const Signup = () => {
                   </div>
                 </div>
               </div>
-              <button className="nextBtn">
-                <span className="btnText">Next</span>
-                <i className="uil uil-navigator" />
-              </button>
-            </div>
-            <div className="form second">
               <div className="details address">
                 <span className="title">Address Details</span>
                 <div className="fields">
@@ -233,10 +229,6 @@ const Signup = () => {
                     </div>
                   </div>
                   <div className="buttons">
-                    <div className="backBtn">
-                      <i className="uil uil-navigator" />
-                      <span className="btnText">Back</span>
-                    </div>
                     <button className="nextBtn">
                       <span className="btnText">Submit</span>
                       <i className="uil uil-navigator" />
@@ -244,14 +236,16 @@ const Signup = () => {
                   </div>
                 </div>
               </div>
-            </div></form>
+            </div>
+          </form>
           <div id="customAlert" className="custom-alert" style={{display: 'none'}}>
             <div className="custom-alert-content">
               <span className="custom-alert-closebtn" onclick="closeAlert()">×</span>
               <p>Please fill in all required fields.</p>
             </div>
           </div>
-        </div></div>
+        </div>
+        </div>
   );
 };
 
