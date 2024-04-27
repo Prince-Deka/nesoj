@@ -24,7 +24,7 @@
   border-radius: 10px;
 } 
 
-img{
+.mainNewsImgContainer img, .otherNewsImgContainer img{
   width: 100%;
   height: 100%;
   object-fit: cover;
