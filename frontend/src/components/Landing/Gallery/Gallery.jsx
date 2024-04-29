@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../NavBar/Navbar";
 import Footer from "../Footer/Footer";
 import gallery from "./Gallery.module.css";
@@ -10,7 +10,6 @@ function Gallery() {
       Math.min(prevVisiblePhotos + 8, photoData.length)
     );
   };
-
 
   const showLessPhotos = () => {
     setVisiblePhotos(8);
@@ -122,16 +121,15 @@ function Gallery() {
       src: "assets/post.JPG",
       description: "Photo Description 21",
       date: "DD MON YYYY",
-    }
+    },
   ];
 
-  
   const [visibleVideos, setVisibleVideos] = useState(6);
   const loadMoreVideos = () => {
     setVisibleVideos((prevVisibleVideos) =>
-    Math.min(prevVisibleVideos + 6, VideoData.length)
-  );
-};
+      Math.min(prevVisibleVideos + 6, VideoData.length)
+    );
+  };
 
   const showLessVideos = () => {
     setVisibleVideos(6);
@@ -187,25 +185,64 @@ function Gallery() {
       src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
       description: "Video Description 4",
       date: "DD MON YYYY",
-    }
-  ]
+    },
+    {
+      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
+      description: "Video Description 4",
+      date: "DD MON YYYY",
+    },
+    {
+      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
+      description: "Video Description 4",
+      date: "DD MON YYYY",
+    },
+    {
+      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
+      description: "Video Description 4",
+      date: "DD MON YYYY",
+    },
+  ];
 
   const showPopup = () => {
-    document.getElementById('popupWindow').style.visibility = 'visible';
+    document.getElementById("popupWindow").style.visibility = "visible";
   };
 
   function hidePopup() {
-    document.getElementById('popupWindow').style.visibility = 'hidden';
+    document.getElementById("popupWindow").style.visibility = "hidden";
   }
 
-  const [a, setA] = useState('');
-const [description, setDescription] = useState('');
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [popupImage, setPopupImage] = useState(""); // store image URL for popup
+  const [popupDescription, setPopupDescription] = useState(""); // store description for popup
 
-const chng = (e, f) => {
-  setA(e);
-  setDescription(f);
-  console.log(e); 
-};
+  // Function to update popup content based on clicked photo
+  const chng = (photo) => {
+    setPopupImage(photo.src);
+    setPopupDescription(photo.description);
+  };
+
+  const viewPrev = () => {
+    setCurrentPhotoIndex((prevIndex) => {
+      const newIndex = prevIndex - 1;
+      return newIndex < 0 ? photoData.length - 1 : newIndex; // Wrap around to last photo
+    });
+  };
+
+  const viewNext = () => {
+    setCurrentPhotoIndex((prevIndex) => {
+      const newIndex = prevIndex + 1;
+      return newIndex === photoData.length ? 0 : newIndex; // Wrap around to first photo
+    });
+  };
+
+  // Update popup content on state change
+  useEffect(() => {
+    const currentPhoto = photoData[currentPhotoIndex];
+    if (currentPhoto) { // Check if photo exists
+      chng(currentPhoto); // Update popup content
+    }
+  }, [currentPhotoIndex]);
+
 
   return (
     <div>
@@ -214,7 +251,13 @@ const chng = (e, f) => {
         <header className={gallery.photosHeader}>PHOTOS</header>
         <div className={gallery.photosContainer}>
           {photoData.slice(0, visiblePhotos).map((photo, index) => (
-            <div key={index} className={gallery.photoDiv} onClick={() => { chng(photo.src,photo.description), showPopup() }}>
+            <div
+              key={index}
+              className={gallery.photoDiv}
+              onClick={() => {
+                chng(photo, photo.description), showPopup();
+              }}
+            >
               <img src={photo.src} alt={photo.description} />
               <div className={gallery.photoDesc}>
                 <h3 className={gallery.desc}>{photo.description}</h3>
@@ -225,12 +268,22 @@ const chng = (e, f) => {
         </div>
         <div id="popupWindow" className={gallery.popup}>
           <div className={gallery.popupContent}>
-            <button className={gallery.closeBtn} onClick={hidePopup}><i className="fa-solid fa-circle-xmark"></i></button>
+            <button className={gallery.closeBtn} onClick={hidePopup}>
+              <i className="fa-solid fa-circle-xmark"></i>
+            </button>
             <div className={gallery.popupImage}>
-              <img src={a} alt="" />
+              <div className={gallery.prevPopup} onClick={viewPrev}>
+                <i class="fa-solid fa-square-caret-left">
+                </i>
+              </div>
+              <img src={popupImage} alt="" />
+              <div className={gallery.nextPopup} onClick={viewNext}>
+                <i class="fa-solid fa-square-caret-right">
+                </i>
+              </div>
             </div>
             <div className={gallery.popupDescription}>
-      <p>{description}</p>
+              <p>{popupDescription}</p>
               <div className={gallery.socialMediaButtons}>
                 <a href="https://facebook.com/sharelink">
                   <i className="fa-brands fa-facebook"></i>
@@ -265,28 +318,28 @@ const chng = (e, f) => {
 
         <header className={gallery.videosHeader}>VIDEOS</header>
         <div className={gallery.videosContainer}>
-        {VideoData.slice(0, visibleVideos).map((video, index) => (
-          <div className={gallery.videoDiv}>
-            <iframe
-              src={video.src}
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-            <div className={gallery.videoDesc}>
-              <h3 className={gallery.desc}>{video.description}</h3>
-              <img
-                src="https://www.iplt20.com/assets/images/new-icon-share-gray.svg"
-                alt=""
-              />
+          {VideoData.slice(0, visibleVideos).map((video, index) => (
+            <div key={index} className={gallery.videoDiv}>
+              <iframe
+                src={video.src}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+              <div className={gallery.videoDesc}>
+                <h3 className={gallery.desc}>{video.description}</h3>
+                <img
+                  src="https://www.iplt20.com/assets/images/new-icon-share-gray.svg"
+                  alt=""
+                />
+              </div>
+              <div className={gallery.publishDate}>
+                <h4 className={gallery.date}>{video.date}</h4>
+              </div>
             </div>
-            <div className={gallery.publishDate}>
-              <h4 className={gallery.date}>{video.date}</h4>
-            </div>
-          </div>
-        ))}
+          ))}
         </div>
         <div className={gallery.btnPhotoDiv}>
           {visibleVideos < VideoData.length && (

@@ -24,6 +24,15 @@
 .newsOpenContainer .backButton{
     margin-bottom: 20px;
 }
+.newsOpenContainer .content{
+    display: flex;
+    justify-content: center;
+}
+
+.content .mainItem{
+    width: 70%;
+    text-align: justify;
+}
 
 .Headline{
     font-family: "Poppins", sans-serif;
@@ -69,7 +78,7 @@ a{
     text-decoration: none;
 }
 
-.content::before{
+.seperator::before{
     content: "";
     display: block;
     width: 100%;

@@ -13,7 +13,8 @@ const Signup = () => {
   const [phone, setPhone] = useState("");
   const [confPhone, setConfPhone] = useState("");
   const [residence, setResidence] = useState("");
-  
+  const [date, setDate] = useState("");
+  const [idnumber, setIdnumber] = useState("");
   const [course, setcourse] = useState("");
   const [year, setYear] = useState("");
   const [aadhar, setAadhar] = useState(0);
@@ -88,13 +89,13 @@ const Signup = () => {
                   </div>
                   <div className="input-field">
                     <label htmlFor="Confirm-Email">Confirm Email</label>
-                    <input type="email" placeholder="Confirm Email" onChange={(e)=>setEmail(e.target.value)} required />
+                    <input type="email" placeholder="Confirm Email" onChange={(e)=>setconfEmail(e.target.value)} required />
                   </div>
                   <div className="input-field">
                     <label htmlFor="gender">Gender</label>
                     <div className="radio-container">
-                      <label className="radio" htmlFor="male"><input type="radio" id="male" name="gender" /><span>Male</span> </label>
-                      <label className="radio" htmlFor="female"><input type="radio" id="female" name="gender" /><span>Female</span> </label>
+                      <label className="radio" htmlFor="male"><input type="radio" id="male" name="gender" onClick={()=>{setGender("male")}}/><span>Male</span> </label>
+                      <label className="radio" htmlFor="female"><input type="radio" id="female" name="gender"onClick={()=>{setGender("female")}}/><span>Female</span> </label>
                     </div>
                   </div>
                   <div className="input-field">
@@ -108,13 +109,13 @@ const Signup = () => {
                   <div className="input-field">
                     <label htmlFor="residence">Residence</label>
                     <div className="radio-container">
-                      <label className="radio" htmlFor="hosteller"><input type="radio" id="hosteller" name="residence" /><span>Hosteller</span> </label>
-                      <label className="radio" htmlFor="day-scholar"><input type="radio" id="day-scholar" name="residence" /><span>Day Scholar</span> </label>
+                      <label className="radio" htmlFor="hosteller"><input type="radio" id="hosteller" name="residence" onClick={()=>{setResidence("hosteller")}}/><span>Hosteller</span> </label>
+                      <label className="radio" htmlFor="day-scholar"><input type="radio" id="day-scholar" name="residence" onClick={()=>{setResidence("dayscholar")}}/><span>Day Scholar</span> </label>
                     </div>
                   </div>
                   <div className="input-field">
                     <label htmlFor="Date-Of-Birth">Date of Birth</label>
-                    <input type="date" placeholder="Date-Of-Birth" required />
+                    <input type="date" placeholder="Date-Of-Birth" onChange={(e)=>{setDate(e.target.value)}} required />
                   </div>
                 </div>
               </div>
@@ -123,7 +124,7 @@ const Signup = () => {
                 <div className="fields">
                   <div className="input-field">
                     <label htmlFor="idType">ID Type</label>
-                    <select id="idType" value="{selectedState}" required>
+                    <select id="idType" value="{selectedState}" onSelect={(e)=>{e.target.value}} required>
                       <option value="default">--Select ID Type--</option>
                       <option value="aadhaar">Aadhaar Card</option>
                       <option value="voter-id">Voter ID Card</option>
@@ -135,7 +136,7 @@ const Signup = () => {
                   </div>
                   <div className="input-field">
                     <label htmlFor="id-number">Enter ID Number</label>
-                    <input type="text" placeholder="ID Number" />
+                    <input type="text" placeholder="ID Number" onClick={(e)=>{setIdnumber(e.target.value)}}/>
                   </div>
                   <div className="input-field file">
                     <label htmlFor="file-upload" className="custom-file-upload">Upload ID File</label>
@@ -229,7 +230,7 @@ const Signup = () => {
                     </div>
                   </div>
                   <div className="buttons">
-                    <button className="nextBtn">
+                    <button className="nextBtn" onClick={()=>{handleSubmit()}}>
                       <span className="btnText">Submit</span>
                       <i className="uil uil-navigator" />
                     </button>

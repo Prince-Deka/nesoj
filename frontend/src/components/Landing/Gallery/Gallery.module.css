@@ -88,7 +88,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    visibility: hidden; /* Hidden by default, can be shown using JavaScript */
+    visibility: hidden;
     z-index: 10000;
 }
 
@@ -105,6 +105,7 @@
     width: 70%;
     height: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 .popupImage img {
@@ -122,6 +123,31 @@
     padding: 20px;
     box-sizing: border-box;
     color: #fff;
+}
+
+.prevPopup{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 20px;
+}
+.prevPopup i{
+  font-size: 40px;
+  color: #0ac5ab;
+  box-shadow: 5px 5px 40px rgba(255, 255, 255, 0.7);
+}
+
+.nextPopup{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  margin-right: 20px;
+}
+.nextPopup i{
+  font-size: 40px;
+  color: #0ac5ab;
+  box-shadow: 5px 5px 40px rgba(255, 255, 255, 0.7);
 }
 
 .popupDescription .datePopup{

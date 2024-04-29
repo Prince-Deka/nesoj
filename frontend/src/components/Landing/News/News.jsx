@@ -22,7 +22,7 @@ function News() {
                   Assam bags the champions trophy along with Sikkim in the NESOJ
                   Sports Meet 2023-24
                 </div>
-                <i class="fa-solid fa-square-share-nodes"></i>
+                <i class="fa-solid fa-share-nodes"></i>
               </div>
               <div className={styles.mainDetailedArticle}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
