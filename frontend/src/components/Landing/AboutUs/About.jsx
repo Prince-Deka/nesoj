@@ -73,13 +73,16 @@ export default function About() {
   };
 
   const items = [
-    { id: 2, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' },
-    { id: 1, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' },
-    { id: 3, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' },
-    { id: 4, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' },
-    { id: 5, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' },
-    { id: 6, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' },
+    { id: 1, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Arunachal Students\' Club Jalandhar' },
+    { id: 2, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Assam Students\' Union Jalandhar' },
+    { id: 3, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Jalandhar Mizo Zirlai Pawl' },
+    { id: 4, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Manipur Students\' Union Phagwara' },
+    { id: 5, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Meghalaya Students\' Union Jalandhar' },
+    { id: 6, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Naga Students\' Union Phagwara' },
+    { id: 7, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Sikkimese Gorkha Students\' Union Jalandhar' },
+    { id: 8, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Tripura Students\' Association Jalandhar' }
   ];
+
 
   return (
     <div>
@@ -97,7 +100,7 @@ export default function About() {
             {items.map(item => (
               <div key={item.id} className="px-3">
                 <div className="card card-body cards-aboutUs-Landing">
-                  <Card/>
+                  <Card name={item.name}/>
                 </div>
               </div>
             ))}
@@ -113,7 +116,9 @@ export default function About() {
             {items.map(item => (
               <div key={item.id} className="px-3">
                 <div className="card card-body cards-aboutUs-Landing">
-                  <img className="img-fluid" src={item.src} alt={`Slide ${item.id}`} />
+                  <img className="img-fluid StateLogo" src={item.src} alt={`Slide ${item.id}`} />
+                  <div className="orgNameDiv"><p className="card-title OrgName">{item.name}</p></div>
+                  <button class="custom-btn orgDetailsBtn"><span>Read More</span></button>
                 </div>
               </div>
             ))}

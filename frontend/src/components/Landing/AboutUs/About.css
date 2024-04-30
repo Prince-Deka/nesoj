@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 /* ABOUT US in BRIEF */
 .topRowAbout{
   height: 500px;
@@ -62,6 +64,14 @@ transform: translateX(0);
 }
 
 
+.thirdRowAbout{
+  margin: 70px auto !important;
+}
+
+.thirdRowAbout h2, .secondRowAbout h2{
+  margin-bottom: 30px;
+}
+
 .cards-aboutUs-Landing{
   padding: 0 !important;
   margin: 0 !important;
@@ -69,4 +79,111 @@ transform: translateX(0);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 10px !important;
+}
+
+.cards-aboutUs-Landing .StateLogo{
+  width: 80%;
+}
+
+.cards-aboutUs-Landing .OrgName{
+  margin-top: 5px;
+  font-size: 18px;
+  font-family: 400;
+  margin: 0;
+}
+
+.orgNameDiv{
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+.orgDetailsBtn{
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.orgDetailsBtn {
+  background: #0ac5ab;
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  
+}
+.orgDetailsBtn span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.orgDetailsBtn:before,
+.orgDetailsBtn:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+   background: #0ac5ab;
+  transition: all 0.3s ease;
+}
+.orgDetailsBtn:before {
+  height: 0%;
+  width: 2px;
+}
+.orgDetailsBtn:after {
+  width: 0%;
+  height: 2px;
+}
+.orgDetailsBtn:hover{
+   background: transparent;
+  box-shadow: none;
+}
+.orgDetailsBtn:hover:before {
+  height: 100%;
+}
+.orgDetailsBtn:hover:after {
+  width: 100%;
+}
+.orgDetailsBtn span:hover{
+   color: #0ac5ab;
+}
+.orgDetailsBtn span:before,
+.orgDetailsBtn span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+   background: #0ac5ab;
+  transition: all 0.3s ease;
+}
+.orgDetailsBtn span:before {
+  width: 2px;
+  height: 0%;
+}
+.orgDetailsBtn span:after {
+  width: 0%;
+  height: 2px;
+}
+.orgDetailsBtn span:hover:before {
+  height: 100%;
+}
+.orgDetailsBtn span:hover:after {
+  width: 100%;
 }
