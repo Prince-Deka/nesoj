@@ -112,3 +112,11 @@
 .nav-item.dropdown:hover .dropdown-menu {
   display: block;
 }
+
+
+.Gallery-dropdown-navbar {
+  border-radius: 0;
+  border: none;
+  background-color: #f8f9fa;
+  margin: 0;
+}

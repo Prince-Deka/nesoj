@@ -12,6 +12,8 @@ import Posts from './components/Landing/Posts/Posts'
 import State from './components/Landing/State/State'
 import HomeMain from './components/Landing/Home/Home'
 import NewsOpen from './components/Landing/News/NewsOpen/NewsOpen'
+import Photos from './components/Landing/Gallery/Photos/Photos'
+import Videos from './components/Landing/Gallery/Videos/Videos'
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         <Route path="/posts" element={<Posts />} />
         <Route path="/state" element={<State />} />
         <Route path="/newsOpen" element={<NewsOpen />} />
+        <Route path="/photos" element={<Photos />} />
+        <Route path="/videos" element={<Videos />} />
       </Routes>
 
     </BrowserRouter>

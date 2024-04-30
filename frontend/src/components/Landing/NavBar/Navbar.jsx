@@ -1,6 +1,6 @@
-import React from 'react';
-import './Navbar.css';
-import { Link, useLocation } from 'react-router-dom';
+import React from "react";
+import "./Navbar.css";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
   const location = useLocation();
@@ -11,13 +11,15 @@ function Navbar() {
   };
 
   return (
-    <div className='custom-navbar-outer'>
+    <div className="custom-navbar-outer">
       {/* TOP NAVIGATION BAR */}
       <div className="container">
         <div className="row">
           <div className="col-10">
             <div className="custom-button-outer-div">
-              <button className="btn btn-primary custom-button-navbar USERNAME">USERNAME</button>
+              <button className="btn btn-primary custom-button-navbar USERNAME">
+                USERNAME
+              </button>
             </div>
           </div>
         </div>
@@ -27,9 +29,16 @@ function Navbar() {
       <nav className="navbar bg-body-tertiary custom-logo-bar">
         <div className="container-fluid navbar-custom-logo-div">
           <a className="navbar-brand custom-logo-click" href="#">
-            <img src="/assets/nesoj.png" alt="@" height="150px" className="d-inline-block align-text-top" />
+            <img
+              src="/assets/nesoj.png"
+              alt="@"
+              height="150px"
+              className="d-inline-block align-text-top"
+            />
             <div className="custom-text">
-              <span className="custom-neso">NORTH-EAST STUDENTS' ORGANIZATION</span>
+              <span className="custom-neso">
+                NORTH-EAST STUDENTS' ORGANIZATION
+              </span>
               <span className="custom-jal">JALANDHAR</span>
             </div>
           </a>
@@ -39,41 +48,110 @@ function Navbar() {
       {/* CONTENTS NAVBAR */}
       <nav className="navbar navbar-expand-lg bg-body-tertiary custom-link-bar">
         <div className="container-fluid">
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <div
+            className="collapse navbar-collapse justify-content-center"
+            id="navbarNav"
+          >
             <ul className="navbar-nav nav-pills">
               <li className="nav-item">
-                <Link to="/homemain" className={`nav-link ${isActive('/homemain') ? 'active' : ''}`} aria-current="page">Home</Link>
+                <Link
+                  to="/homemain"
+                  className={`nav-link ${
+                    isActive("/homemain") ? "active" : ""
+                  }`}
+                  aria-current="page"
+                >
+                  Home
+                </Link>
               </li>
               <li className={`nav-item `}>
-                <Link to="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>About Us</Link>
+                <Link
+                  to="/about"
+                  className={`nav-link ${isActive("/about") ? "active" : ""}`}
+                >
+                  About Us
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to="/activities" className={`nav-link ${isActive('/activities') ? 'active' : ''}`}>Activities</Link>
+                <Link
+                  to="/activities"
+                  className={`nav-link ${
+                    isActive("/activities") ? "active" : ""
+                  }`}
+                >
+                  Activities
+                </Link>
               </li>
-              <li className={`nav-item ${isActive('/news') ? 'active' : ''}`}>
-                <Link to="/news" className={`nav-link ${isActive('/news') ? 'active' : ''}`}>News</Link>
+              <li className={`nav-item ${isActive("/news") ? "active" : ""}`}>
+                <Link
+                  to="/news"
+                  className={`nav-link ${isActive("/news") ? "active" : ""}`}
+                >
+                  News
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to="/gallery" className={`nav-link ${isActive('/gallery') ? 'active' : ''}`}>Gallery</Link>
+                <Link
+                  to="/gallery"
+                  className={`nav-link ${isActive("/gallery") ? "active" : ""}`}
+                >
+                  Gallery
+                </Link>
               </li>
               <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Gallery
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Photos</a></li>
-            <li><a class="dropdown-item" href="#">Videos</a></li>
-            <li><a class="dropdown-item" href="#">All</a></li>
-          </ul>
-        </li>
-              <li className="nav-item">
-                <Link to="/posts" className={`nav-link ${isActive('/posts') ? 'active' : ''}`}>Posts</Link>
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Gallery
+                </a>
+                <ul class="dropdown-menu Gallery-dropdown-navbar">
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Photos
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Videos
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      All
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li className="nav-item">
-                <Link to="/state" className={`nav-link ${isActive('/state') ? 'active' : ''}`}>STATE</Link>
+                <Link
+                  to="/posts"
+                  className={`nav-link ${isActive("/posts") ? "active" : ""}`}
+                >
+                  Posts
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/state"
+                  className={`nav-link ${isActive("/state") ? "active" : ""}`}
+                >
+                  STATE
+                </Link>
               </li>
             </ul>
           </div>
