@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from 'react-router-dom';
 import Slider from "react-slick";
 import Navbar from "../NavBar/Navbar";
 import "slick-carousel/slick/slick.css";
@@ -7,6 +8,10 @@ import "../AboutUs/About.css";
 import Footer from "../Footer/Footer";
 import "./State.css";
 import Card from "../../CardTemp/Card";
+import { useLocation } from 'react-router-dom';
+
+
+
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
@@ -50,7 +55,10 @@ function PrevArrow(props) {
   );
 }
 
-function State() {
+function State(){
+  let location = useLocation();
+  let stateId = location.state ? location.state.stateId : 'defaultStateId';
+  console.log(stateId);
   const settings = {
     dots: true,
     infinite: true,
@@ -97,7 +105,7 @@ function State() {
     },
     {
       id: 2,
-      src: "assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg",
+      src: "assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg",
       name: "Assam Students' Union Jalandhar",
     },
     {
@@ -132,11 +140,12 @@ function State() {
     },
   ];
 
+
   return (
     <div>
       <Navbar />
       <div className="state-contents-container">
-        <img className="side-logo-state" src="/assets/nesoj.png" alt="" />
+        <img className="side-logo-state" src="assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" />
         <div className="aboutState">
           <img src="assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" />
           <h3>Honesty is the Best Policy</h3>

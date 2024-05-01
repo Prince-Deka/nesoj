@@ -109,9 +109,9 @@ function Navbar() {
                   Gallery
                 </Link>
               </li>
-              <li class="nav-item dropdown">
+              <li className="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle"
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -119,19 +119,19 @@ function Navbar() {
                 >
                   Gallery
                 </a>
-                <ul class="dropdown-menu Gallery-dropdown-navbar">
+                <ul className="dropdown-menu Gallery-dropdown-navbar">
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                       Photos
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                       Videos
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                       All
                     </a>
                   </li>

@@ -1,40 +1,36 @@
-[
-    {
-    "orgName": "Arunachal Students' Club Jalandhar",
-    "moto": "Not yet Updated",
-    "about": "Not yet updated",
-    "established": "Not yet updated",
-    "executives": {
-        "president": {
-            "picSrc": "#",
-            "name": "Not yet updated",
-            "whatsApp": "0000000000",
-            "email": "Not yet updated",
-            "facebook": "#",
-            "instagram": "#",
-            "linkedin": "#",
-            "twitter": "#"
-        },
-        "vicePresident": {
-            "picSrc": "#",
-            "name": "Not yet updated",
-            "whatsApp": "0000000000",
-            "email": "Not yet updated",
-            "facebook": "#",
-            "instagram": "#",
-            "linkedin": "#",
-            "twitter": "#"
-        },
-        "generalSecretraty": {
-            "picSrc": "#",
-            "name": "Not yet updated",
-            "whatsApp": "0000000000",
-            "email": "Not yet updated",
-            "facebook": "#",
-            "instagram": "#",
-            "linkedin": "#",
-            "twitter": "#"
-        }
-        }
+[ 
+  {
+    "id": 1,
+    "stateDetails": {
+      "orgName": "Arunachal Students' Club Jalandhar",
+      "moto": "Not yet Updated",
+      "logo": "#", 
+      "about": "Not yet updated",
+      "established": "Not yet updated",
+      "executives": {
+        "president": "NA"
+      }
     }
+  },
+  {
+    "id": 2,
+    "stateDetails": {
+      "orgName": "Assam Students' Union Jalandhar",
+      "moto": "Joi Aai Axom",
+      "logo": "assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg", 
+      "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corrupti, sunt soluta in iste magni nisi cupiditate sapiente beatae laboriosam ipsa iusto molestiae tempore est, sint numquam officia tenetur maxime dolores mollitia. Quos recusandae eligendi est ullam, illo obcaecati corporis ducimus provident doloremque. Sequi libero laboriosam recusandae pariatur, fuga reprehenderit.",
+      "established": "2010",
+      "executives": {
+        "president": "Saunak Sujaan Duarah",
+        "vicePresident": "Prince Kumar Deka",
+        "generalSecretrary": "Himanshu Raj Phukan",
+        "financeSecretrary": "Barnendu Bikash Buse",
+        "asstFinanceSecretrary":"Mrigankar Sonowal",
+        "asstSportsSecretrary": "Mohima Saikia",
+        "asstEventSecretrary":"Angshuman Chetia",
+        "asstMedia":"Mukrang Ronghang",
+        "studentWelfare":"Kasturi Kandarp"
+      }
+    }
+}
 ]

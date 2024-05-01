@@ -22,13 +22,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 350px;
     margin-right: 80px;
+    margin-left: 80px;
     padding-bottom: 40px;
 }
 
 .aboutState img{
-    width: 150px;
+    width: 200px;
     margin: 0 0 10px 0;
     border-radius: 50%;
 }
