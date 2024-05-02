@@ -4,7 +4,7 @@ import axios from 'axios';
 import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: email,
+          username: username,
           password: password,
         }),
       });
@@ -70,7 +70,7 @@ const Login = () => {
           <form onSubmit={handleSubmit} className="login-form">
             <div className="field-input">
               <span className="logo"><i className="fa-solid fa-user"></i></span>
-              <input type="email" id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+              <input type="username" id="username" placeholder="Enter your username" value={username} onChange={(e) => setUsername(e.target.value)}/>
             </div>
             <div className="field-input">
               <span className="logo"><i className="fa-solid fa-lock"></i></span>

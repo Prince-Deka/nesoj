@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"; // Assuming you are using 
 import style from "./Card.module.css";
 import nesojImage from '../../../public/assets/nesoj.png'
 
-function Card() {
+function Card(props) {
   return (
     <div>
       <div className={style.cardsContainer}>
@@ -18,7 +18,7 @@ function Card() {
           </header>
           <img className={style.watermark} src="assets/nesoj.png" alt="" />
 
-          <h3>Saunak Sujaan Duarah</h3>
+          <h3>{props.name}</h3>
           <h4>President</h4>
           
           <div className={style.contacts}>

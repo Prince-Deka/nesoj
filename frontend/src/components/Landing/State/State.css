@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.state-contents-container{
+    position: relative;
+    overflow: hidden;
+}
+
+.state-contents-container .side-logo-state{
+    position: absolute;
+    left: -300px;
+    top: -90px;
+    opacity: 0.2;
+    width: 50%;
+    object-fit: 'cover';
+}
+
+.aboutState{
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 80px;
+    margin-left: 80px;
+    padding-bottom: 40px;
+}
+
+.aboutState img{
+    width: 200px;
+    margin: 0 0 10px 0;
+    border-radius: 50%;
+}
+
+.aboutState h3{
+    font-family: 'Cedarville Cursive', cursive;
+    font-size: 2.5rem;
+    margin: 20px;
+}
+
+.aboutState p{
+    text-align:justify;
+    line-height: 1.2;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+}

@@ -107,3 +107,16 @@
   color: white !important; /* White text color for hovered tab */
   border-radius: 0px;
 }
+
+/* Add this CSS to your existing stylesheet */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+.Gallery-dropdown-navbar {
+  border-radius: 0;
+  border: none;
+  background-color: #f8f9fa;
+  margin: 0;
+}

@@ -9,7 +9,7 @@
 .site-home-footer hr
 {
   border-top-color:#bbb;
-  opacity:0.5
+  opacity:0.5;
 }
 .site-home-footer hr.small
 {
@@ -164,8 +164,6 @@
 
 .second-footer-container{
     display: block !important;
-    border-top: 1px solid #bbb;
-    padding-top: 20px;
 }
 
 .footer-text-justify{
