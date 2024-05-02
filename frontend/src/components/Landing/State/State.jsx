@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import "./State.css";
 import Card from "../../CardTemp/Card";
 import { useLocation } from 'react-router-dom';
+import data from './StateInfo.json'; 
 
 
 
@@ -96,6 +97,8 @@ function State(){
       },
     ],
   };
+
+
 
   const items = [
     {

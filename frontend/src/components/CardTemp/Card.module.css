@@ -71,14 +71,14 @@
     width: 100px;
     height: auto;
 }
-.cardTwo h3,h4 {
+.cardsContainer .cardTwo h3,h4 {
     position: relative;
     text-align: center;
     margin: 0;
     padding: 0 5px;
 }
 
-.cardTwo h3 {
+.cardsContainer .cardTwo h3 {
     margin: 80px 0 0 0;
     height: 80px;
     display: flex;
@@ -86,13 +86,13 @@
     align-items: center;
 }
 
-.cardTwo h4 {
+.cardsContainer .cardTwo h4 {
     margin: 5px 0 30px 0;
     font-weight: normal;
     font-family: "DM Mono", monospace;
     color: #777;
 }
-.cardTwo h4::after {
+.cardsContainer .cardTwo h4::after {
     content: '' !important;
     position: absolute !important;
     bottom: -15px !important;

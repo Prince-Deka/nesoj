@@ -21,15 +21,15 @@
       "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corrupti, sunt soluta in iste magni nisi cupiditate sapiente beatae laboriosam ipsa iusto molestiae tempore est, sint numquam officia tenetur maxime dolores mollitia. Quos recusandae eligendi est ullam, illo obcaecati corporis ducimus provident doloremque. Sequi libero laboriosam recusandae pariatur, fuga reprehenderit.",
       "established": "2010",
       "executives": {
-        "president": "Saunak Sujaan Duarah",
-        "vicePresident": "Prince Kumar Deka",
-        "generalSecretrary": "Himanshu Raj Phukan",
-        "financeSecretrary": "Barnendu Bikash Buse",
-        "asstFinanceSecretrary":"Mrigankar Sonowal",
-        "asstSportsSecretrary": "Mohima Saikia",
-        "asstEventSecretrary":"Angshuman Chetia",
-        "asstMedia":"Mukrang Ronghang",
-        "studentWelfare":"Kasturi Kandarp"
+        "President": "Saunak Sujaan Duarah",
+        "Vice President": "Prince Kumar Deka",
+        "General Secretrary": "Himanshu Raj Phukan",
+        "Finance Secretrary": "Barnendu Bikash Buse",
+        "Asst. Finance Secretrary":"Mrigankar Sonowal",
+        "Asst. Sports Secretrary": "Mohima Saikia",
+        "Asst. Event Secretrary":"Angshuman Chetia",
+        "Asst. Media and Publicity Secretrary":"Mukrang Ronghang",
+        "Student Welfare Secretrary":"Kasturi Kandarp"
       }
     }
 }

@@ -14,6 +14,7 @@ import HomeMain from './components/Landing/Home/Home'
 import NewsOpen from './components/Landing/News/NewsOpen/NewsOpen'
 import Photos from './components/Landing/Gallery/Photos/Photos'
 import Videos from './components/Landing/Gallery/Videos/Videos'
+import Forumn from './components/Landing/Forumn/Forumn'
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/newsOpen" element={<NewsOpen />} />
         <Route path="/photos" element={<Photos />} />
         <Route path="/videos" element={<Videos />} />
+        <Route path="/forumn" element={<Forumn />} />
       </Routes>
 
     </BrowserRouter>
