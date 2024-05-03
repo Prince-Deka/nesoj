@@ -17,7 +17,7 @@ app.use(cors());
 // Specify allowed origins
 const allowedOrigins = [
   // 'http://localhost:5173', // Add your local frontend origin
-  'https://nesoj.netlify.app', 
+  'https://nesojtest.netlify.app', 
   
 ];
 
