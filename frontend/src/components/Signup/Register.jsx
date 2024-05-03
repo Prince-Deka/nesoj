@@ -131,7 +131,7 @@ const Signup = () => {
       if (response.ok) {
         console.log("User registered successfully");
         window.alert("Registration Successful");
-        window.location.replace("/");
+        window.location.replace("/homemain");
       } else {
         console.error("Failed to register user");
       }
