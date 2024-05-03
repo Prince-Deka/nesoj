@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import Navbar from "../NavBar/Navbar";
 import "slick-carousel/slick/slick.css";
@@ -8,11 +8,8 @@ import "../AboutUs/About.css";
 import Footer from "../Footer/Footer";
 import "./State.css";
 import Card from "../../CardTemp/Card";
-import { useLocation } from 'react-router-dom';
-import data from './StateInfo.json'; 
-
-
-
+import { useLocation } from "react-router-dom";
+import data from "./StateInfo.json";
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
@@ -56,9 +53,9 @@ function PrevArrow(props) {
   );
 }
 
-function State(){
+function State() {
   let location = useLocation();
-  let stateId = location.state ? location.state.stateId : 'defaultStateId';
+  let stateId = location.state ? location.state.stateId : "defaultStateId";
   console.log(stateId);
   const settings = {
     dots: true,
@@ -97,8 +94,6 @@ function State(){
       },
     ],
   };
-
-
 
   const items = [
     {
@@ -143,39 +138,59 @@ function State(){
     },
   ];
 
-
   return (
     <div>
       <Navbar />
       <div className="state-contents-container">
-        <img className="side-logo-state" src="assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" />
+        <img
+          className="side-logo-state"
+          src="assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg"
+          alt=""
+        />
         <div className="aboutState">
           <img src="assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg" alt="" />
-          <h3>Honesty is the Best Policy</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-            corrupti, sunt soluta in iste magni nisi cupiditate sapiente beatae
-            laboriosam ipsa iusto molestiae tempore est, sint numquam officia
-            tenetur maxime dolores mollitia. Quos recusandae eligendi est ullam,
-            illo obcaecati corporis ducimus provident doloremque. Sequi libero
-            laboriosam recusandae pariatur, fuga reprehenderit.
+          <h3>Unity in Heritage</h3>
+          <p style={{zIndex: '9999'}}>
+            The Assam Students Union Jalandhar (ASUJ) is a dynamic organization
+            founded in 2010 by Assamese students studying in Jalandhar, led by
+            Borunjyoti Borgohain. Our mission is to foster a sense of unity,
+            safety, and cultural pride among Assamese students residing in
+            Jalandhar, Ludhiana, Kapurthala, and beyond.
+            <br />
+            <br />
+            ASUJ is dedicated to unifying Assamese students in Punjab, providing
+            a supportive community away from home. We actively work to combat
+            racism and discrimination, ensuring the safety and well-being of our
+            members in their academic and social environments.
+            <br />
+            <br />
+            Moreover, ASUJ is committed to promoting Assamese culture and
+            tradition in Punjab. Through various events, workshops, and cultural
+            exchanges, we strive to celebrate and preserve the rich heritage of
+            Assam, introducing it to the diverse community of Punjab.
+            <br />
+            <br />
+            At ASUJ, we believe in the power of unity, education, and cultural
+            exchange to create a more inclusive and harmonious society. We
+            welcome all Assamese students in Punjab to join us in our mission to
+            build a stronger, safer, and more vibrant community.
           </p>
         </div>
 
         <div className="secondRowAbout container text-center my-3">
-        <h2 className="font-weight-light">Executive Board 2023-34</h2>
-        <div className="row mx-auto my-auto">
-          <Slider {...settings}>
-            {items.map(item => (
-              <div key={item.id} className="px-3">
-                <div className="card card-body cards-aboutUs-Landing">
-                  <Card name={item.name}/>
+          <h2 className="font-weight-light">Executive Board 2023-34</h2>
+          <div className="row mx-auto my-auto">
+            <Slider {...settings}>
+              {items.map((item) => (
+                <div key={item.id} className="px-3">
+                  <div className="card card-body cards-aboutUs-Landing">
+                    <Card name={item.name} />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          </div>
         </div>
-      </div>
       </div>
       <Footer />
     </div>

@@ -19,7 +19,7 @@ function Card(props) {
           <img className={style.watermark} src="assets/nesoj.png" alt="" />
 
           <h3>{props.name}</h3>
-          <h4>President</h4>
+          <h4 className={style.PostName}>President</h4>
           
           <div className={style.contacts}>
             <a
