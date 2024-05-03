@@ -7,7 +7,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+
+  .outer{
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -34,6 +35,8 @@ body{
     color:#333;
     display: grid; /* NEW */
     justify-content: center;   /* NEW */
+
+    margin-bottom: 50px;
 }
 
 .out-container form{
@@ -41,13 +44,9 @@ body{
     margin-top: 16px;
     min-height: 490px;
     overflow: hidden;
-    overflow-y: scroll;
 }
 
-header{
-    margin-bottom: 50px;
-}
-.input-field{
+.field-input{
   box-sizing: border-box; /* Ensures padding does not add to the width of the div */
   margin-bottom: 30px; /* Optional: Adds space between the divs */
   display: flex; /* Enables flexbox layout */
@@ -61,7 +60,7 @@ header{
 }
 
 
-.input-field .logo{
+.field-input .logo{
     width: 40px; /* Sets the fixed width for the logo span */
   flex-shrink: 0; /* Prevents the logo from shrinking */
   display: flex; /* Enables flexbox within the logo span to center the icon */
@@ -81,7 +80,7 @@ header{
     align-items: center;
 }
 
-.input-field input{
+.field-input input{
     border: none;
     border-radius: 0px 10px 10px 0px;
     padding-left: 10px;
@@ -90,7 +89,7 @@ header{
     flex-grow: 1; /* Allows the input to grow and fill the available space */
 }
 
-.input-field input, .input-field select{
+.field-input input, .field-input select{
     outline: none;
     font-size: 14px;
     font-weight: 400;
@@ -98,7 +97,7 @@ header{
     padding: 0 15px;
 }
 
-.input-field input:is(:focus, :valid){
+.field-input input:is(:focus, :valid){
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
 
 }

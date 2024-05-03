@@ -1,6 +1,6 @@
 import React from 'react'
 import './Navbar.css'
-import { useNavigate } from "react-router-dom"// for navigating through react-router-dom
+import { Link, useNavigate } from "react-router-dom"// for navigating through react-router-dom
 
 
 
@@ -23,9 +23,10 @@ function Navbar() {
     };
 
     const handleLogin = () => {
-        navigate('/login');
+        navigate('/profile');
     };
 
+    
 
 
 
@@ -56,7 +57,7 @@ function Navbar() {
                             <div className='people container-fluid justify-content-center' style={{ display: "flex", alignItems: "center" }}>
                                 <ul className="navbar-nav" >
                                     <li className="nav-item">
-                                        <a className="nav-link" aria-current="page" href="#">Home</a>
+                                        <Link className="nav-link" aria-current="page" to='/'>Home</Link>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link" href="#">Gallery</a>

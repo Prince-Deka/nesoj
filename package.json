@@ -1,5 +1,10 @@
 {
   "dependencies": {
     "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.1",
+    "postcss-loader": "^8.1.1",
+    "style-loader": "^4.0.0"
   }
 }

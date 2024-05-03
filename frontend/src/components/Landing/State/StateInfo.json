@@ -1,0 +1,36 @@
+[ 
+  {
+    "id": 1,
+    "stateDetails": {
+      "orgName": "Arunachal Students' Club Jalandhar",
+      "moto": "Not yet Updated",
+      "logo": "#", 
+      "about": "Not yet updated",
+      "established": "Not yet updated",
+      "executives": {
+        "president": "NA"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "stateDetails": {
+      "orgName": "Assam Students' Union Jalandhar",
+      "moto": "Joi Aai Axom",
+      "logo": "assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg", 
+      "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus corrupti, sunt soluta in iste magni nisi cupiditate sapiente beatae laboriosam ipsa iusto molestiae tempore est, sint numquam officia tenetur maxime dolores mollitia. Quos recusandae eligendi est ullam, illo obcaecati corporis ducimus provident doloremque. Sequi libero laboriosam recusandae pariatur, fuga reprehenderit.",
+      "established": "2010",
+      "executives": {
+        "President": "Saunak Sujaan Duarah",
+        "Vice President": "Prince Kumar Deka",
+        "General Secretrary": "Himanshu Raj Phukan",
+        "Finance Secretrary": "Barnendu Bikash Buse",
+        "Asst. Finance Secretrary":"Mrigankar Sonowal",
+        "Asst. Sports Secretrary": "Mohima Saikia",
+        "Asst. Event Secretrary":"Angshuman Chetia",
+        "Asst. Media and Publicity Secretrary":"Mukrang Ronghang",
+        "Student Welfare Secretrary":"Kasturi Kandarp"
+      }
+    }
+}
+]

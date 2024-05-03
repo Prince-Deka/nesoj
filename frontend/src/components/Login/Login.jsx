@@ -1,128 +1,90 @@
-// Register.js
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import "./Login.css";
-import "./scriptLogin";
- 
 
 const Login = () => {
-  // const [email, setEmail] = useState("");
-
-  // const [password, setpassword] = useState("");
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await fetch("http://localhost:3000/login", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         email: email,
-
-  //         password: password,
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       console.log("User registered successfully");
-  //       window.alert("Login Successful");
-  //       window.location.replace("/");
-  //     } else {
-  //       console.error("Failed to login");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error login:", error);
-  //   }
-  // };
-
-
-
-
-  const[email,setEmail]= useState("");
-  const[password,setPassword]= useState("");
-  const [msg, setMessage] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const handleSubmit=(evt)=>{
-     evt.preventDefault();
-     //creating Json Object;
-     const checkLog = {
-      email : email,
-      password : password
-     } 
-     axios.post('https://nesojbackend.onrender.com/login',checkLog)//backend login route
-     .then(res=>{
-     sessionStorage.setItem("User Type",'User')
-     sessionStorage.setItem("User Name",res.data[0].userName)
-     sessionStorage.setItem("Userdetails", JSON.stringify(res.data[0]))
-     navigate('/')
-     })
-     .catch(err=>{
-      setMessage('INVALID UID OR PASSWORD')
-     })
-     setEmail('');
-     setPassword('');
-  }
-  const adminpage=()=>{
-    navigate('/adminlog')
-  }
+
+    const handleClickSignup = () => {
+        navigate('/register');
+    };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+
+    try {
+      const response = await fetch("https://nesojbackend.onrender.com/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("User registered successfully");
+        window.alert("Login Successful");
+        navigate("/landing");
+      } else {
+        console.error("Failed to login");
+      }
+    } catch (error) {
+      console.error("Error login:", error);
+    }
+  };
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      // Toggle the type attribute
+      const passwordInput = document.getElementById('password');
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+
+      // Toggle the eye icon
+      const eyeIcon = e.currentTarget.querySelector('i');
+      eyeIcon.classList.toggle('fa-eye');
+      eyeIcon.classList.toggle('fa-eye-slash');
+    };
+
+    const togglePassword = document.querySelector('.toggle-password');
+    togglePassword.addEventListener('click', handleClick);
+
+    // Cleanup function to remove event listener
+    return () => {
+      togglePassword.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   return (
     <div>
-      <div className="bg"></div>
-      <div className="parent-container">
-        <div className="login-container custom-login-container">
-          <div className="container custom-container">
-            <img src="/assets/nesoj2.png" alt="Logo" height="100px" />
-
-            <h2 className="mt-5 custom-heading">Sign In to your Account</h2>
-            <form onSubmit={handleSubmit} className="custom-form">
-              <div className="form-group input-container custom-input-container">
-                <input
-                  type="email"
-                  className="form-control input-field custom-input-field"
-                  id="email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  required
-                />
-                <label htmlFor="email" className="label-field custom-label-field">
-                  Email
-                </label>
-              </div>
-              <div className="form-group input-container custom-input-container">
-                <input
-                  type="password"
-                  className="form-control input-field custom-input-field"
-                  id="password"
-                  name="password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  required
-                />
-                <label htmlFor="password" className="label-field custom-label-field">
-                  Password
-                </label>
-              </div>
-              <button type="submit" className="btn btn-primary custom-btn">
-                Login
-              </button>
-              <p className="text-center">
-                {" "}
-                <a href="#">Forgot Password</a>
-              </p>
-              <p className="text-center mb-3">
-                Not a member?{' '}
-                <Link to="/register">Register</Link> 
-              </p>
-            </form>
-          </div>
+      <div className="outer">
+        <div className="out-container">
+          <header>Login</header>
+          <form onSubmit={handleSubmit} className="login-form">
+            <div className="field-input">
+              <span className="logo"><i className="fa-solid fa-user"></i></span>
+              <input type="username" id="username" placeholder="Enter your username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+            </div>
+            <div className="field-input">
+              <span className="logo"><i className="fa-solid fa-lock"></i></span>
+              <input type="password" id="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+              <span className="toggle-password"><i className="fa-solid fa-eye"></i></span>
+            </div>
+            <div className="forgot-password">
+              <a href="#">Forgot Password?</a>
+            </div>
+            <button className="login-btn" onClick={handleSubmit}>Login</button>
+            <div className="signup-link">
+              New User?&nbsp;<a href="/register">Signup</a>
+            </div>
+          </form>
         </div>
       </div>
     </div>
