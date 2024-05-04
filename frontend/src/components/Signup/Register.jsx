@@ -133,10 +133,10 @@ const Signup = () => {
         window.alert("Registration Successful");
         window.location.replace("/homemain");
       } else {
-        console.error("Failed to register user");
+        console.log("Failed to register user");
       }
     } catch (error) {
-      console.error("Error registering user:", error);
+      console.log("Error registering user:", error);
     }
   };
 
@@ -145,7 +145,7 @@ const Signup = () => {
       <div className="bg" />
       <div className="signup-container">
         <header>Registration</header>
-        <form method="POST" action="/register" onSubmit={() => handleSubmit()}>
+        <form method="POST" onSubmit={() => handleSubmit()}>
           <div className="form first">
             <div className="details personal">
               <span className="title">Personal Details</span>
