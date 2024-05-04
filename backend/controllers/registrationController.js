@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const RegisterModel = require('../models/userSchema');
 const bcrypt = require('bcrypt');         // For Password Hashing
+const userSchema = require('../models/userSchema');
 
 router.post('/register', async (req, res) => {
     try {
@@ -13,7 +14,7 @@ router.post('/register', async (req, res) => {
         email,
         gender, 
         phone,
-        residence, 
+
         date, 
         idType, 
         idNumber, 
@@ -80,10 +81,11 @@ router.post('/register', async (req, res) => {
 
 
       await newUser.save();
-      res.status(201).json({ message: 'User registered successfully' });
+      // res.status(201).json({ message: 'User registered successfully' });
+      console.log('User registered successfully');
     } catch (error) {
       console.error('Error registering user:', error);
-      res.status(500).json({ message: 'Internal server error' });
+      // res.status(500).json({ message: 'Internal server error' });
     }
 });
 
