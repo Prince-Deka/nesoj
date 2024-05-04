@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const RegisterModel = require('../models/userSchema');
 const bcrypt = require('bcrypt');         // For Password Hashing
-const userSchema = require('../models/userSchema');
+// const userSchema = require('../models/userSchema');
 
 router.post('/register', async (req, res) => {
     try {
