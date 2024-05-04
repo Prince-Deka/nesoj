@@ -39,10 +39,10 @@ router.post('/register', async (req, res) => {
       // Save the user to the database
 
       //  Check for Existing User
-      const existingUser = await RegisterModel.findOne({ $or: [{ email }, { username }] });
-      if (existingUser) {
-        return res.status(409).json({ message: 'Username or email already exists' });
-      }
+      // const existingUser = await RegisterModel.findOne({ $or: [{ email }, { username }] });
+      // if (existingUser) {
+      //   return res.status(409).json({ message: 'Username or email already exists' });
+      // }
 
       
       // Hash the password
