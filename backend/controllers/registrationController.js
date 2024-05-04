@@ -3,7 +3,7 @@ const router = express.Router();
 const RegisterModel = require('../models/userSchema');
 const bcrypt = require('bcrypt');         // For Password Hashing
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
       const { 
         profilePic,

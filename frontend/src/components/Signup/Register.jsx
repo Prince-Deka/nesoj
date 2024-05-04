@@ -145,7 +145,7 @@ const Signup = () => {
       <div className="bg" />
       <div className="signup-container">
         <header>Registration</header>
-        <form method="POST" onSubmit={() => handleSubmit()}>
+        <form method="POST" action="/register" onSubmit={() => handleSubmit()}>
           <div className="form first">
             <div className="details personal">
               <span className="title">Personal Details</span>
