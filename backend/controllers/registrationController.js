@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const RegisterModel = require('../models/userSchema');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 router.post('/register', async (req, res) => {
     try {
