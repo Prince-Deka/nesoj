@@ -111,48 +111,47 @@ const Signup = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          profilePic: profilePic,
-          firstName: firstName,
-          middleName: middleName,
-          lastName: lastName,
-          email: email,
-          gender: gender,
-          phone: phone,
-          residence: residence,
-          date: date,
-          idType: idType,
-          idNumber: idNumber,
-          address: address,
-          cityTown: cityTown,
-          landmark: landmark,
-          stateName: stateName,
-          district: district,
-          pincode: pincode,
-          motherName: motherName,
-          fatherName: fatherName,
-          noSiblings: noSiblings,
-          uniName: uniName,
-          regNo: regNo,
-          course: course,
-          specialization: specialization,
-          gradYear: gradYear,
-          username: username,
-          password: password,
-        }),
-      });
+          profilePic,
+          firstName,
+          middleName,
+          lastName,
+          email,
+          gender,
+    phone,
+    residence,
+    date,
+    idType,
+    idNumber,
+    address,
+    cityTown,
+    landmark,
+    stateName,
+    district,
+    pincode,
+    motherName,
+    fatherName,
+    noSiblings,
+    uniName,
+    regNo,
+    course,
+    specialization,
+    gradYear,
+    username,
+    password,
+  }),
+});
 
-      if (response.ok) {
-        console.log("User registered successfully");
-        console.log("Registration Successful");
-        window.location.replace("/");
-      } else {
-        const result = await response.json();
-        setErrors({ form: result.message || "Failed to register." });
-      }
-    } catch (error) {
-      setErrors({ form: "An error occurred. Please try again later." });
-    }
-  };
+if (response.ok) {
+  console.log("User registered successfully");
+  alert("Registration Successful");
+  window.location.replace("/homemain");
+} else {
+  console.log("Failed to register user");
+}
+} catch (error) {
+console.error("Error registering user:", error);
+}
+};
 
   return (
     <div className="signup-outer">
