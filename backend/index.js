@@ -1,47 +1,47 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
-const mongoDb = require('./dbconnect.js');
 const PORT = process.env.PORT || 3000;
 
+// Connection to MongoDB
+const mongoDb = require('./dbconnect.js');
 
-
-
-const cors = require('cors');
-let bodyParser = require('body-parser');
+// Body parser middleware to handle JSON payloads
 app.use(bodyParser.json());
 
-// Set up CORS middleware
-app.use(cors());
-
-// Specify allowed origins
+// CORS configuration for a list of allowed origins
 const allowedOrigins = [
-  // 'http://localhost:5173', // Add your local frontend origin
-  'https://nesojtest.netlify.app', 
-  
+  'https://nesojtest.netlify.app', // Add any specific domains you need here
 ];
 
-// Configure CORS with dynamic origin based on request origin
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://nesoj.netlify.app');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+}));
+
+// Simple route for health checking or testing the server
+app.get('/test', (req, res) => { 
+   res.send("Backend register server is working");
 });
 
+// Importing and using routes from controllers
+const registerController = require('./controllers/registrationController.js');
+app.use('/api/register', registerController);
 
-//for checking on render (testing purpose only)
-app.get('/register', (req, res)=>{ 
-   res.send("backend register server working")
-})
+const loginController = require('./controllers/loginCheck.js');
+app.use('/api/login', loginController);
 
-
-const register = require('./controllers/registrationController.js');
-app.use('/register', register);
-
-const login = require( './controllers/loginCheck.js' );
-app.use("/login", login);
-
+// Start the server
 app.listen(PORT, () => {
-  console.log("The server is running at Port No 3000...")
+  console.log(`Server is running on port ${PORT}...`);
 });
