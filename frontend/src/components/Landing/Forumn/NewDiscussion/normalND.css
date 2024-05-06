@@ -1,0 +1,9 @@
+
+/* Ensure the Quill editor itself expands to fill its container */
+.ql-container {
+    height: 240px !important;               /* Full height of its parent container */
+}
+
+.ql-editor img {
+    width: 30%;
+}

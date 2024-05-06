@@ -97,7 +97,7 @@ function Footer() {
                 </li>
                 <li>
                   <a className="footer-landing-instatram" href="#">
-                    <i class="fa-brands fa-instagram"></i>
+                    <i className="fa-brands fa-instagram"></i>
                   </a>
                 </li>
               </ul>
