@@ -15,6 +15,9 @@ import NewsOpen from './components/Landing/News/NewsOpen/NewsOpen'
 import Photos from './components/Landing/Gallery/Photos/Photos'
 import Videos from './components/Landing/Gallery/Videos/Videos'
 import Forumn from './components/Landing/Forumn/Forumn'
+import NewDiscussion from './components/Landing/Forumn/NewDiscussion/NewDiscussion'
+import OpenDiscussion from './components/Landing/Forumn/OpenDiscussion/OpenDiscussion'
+
 
 
 function App() {
@@ -38,6 +41,8 @@ function App() {
         <Route path="/photos" element={<Photos />} />
         <Route path="/videos" element={<Videos />} />
         <Route path="/forumn" element={<Forumn />} />
+        <Route path="/newDiscussion" element={<NewDiscussion />} />
+        <Route path="/openDiscussion" element={<OpenDiscussion />} />
       </Routes>
 
     </BrowserRouter>

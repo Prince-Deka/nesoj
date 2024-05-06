@@ -1,6 +1,10 @@
 {
   "dependencies": {
-    "jquery": "^3.7.1"
+    "babel-polyfill": "^6.26.0",
+    "draft-js": "^0.11.7",
+    "jquery": "^3.7.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "css-loader": "^7.1.1",

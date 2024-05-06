@@ -36,6 +36,8 @@ const Signup = () => {
   const [confPassword, setConfPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [errors, setErrors] = useState({});
+
 
   // For Profile Pic
   const [bgImage, setBgImage] = useState("user_456212.png"); // replace with the URL of your default background image
@@ -75,21 +77,32 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    let newErrors = {};
 
+    // Check if emails match
     if (email !== confEmail) {
-      alert("Emails do not match");
-      return;
+        newErrors.email = "Emails do not match";
     }
 
-    if ( password !== confPassword) {
-      alert("Passwords do not match");
-      return;
+    // Check if passwords match
+    if (password !== confPassword) {
+        newErrors.password = "Passwords do not match";
     }
 
+    // Check if phone numbers match
     if (phone !== confPhone) {
-      alert("Phone numbers do not match");
-      return;
+        newErrors.phone = "Phone numbers do not match";
     }
+
+    // If there are any errors, update the state and stop the form submission
+    if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+        return; // Stop the submission since there are errors
+    }
+
+    // Clear previous errors on successful validation
+    setErrors({});
 
     try {
       const response = await fetch("https://nesojbackend.onrender.com/register", {
@@ -130,13 +143,14 @@ const Signup = () => {
 
       if (response.ok) {
         console.log("User registered successfully");
-        window.alert("Registration Successful");
-        window.location.replace("/homemain");
+        console.log("Registration Successful");
+        window.location.replace("/");
       } else {
-        console.log("Failed to register user");
+        const result = await response.json();
+        setErrors({ form: result.message || "Failed to register." });
       }
     } catch (error) {
-      console.log("Error registering user:", error);
+      setErrors({ form: "An error occurred. Please try again later." });
     }
   };
 
