@@ -17,6 +17,7 @@ import Videos from './components/Landing/Gallery/Videos/Videos'
 import Forumn from './components/Landing/Forumn/Forumn'
 import NewDiscussion from './components/Landing/Forumn/NewDiscussion/NewDiscussion'
 import OpenDiscussion from './components/Landing/Forumn/OpenDiscussion/OpenDiscussion'
+import Reset from './components/Login/Reset/Reset'
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/forumn" element={<Forumn />} />
         <Route path="/newDiscussion" element={<NewDiscussion />} />
         <Route path="/openDiscussion" element={<OpenDiscussion />} />
+        <Route path="/reset" element={<Reset />} />
       </Routes>
 
     </BrowserRouter>
