@@ -18,6 +18,7 @@ import Forumn from './components/Landing/Forumn/Forumn'
 import NewDiscussion from './components/Landing/Forumn/NewDiscussion/NewDiscussion'
 import OpenDiscussion from './components/Landing/Forumn/OpenDiscussion/OpenDiscussion'
 import Reset from './components/Login/Reset/Reset'
+import Error from './components/Error/Error'
 
 
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/newDiscussion" element={<NewDiscussion />} />
         <Route path="/openDiscussion" element={<OpenDiscussion />} />
         <Route path="/reset" element={<Reset />} />
+        <Route path="*" element={<Error />} />
       </Routes>
 
     </BrowserRouter>

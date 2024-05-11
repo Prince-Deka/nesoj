@@ -4,22 +4,32 @@ import axios from "axios";
 import "./Login.css";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
   const [alert, setAlert] = useState({ type: '', message: '' });
 
+  const [user, setUser] = useState({
+    username: "",
+    password: ""
+  });
+
+  const handleInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(user);
     if (!username || !password) {
       setAlert({ type: 'warning', message: 'Both username and password must be filled out' });
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
-    }else{
+    } else {
       // try {
       //   const response = await fetch("https://nesojbackend.onrender.com/login", {
       //     method: "POST",
@@ -31,7 +41,7 @@ const Login = () => {
       //       password: password,
       //     }),
       //   });
-  
+
       //   if (response.ok) {
       //     console.log("User registered successfully");
       //     window.alert("Login Successful");
@@ -44,13 +54,13 @@ const Login = () => {
       // }
       setAlert({ type: 'success', message: 'Login Successful, redirecting to home in 3 sec...' });
       setShowAlert(true);
-        setTimeout(() => {
-          navigate("/homemain");
-          setShowAlert(false);
-        }, 3000);
+      setTimeout(() => {
+        navigate("/homemain");
+        setShowAlert(false);
+      }, 3000);
     }
 
-    
+
   };
 
   useEffect(() => {
@@ -79,11 +89,11 @@ const Login = () => {
   return (
     <div className="loginMainDiv">
       {showAlert && (
-  <div className={`loginAlert alert alert-${alert.type} alert-dismissible fade show`}>
-    <a href="#" className="close" data-dismiss="alert" aria-label="close" onClick={() => setShowAlert(false)}>&times;</a>
-    <strong>{alert.type.charAt(0).toUpperCase() + alert.type.slice(1)}!</strong> {alert.message}
-  </div>
-)}
+        <div className={`loginAlert alert alert-${alert.type} alert-dismissible fade show`}>
+          <a href="#" className="close" data-dismiss="alert" aria-label="close" onClick={() => setShowAlert(false)}>&times;</a>
+          <strong>{alert.type.charAt(0).toUpperCase() + alert.type.slice(1)}!</strong> {alert.message}
+        </div>
+      )}
       <div className="outer">
         <div className="out-container">
           <header>Login</header>
@@ -95,9 +105,11 @@ const Login = () => {
               <input
                 type="username"
                 id="username"
+                name="username"
                 placeholder="Enter your username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={user.username}
+                onChange={handleInput}
+                required
               />
             </div>
             <div className="field-input">
@@ -107,9 +119,11 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
+                name="password"
                 placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={user.password}
+                onChange={handleInput}
+                required
               />
               <span className="toggle-password">
                 <i className="fa-solid fa-eye"></i>
@@ -118,7 +132,7 @@ const Login = () => {
             <div className="forgot-password">
               <Link to='/reset'>Forgot Password?</Link>
             </div>
-            <button className="login-btn" onClick={handleSubmit}>
+            <button className="login-btn" type="submit">
               Login
             </button>
             <div className="signup-link">

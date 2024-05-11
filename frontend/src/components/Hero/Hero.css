@@ -423,7 +423,7 @@
     margin-top: 12px;
 }
 
-  .contact-right-side .contact-button input[type="button"]{
+  .contact-right-side .contact-button button[type="submit"]{
     color: #fff;
     font-size: 18px;
     outline: none;
@@ -435,7 +435,7 @@
     transition: all 0.3s ease;
   }
 
-  .contact-button input[type="button"]:hover{
+  .contact-button button[type="submit"]:hover{
     background: #09a893;
   }
 

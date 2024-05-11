@@ -1,47 +1,37 @@
+// server.js (or equivalent)
+require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
+const cors = require('cors');
+const connectDB = require("./utils/db");
+const contactRoute = require("./routes/contact-router");
+const authRoute = require("./routes/auth-router")
+const errorMiddleware = require("./middlewares/error-middleware");
 
-// Connection to MongoDB
-const mongoDb = require('./dbconnect.js');
+// Handling Cors Policy
+const corsOptions = {
+    origin: "http://localhost:5173",
+    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+    credentials: true,
+};
+app.use(cors(corsOptions));
 
-// Body parser middleware to handle JSON payloads
-app.use(bodyParser.json());
 
-// CORS configuration for a list of allowed origins
-const allowedOrigins = [
-  'https://nesojtest.netlify.app', // Add any specific domains you need here
-];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
+app.use(express.json());
+//  This line of code adds Express middleware that parses incoming request bodies with JSON payloads. It's important to place this before any routes that need to handle JSON data in the request body. This middleware is responsible for parsing JSON data from requests, and it should be applied at the beginning of your middleware stack to ensure it's available for all subsequent route handlers.
 
-// Simple route for health checking or testing the server
-app.get('/test', (req, res) => { 
-   res.send("Backend register server is working");
-});
+app.use("/api/auth", authRoute);
+app.use("/api/form", contactRoute);
 
-// Importing and using routes from controllers
-const registerController = require('./controllers/registrationController.js');
-app.use('/api/register', registerController);
 
-const loginController = require('./controllers/loginCheck.js');
-app.use('/api/login', loginController);
+//Get
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}...`);
+app.use(errorMiddleware);
+// Start the server on port 3000
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is listening on port: ${PORT}`);
+    });
 });

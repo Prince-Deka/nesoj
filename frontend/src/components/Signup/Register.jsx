@@ -1,46 +1,58 @@
 // Register.js
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import "./Register.css";
 
 const Signup = () => {
   const [profilePic, setProfilePic] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [middleName, setmiddleName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [confEmail, setconfEmail] = useState("");
-  const [gender, setGender] = useState("");
-  const [phone, setPhone] = useState("");
-  const [confPhone, setConfPhone] = useState("");
-  const [residence, setResidence] = useState("");
-  const [date, setDate] = useState("");
-  const [idType, setIdType] = useState("");
-  const [idNumber, setIdnumber] = useState("");
   const [selectedFileId, setSelectedFileId] = useState(null);
-  const [address, setAddress] = useState("");
-  const [cityTown, setCityTown] = useState("");
-  const [landmark, setLandmark] = useState("");
-  const [stateName, setStateName] = useState("");
-  const [district, setDistrict] = useState("");
-  const [pincode, setPincode] = useState(0);
-  const [motherName, setMotherName] = useState("");
-  const [fatherName, setFatherName] = useState("");
-  const [noSiblings, setNoSiblings] = useState(0);
-  const [uniName, setUniName] = useState("");
-  const [regNo, setRegNo] = useState(0);
-  const [course, setcourse] = useState("");
-  const [specialization, setSpecialization] = useState("");
-  const [gradYear, setGradYear] = useState(0);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confPassword, setConfPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const [user, setUser] = useState({
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    email: "",
+    confEmail: "",
+    gender: "",
+    phone: "",
+    confPhone: "",
+    residence: "",
+    dateOfBirth: "",
+    idType: "",
+    idNumber: "",
+    address: "",
+    cityTown: "",
+    landmark: "",
+    stateName: "",
+    district: "",
+    pincode: "",
+    motherName: "",
+    fatherName: "",
+    noSiblings: "",
+    uniName: "Lovely Professional University",
+    regNo: "",
+    course: "",
+    specialization: "",
+    gradYear: "",
+    username: "",
+    password: "",
+    confPassword: "",
+  });
 
-  // For Profile Pic
-  const [bgImage, setBgImage] = useState("user_456212.png"); // replace with the URL of your default background image
+  // Handle input changes
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+
+  // Handle profile image change
+  const [bgImage, setBgImage] = useState("user_456212.png");
 
   const handleProfileImageChange = (event) => {
     const file = event.target.files[0];
@@ -53,10 +65,11 @@ const Signup = () => {
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      setBgImage("user_456212.png"); // replace with the URL of your default background image
+      setBgImage("user_456212.png");
     }
   };
 
+  // Handle file change
   const handleFileChange = (event) => {
     const file = event.target.files[0];
 
@@ -66,99 +79,41 @@ const Signup = () => {
 
     if (!allowedTypes.includes(file.type)) {
       alert("Invalid file type. Please upload a JPG, JPEG or PDF file.");
-      return; 
+      return;
     }
 
     setSelectedFileId(file);
-    setProfilePic(event.target.files[0]);
+    setProfilePic(file);
   };
 
-  // Changing Profile Pic
-
+  // Submit form using Axios
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { confEmail, confPhone, confPassword, ...userDataToSend } = user;
     
-    let newErrors = {};
-
-    // Check if emails match
-    if (email !== confEmail) {
-        newErrors.email = "Emails do not match";
-    }
-
-    // Check if passwords match
-    if (password !== confPassword) {
-        newErrors.password = "Passwords do not match";
-    }
-
-    // Check if phone numbers match
-    if (phone !== confPhone) {
-        newErrors.phone = "Phone numbers do not match";
-    }
-
-    // If there are any errors, update the state and stop the form submission
-    if (Object.keys(newErrors).length > 0) {
-        setErrors(newErrors);
-        return; // Stop the submission since there are errors
-    }
-
-    // Clear previous errors on successful validation
-    setErrors({});
-
     try {
-      const response = await fetch("https://nesojbackend.onrender.com/register", {
-        method: "POST",
+      // Make API request with Axios
+      const response = await axios.post("http://localhost:3000/api/auth/register", userDataToSend, {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          profilePic,
-          firstName,
-          middleName,
-          lastName,
-          email,
-          gender,
-    phone,
-    residence,
-    date,
-    idType,
-    idNumber,
-    address,
-    cityTown,
-    landmark,
-    stateName,
-    district,
-    pincode,
-    motherName,
-    fatherName,
-    noSiblings,
-    uniName,
-    regNo,
-    course,
-    specialization,
-    gradYear,
-    username,
-    password,
-  }),
-});
+      });
 
-if (response.ok) {
-  console.log("User registered successfully");
-  alert("Registration Successful");
-  window.location.replace("/homemain");
-} else {
-  console.log("Failed to register user");
-}
-} catch (error) {
-console.error("Error registering user:", error);
-}
-};
+      console.log(JSON.stringify(response));
+    } catch (error) {
+      console.error("Registration error: ", error);
+    }
+  };
+
+
+
 
   return (
     <div className="signup-outer">
       <div className="bg" />
       <div className="signup-container">
         <header>Registration</header>
-        <form method="POST" onSubmit={() => handleSubmit()}>
+        <form method="POST" onSubmit={handleSubmit}>
           <div className="form first">
             <div className="details personal">
               <span className="title">Personal Details</span>
@@ -177,8 +132,12 @@ console.error("Error registering user:", error);
                   <input
                     type="text"
                     placeholder="First Name"
-                    onChange={(e) => setFirstName(e.target.value)}
                     required
+                    id="firstName"
+                    name="firstName"
+                    autoComplete="off"
+                    value={user.firstName}
+                    onChange={handleInput}
                   />
                 </div>
                 <div className="input-field">
@@ -186,7 +145,11 @@ console.error("Error registering user:", error);
                   <input
                     type="text"
                     placeholder="Middle Name"
-                    onChange={(e) => setmiddleName(e.target.value)}
+                    id="middleName"
+                    name="middleName"
+                    autoComplete="off"
+                    value={user.middleName}
+                    onChange={handleInput}
                   />
                 </div>
                 <div className="input-field">
@@ -194,7 +157,11 @@ console.error("Error registering user:", error);
                   <input
                     type="text"
                     placeholder="Last Name"
-                    onChange={(e) => setlastName(e.target.value)}
+                    id="lastName"
+                    name="lastName"
+                    autoComplete="off"
+                    value={user.lastName}
+                    onChange={handleInput}
                     required
                   />
                 </div>
@@ -203,7 +170,11 @@ console.error("Error registering user:", error);
                   <input
                     type="email"
                     placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
+                    id="email"
+                    name="email"
+                    autoComplete="off"
+                    value={user.email}
+                    onChange={handleInput}
                     required
                   />
                 </div>
@@ -212,7 +183,11 @@ console.error("Error registering user:", error);
                   <input
                     type="email"
                     placeholder="Confirm Email"
-                    onChange={(e) => setconfEmail(e.target.value)}
+                    id="confEmail"
+                    name="confEmail"
+                    autoComplete="off"
+                    value={user.confEmail}
+                    onChange={handleInput}
                     required
                   />
                 </div>
@@ -224,40 +199,50 @@ console.error("Error registering user:", error);
                         type="radio"
                         id="male"
                         name="gender"
-                        onClick={() => {
-                          setGender("male");
-                        }}
+                        value="male"  // Add a value attribute
+                        checked={user.gender === "male"}  // Use checked prop
+                        onChange={handleInput}  // Use the same change handler
                       />
                       <span>Male</span>{" "}
                     </label>
+
                     <label className="radio" htmlFor="female">
                       <input
                         type="radio"
                         id="female"
                         name="gender"
-                        onClick={() => {
-                          setGender("female");
-                        }}
+                        value="female"
+                        checked={user.gender === "female"}
+                        onChange={handleInput}
                       />
                       <span>Female</span>{" "}
                     </label>
                   </div>
                 </div>
+
                 <div className="input-field">
                   <label htmlFor="phone">Phone<span className="requiredField">*</span></label>
                   <input
-                    type="tel"
+                    type="number"
                     placeholder="Phone"
-                    onChange={(e) => setPhone(e.target.value)}
+                    id="phone"
+                    name="phone"
+                    autoComplete="off"
+                    value={user.phone}
+                    onChange={handleInput}
                     required
                   />
                 </div>
                 <div className="input-field">
                   <label htmlFor="phone">Confirm Phone<span className="requiredField">*</span></label>
                   <input
-                    type="tel"
+                    type="number"
                     placeholder="Phone"
-                    onChange={(e) => setConfPhone(e.target.value)}
+                    id="confPhone"
+                    name="confPhone"
+                    autoComplete="off"
+                    value={user.confPhone}
+                    onChange={handleInput}
                     required
                   />
                 </div>
@@ -269,33 +254,35 @@ console.error("Error registering user:", error);
                         type="radio"
                         id="hosteller"
                         name="residence"
-                        onClick={() => {
-                          setResidence("hosteller");
-                        }}
+                        value="hosteller"
+                        checked={user.residence === "hosteller"}
+                        onChange={handleInput}
                       />
                       <span>Hosteller</span>{" "}
                     </label>
+
                     <label className="radio" htmlFor="day-scholar">
                       <input
                         type="radio"
                         id="day-scholar"
                         name="residence"
-                        onClick={() => {
-                          setResidence("dayscholar");
-                        }}
+                        value="dayscholar"
+                        checked={user.residence === "dayscholar"}
+                        onChange={handleInput}
                       />
                       <span>Day Scholar</span>{" "}
                     </label>
                   </div>
                 </div>
+
                 <div className="input-field">
                   <label htmlFor="Date-Of-Birth">Date of Birth<span className="requiredField">*</span></label>
                   <input
                     type="date"
-                    placeholder="Date-Of-Birth"
-                    onChange={(e) => {
-                      setDate(e.target.value);
-                    }}
+                    id="dateOfBirth"
+                    name="dateOfBirth"
+                    value={user.dateOfBirth}
+                    onChange={handleInput}
                     required
                   />
                 </div>
@@ -308,10 +295,9 @@ console.error("Error registering user:", error);
                   <label htmlFor="idType">ID Type<span className="requiredField">*</span></label>
                   <select
                     id="idType"
-                    value={idType}
-                    onChange={(e) => {
-                      setIdType(e.target.value);
-                    }}
+                    name="idType"
+                    value={user.idType}
+                    onChange={handleInput}
                     required
                   >
                     <option value="default">--Select ID Type--</option>
@@ -323,14 +309,16 @@ console.error("Error registering user:", error);
                     <option value="ration">Ration Card</option>
                   </select>
                 </div>
+
                 <div className="input-field">
                   <label htmlFor="id-number">Enter ID Number<span className="requiredField">*</span></label>
                   <input
                     type="text"
                     placeholder="ID Number"
-                    onClick={(e) => {
-                      setIdnumber(e.target.value);
-                    }}
+                    id="idNumber"
+                    name="idNumber"
+                    value={user.idNumber}
+                    onChange={handleInput}
                     required
                   />
                 </div>
@@ -356,7 +344,11 @@ console.error("Error registering user:", error);
                   <input
                     type="text"
                     placeholder="House No, Street, Locality"
-                    onChange={(e) => setAddress(e.target.value)}
+                    id="address"
+                    name="address"
+                    value={user.address}
+                    onChange={handleInput}
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -365,7 +357,11 @@ console.error("Error registering user:", error);
                   <input
                     type="text"
                     placeholder="City/Town"
-                    onChange={(e) => setCityTown(e.target.value)}
+                    id="cityTown"
+                    name="cityTown"
+                    value={user.cityTown}
+                    onChange={handleInput}
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -374,15 +370,20 @@ console.error("Error registering user:", error);
                   <input
                     type="text"
                     placeholder="Landmark"
-                    onChange={(e) => setLandmark(e.target.value)}
+                    id="landmark"
+                    name="landmark"
+                    value={user.landmark}
+                    onChange={handleInput}
+                    autoComplete="off"
                   />
                 </div>
                 <div className="input-field">
                   <label htmlFor="state">State<span className="requiredField">*</span></label>
                   <select
-                    id="state"
-                    value={stateName}
-                    onChange={(e) => setStateName(e.target.value)}
+                    id="stateName"
+                    name="stateName"
+                    value={user.stateName}
+                    onChange={handleInput}
                     required
                   >
                     <option value="default">--Select State--</option>
@@ -396,23 +397,32 @@ console.error("Error registering user:", error);
                     <option value="Tripura">Tripura</option>
                   </select>
                 </div>
+
                 <div className="input-field">
                   <label htmlFor="District">District<span className="requiredField">*</span></label>
                   <input
                     type="text"
                     placeholder="District"
-                    onChange={(e) => setDistrict(e.target.value)}
+                    id="district"
+                    name="district"
+                    value={user.district}
+                    onChange={handleInput}
+                    autoComplete="off"
                     required
                   />
                 </div>
                 <div className="input-field">
                   <label htmlFor="Pincode">Pincode<span className="requiredField">*</span></label>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Pincode"
                     min="100000"
                     max="999999"
-                    onChange={(e) => setPincode(e.target.value)}
+                    id="pincode"
+                    name="pincode"
+                    value={user.pincode}
+                    onChange={handleInput}
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -426,7 +436,11 @@ console.error("Error registering user:", error);
                   <input
                     type="text"
                     placeholder="Mother Name"
-                    onChange={(e) => setMotherName(e.target.value)}
+                    id="motherName"
+                    name="motherName"
+                    value={user.motherName}
+                    onChange={handleInput}
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -435,16 +449,25 @@ console.error("Error registering user:", error);
                   <input
                     type="text"
                     placeholder="Father Name"
-                    onChange={(e) => setFatherName(e.target.value)}
+                    id="fatherName"
+                    name="fatherName"
+                    value={user.fatherName}
+                    onChange={handleInput}
+                    autoComplete="off"
                     required
                   />
                 </div>
                 <div className="input-field">
                   <label htmlFor="no-of-sibling">No of Siblings</label>
                   <input
-                    type="number"
-                    placeholder="No of Siblings"
-                    onChange={(e) => setNoSiblings(e.target.value)}
+                    type="text"
+                    placeholder="No of Siblings (except you)"
+                    id="noSiblings"
+                    name="noSiblings"
+                    value={user.noSiblings}
+                    onChange={handleInput}
+                    autoComplete="off"
+                    required
                   />
                 </div>
               </div>
@@ -456,16 +479,24 @@ console.error("Error registering user:", error);
                     <input
                       type="text"
                       placeholder="Enter University Name"
-                      onChange={(e) => setUniName(e.target.value)}
+                      id="uniName"
+                      name="uniName"
+                      value={user.uniName}
+                      onChange={handleInput}
+                      autoComplete="off"
                       required
                     />
                   </div>
                   <div className="input-field">
                     <label htmlFor="university-id">University ID<span className="requiredField">*</span></label>
                     <input
-                      type="number"
+                      type="text"
                       placeholder="Enter Registration Number"
-                      onChange={(e) => setRegNo(e.target.value)}
+                      id="regNo"
+                      name="regNo"
+                      value={user.regNo}
+                      onChange={handleInput}
+                      autoComplete="off"
                       required
                     />
                   </div>
@@ -473,8 +504,9 @@ console.error("Error registering user:", error);
                     <label htmlFor="course">Course<span className="requiredField">*</span></label>
                     <select
                       id="course"
-                      value={course}
-                      onChange={(e) => setcourse(e.target.value)}
+                      name="course"
+                      value={user.course}
+                      onChange={handleInput}
                       required
                     >
                       <option value="default">--Select Course--</option>
@@ -484,28 +516,38 @@ console.error("Error registering user:", error);
                       <option value="mTech">M.Tech</option>
                     </select>
                   </div>
+
                   <div className="input-field">
                     <label htmlFor="specialization">Specialization<span className="requiredField">*</span></label>
                     <input
                       type="text"
                       placeholder="eg. Computer Science and Engg."
-                      onChange={(e) => setSpecialization(e.target.value)}
+                      id="specialization"
+                      name="specialization"
+                      value={user.specialization}
+                      onChange={handleInput}
+                      autoComplete="off"
                       required
                     />
                   </div>
                   <div className="input-field">
-                    <label htmlFor="graduation-year">Graduation Year<span className="requiredField">*</span></label>
+                    <label htmlFor="gradYear">Graduation Year<span className="requiredField">*</span></label>
                     <select
-                      placeholder="Enter Graduation Year"
-                      onChange={(e) => setGradYear(e.target.value)}
+                      id="gradYear"
+                      name="gradYear"
+                      value={user.gradYear}
+                      onChange={handleInput}
                       required
                     >
-                       <option value="default">--Select Year--</option>
-                        {[...Array(20)].map((_, i) => 
-                          <option key={i} value={2028 - i}>{2028 - i}</option>
-                        )}
+                      <option value={0}>--Select Year--</option>
+                      <option value={2024}>2024</option>
+
+                      {/* {[...Array(20)].map((_, i) => (
+                        <option key={i} value={2028 - i}>{2028 - i}</option>
+                      ))} */}
                     </select>
                   </div>
+
                 </div>
               </div>
               <div className="details credentials">
@@ -516,7 +558,11 @@ console.error("Error registering user:", error);
                     <input
                       type="text"
                       placeholder="Enter Username"
-                      onChange={(e) => setUsername(e.target.value)}
+                      id="username"
+                      name="username"
+                      value={user.username}
+                      onChange={handleInput}
+                      autoComplete="off"
                       required
                     />
                   </div>
@@ -525,13 +571,16 @@ console.error("Error registering user:", error);
                     <input
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter Password"
-                      onChange={(e) => setPassword(e.target.value)}
+                      id="password"
+                      name="password"
+                      value={user.password}
+                      onChange={handleInput}
+                      autoComplete="off"
                       required
                     />
                     <i
-                      className={`far ${
-                        showPassword ? "fa-eye" : "fa-eye-slash"
-                      }`}
+                      className={`far ${showPassword ? "fa-eye" : "fa-eye-slash"
+                        }`}
                       onClick={() => setShowPassword(!showPassword)}
                       style={{
                         position: "absolute",
@@ -546,13 +595,16 @@ console.error("Error registering user:", error);
                     <input
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="Enter Confirm Password"
-                      onChange={(e) => setConfPassword(e.target.value)}
+                      id="confPassword"
+                      name="confPassword"
+                      value={user.confPassword}
+                      onChange={handleInput}
+                      autoComplete="off"
                       required
                     />
                     <i
-                      className={`far ${
-                        showConfirmPassword ? "fa-eye" : "fa-eye-slash"
-                      }`}
+                      className={`far ${showConfirmPassword ? "fa-eye" : "fa-eye-slash"
+                        }`}
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
@@ -565,12 +617,9 @@ console.error("Error registering user:", error);
                     ></i>
                   </div>
                 </div>
-                <div className="buttons">
+                <div className="buttons" type="submit">
                   <button
                     className="nextBtn"
-                    onClick={() => {
-                      handleSubmit();
-                    }}
                   >
                     <span className="btnText">Submit</span>
                     <i className="uil uil-navigator" />
@@ -580,18 +629,6 @@ console.error("Error registering user:", error);
             </div>
           </div>
         </form>
-        <div
-          id="customAlert"
-          className="custom-alert"
-          style={{ display: "none" }}
-        >
-          <div className="custom-alert-content">
-            <span className="custom-alert-closebtn" onclick="closeAlert()">
-              ×
-            </span>
-            <p>Please fill in all required fields.</p>
-          </div>
-        </div>
       </div>
     </div>
   );

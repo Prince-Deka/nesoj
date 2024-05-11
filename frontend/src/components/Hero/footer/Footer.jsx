@@ -9,18 +9,18 @@ const Footer = () => {
         <div className="home-footer-content">
           <div className="social-icons">
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-facebook"></i>
+            <i className="fa-brands fa-facebook"></i>
             </a>
             <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-twitter"></i>
+            <i className="fa-brands fa-twitter"></i>
             </a>
             <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-instagram"></i>
             </a>
           </div>
           <div className="footer-links">
-            <a href="/privacy-policy">Privacy Policy <i class="fa-solid fa-lock"></i></a>
-            <a href="/terms-of-use">Terms of Use <i class="fa-solid fa-file-lines"></i></a>
+            <a href="/privacy-policy">Privacy Policy <i className="fa-solid fa-lock"></i></a>
+            <a href="/terms-of-use">Terms of Use <i className="fa-solid fa-file-lines"></i></a>
           </div>
         </div>
         <div className="home-copyright">

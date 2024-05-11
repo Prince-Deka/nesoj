@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'; // Assuming you are using react-router-dom for navigation
 import './Hero.css';
 
@@ -13,9 +14,32 @@ function Hero() {
         navigate('/login');
     };
 
-    // FOR TESTING PURPOSE
-    const handleProfile = () => {
-        navigate('/profile');
+
+    const [contact, setContact] = useState({
+        name:"",
+        email:"",
+        message:""
+    });
+
+    const handleInput = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setContact({...contact, [name]:value});
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try{
+        const response = await axios.post("http://localhost:3000/api/form/contact", contact, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log(JSON.stringify(response));
+    } catch (error) {
+      console.error("Message not sent: ", error);
+    }
     };
 
     return (
@@ -166,7 +190,7 @@ function Hero() {
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                 <h1 className='gallery-title'>Gallery</h1>
                 <ol className="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
@@ -220,18 +244,39 @@ function Hero() {
                         <div className="contact-right-side">
                             <div className="topic-text">Send us a message</div>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta facere id suscipit, ab recusandae sunt harum reiciendis pariatur quasi expedita.</p>
-                            <form action="#">
+                            <form onSubmit={handleSubmit}>
                                 <div className="contact-input-box">
-                                    <input type="text" placeholder='Enter your name'/>
+                                    <input type="text"
+                                    placeholder='Enter your name'
+                                    name = "name" 
+                                    id="name"
+                                    value={contact.name}
+                                    onChange={handleInput}
+                                    autoComplete='off'
+                                    required />
                                 </div>
                                 <div className="contact-input-box">
-                                    <input type="email" placeholder='Enter your Email'/>
+                                    <input type="email"
+                                    placeholder='Enter your Email'
+                                    name="email"
+                                    id="email"
+                                    value={contact.email}
+                                    onChange={handleInput}
+                                    autoComplete='off'
+                                    required/>
                                 </div>
                                 <div className="contact-input-box message-box">
-                                    <textarea></textarea>
+                                    <textarea
+                                    placeholder='Type your message here...'
+                                    name="message"
+                                    id="message"
+                                    value={contact.message}
+                                    onChange={handleInput}
+                                    autoComplete='off'
+                                    required ></textarea>
                                 </div>
                                 <div className="contact-button">
-                                    <input type="button" value={"Send Now"} onClick={handleProfile}/>
+                                    <button type='submit'>Send</button>
                                 </div>
                             </form>
                         </div>

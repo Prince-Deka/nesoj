@@ -1,44 +1,186 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
-    profilePic: { type: String, default: 'defaultPic.jpg' },
-    firstName: { type: String, required: true, trim: true },
-    middleName: { type: String, trim: true },
-    lastName: { type: String, required: true, trim: true },
-    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
-    gender: { type: String, enum: ['male', 'female', 'other'], required: true },
-    phone: { type: Number, required: true },
-    residence: { type: String, required: true },
-    date: { type: String, required: true },
-    idType: { type: String, enum: ['aadhaar', 'voter-id', 'passport', 'pan', 'driving-license', 'ration'], required: true },
-    idNumber: { type: String, required: true, unique: true },
-    address: { type: String, required: true },
-    cityTown: { type: String, required: true },
-    landmark: String,
-    stateName: { type: String, required: true },
-    district: { type: String, required: true },
-    pincode: { type: Number, required: true },
-    motherName: { type: String, required: true },
-    fatherName: { type: String, required: true },
-    noSiblings: Number,
-    uniName: { type: String, required: true },
-    regNo: { type: Number, required: true, unique: true },
-    course: { type: String, enum: ['B.Tech', 'MBA', 'BBA', 'M.Tech'], required: true },
-    specialization: { type: String, required: true },
-    gradYear: { type: Number, required: true },
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    firstName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    middleName: {
+        type: String,
+        trim: true
+    },
+    lastName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    gender: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    phone: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    residence: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    dateOfBirth: {
+        type: String,
+        required: true
+    },
+    idType: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    idNumber: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    address: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    cityTown: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    landmark: {
+        type: String,
+        trim: true
+    },
+    stateName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    district: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    pincode: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    motherName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    fatherName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    noSiblings: {
+        type: String,
+        required: true
+    },
+    uniName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    regNo: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    course: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    specialization: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    gradYear: {
+        type: String,
+        required: true
+    },
+    isAdmin: {
+        type: Boolean,
+        required: true,
+        default: false
+    }
 });
 
-// Middleware to hash password before saving if it's modified or new
-userSchema.pre('save', async function(next) {
-    if (!this.isModified('password')) return next();
-    this.password = await bcrypt.hash(this.password, 12);
-    next();
+// Secure the password with the bcryptjs library
+userSchema.pre('save', async function(next){
+    const user = this;
+    if(!user.isModified('password')){
+        next();
+    }
+    try{
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(user.password, salt);
+        user.password = hash;
+        next();
+    }catch(error){
+        next(error);
+    }
 });
 
-// Compile the schema into a Model.
-const User = mongoose.model('User', userSchema);
+// Compare the password
+userSchema.methods.comparePassword = async function(password){
+    try{
+        return bcrypt.compare(password, this.password);
+    }catch(error){
+        console.error(error);
+    }
+}
 
+
+
+// json web token
+userSchema.methods.generateToken = async function(){
+    try{
+        return jwt.sign({
+            userId: this._id.toString(),
+            email: this.email,
+            isAdmin: this.isAdmin,
+        },
+        process.env.JWT_SECRET_KEY,{expiresIn: "30d"});
+    }catch(error){
+        console.error(error);
+    }
+};
+
+// define the model kla
+const User = new mongoose.model("User", userSchema);
 module.exports = User;
