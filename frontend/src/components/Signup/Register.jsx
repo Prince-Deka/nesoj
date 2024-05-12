@@ -1,9 +1,11 @@
 // Register.js
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./Register.css";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [profilePic, setProfilePic] = useState("");
   const [selectedFileId, setSelectedFileId] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -98,8 +100,11 @@ const Signup = () => {
           "Content-Type": "application/json",
         },
       });
-
-      console.log(JSON.stringify(response));
+      console.log("Response: ", response);
+      if(response.statusText==="Created"){
+        setUser({firstName: "",middleName: "",lastName: "",email: "",confEmail: "",gender: "",phone: "",confPhone: "",residence: "",dateOfBirth: "",idType: "",idNumber: "",address: "",cityTown: "",landmark: "",stateName: "",district: "",pincode: "",motherName: "",fatherName: "",noSiblings: "",uniName: "Lovely Professional University",regNo: "",course: "",specialization: "",gradYear: "",username: "",password: "",confPassword: ""});
+        navigate('/login'); // Navigate to login page
+      }
     } catch (error) {
       console.error("Registration error: ", error);
     }

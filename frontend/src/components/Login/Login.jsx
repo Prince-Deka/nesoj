@@ -30,34 +30,25 @@ const Login = () => {
         setShowAlert(false);
       }, 3000);
     } else {
-      // try {
-      //   const response = await fetch("https://nesojbackend.onrender.com/login", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       username: username,
-      //       password: password,
-      //     }),
-      //   });
-
-      //   if (response.ok) {
-      //     console.log("User registered successfully");
-      //     window.alert("Login Successful");
-      //     navigate("/landing");
-      //   } else {
-      //     console.error("Failed to login");
-      //   }
-      // } catch (error) {
-      //   console.error("Error login:", error);
-      // }
-      setAlert({ type: 'success', message: 'Login Successful, redirecting to home in 3 sec...' });
-      setShowAlert(true);
-      setTimeout(() => {
-        navigate("/homemain");
-        setShowAlert(false);
-      }, 3000);
+      try {
+        const response = await axios.post("http://localhost:3000/api/auth/login", user, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        console.log("login Form", response);
+        if (response.statusText === "OK") {
+          setUser({ username: "", password: "" });
+          setAlert({ type: 'success', message: 'Login Successful, redirecting to home in 3 sec...' });
+          setShowAlert(true);
+          setTimeout(() => {
+            navigate("/homemain");
+            setShowAlert(false);
+          }, 3000);
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
 
 
