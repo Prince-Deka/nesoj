@@ -33,10 +33,15 @@ function Hero() {
         const response = await axios.post("http://localhost:3000/api/form/contact", contact, {
         headers: {
           "Content-Type": "application/json",
-        },
+        }
       });
-
-      console.log(JSON.stringify(response));
+      if(response.status === 200) {
+        try {
+          setContact({name:"",email:"",message:""});
+        } catch (error) {
+            console.error('Error: ', error);
+        }
+    }
     } catch (error) {
       console.error("Message not sent: ", error);
     }
@@ -99,7 +104,7 @@ function Hero() {
                         <h2>Integrity, Prosperity and Excellence</h2>
                     </div>
                     <div className="join-us-div">
-                        <button className="join-us" onClick={handleClickSignup}>JOIN US</button>
+                        <button className="join-us" style={{marginTop: "20px"}} onClick={handleClickSignup}>JOIN US</button>
                     </div>
                 </div>
             </section>

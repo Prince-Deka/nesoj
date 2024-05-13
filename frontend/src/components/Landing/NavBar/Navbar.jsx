@@ -1,9 +1,12 @@
 import React from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
+import {useAuth} from '../../../store/auth';
+
 
 function Navbar() {
   const location = useLocation();
+  const user = useAuth().user;
 
   // Function to determine if a link should be active based on its path
   const isActive = (path) => {
@@ -17,8 +20,8 @@ function Navbar() {
         <div className="row">
           <div className="col-10">
             <div className="custom-button-outer-div">
-              <button className="btn btn-primary custom-button-navbar USERNAME">
-                USERNAME
+              <button className="btn btn-primary custom-button-navbar">
+              <Link to='/profile' className="navbar-userName-top">{user.userData?.firstName && user.userData.firstName}</Link>
               </button>
             </div>
           </div>
@@ -150,7 +153,7 @@ function Navbar() {
                   to="/state"
                   className={`nav-link ${isActive("/state") ? "active" : ""}`}
                 >
-                  STATE
+                  {user.userData?.stateName && user.userData.stateName}
                 </Link>
               </li>
             </ul>

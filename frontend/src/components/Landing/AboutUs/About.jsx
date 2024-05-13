@@ -7,9 +7,11 @@ import "./About.css";
 import Footer from '../Footer/Footer'
 import Card from '../../CardTemp/Card'
 import { Link, useLocation } from "react-router-dom";
+import {useAuth} from '../../../store/auth';
 
 
 function NextArrow(props) {
+  const user = useAuth();
   const { className, style, onClick } = props;
   return (
     <div

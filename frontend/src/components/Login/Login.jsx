@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
+import { useAuth } from "../../store/auth";
 
 const Login = () => {
   const navigate = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
   const [alert, setAlert] = useState({ type: '', message: '' });
+  const {storeTokenInLs} = useAuth();
 
   const [user, setUser] = useState({
     username: "",
@@ -38,6 +40,7 @@ const Login = () => {
         });
         console.log("login Form", response);
         if (response.statusText === "OK") {
+          storeTokenInLs(response.data.token);
           setUser({ username: "", password: "" });
           setAlert({ type: 'success', message: 'Login Successful, redirecting to home in 3 sec...' });
           setShowAlert(true);
@@ -94,7 +97,7 @@ const Login = () => {
                 <i className="fa-solid fa-user"></i>
               </span>
               <input
-                type="username"
+                type="text"
                 id="username"
                 name="username"
                 placeholder="Enter your username"

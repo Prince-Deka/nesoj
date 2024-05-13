@@ -120,3 +120,15 @@
   background-color: #f8f9fa;
   margin: 0;
 }
+
+.navbar-userName-top{
+  color: #e7e9e9;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+}
+
+.navbar-userName-top:hover{
+  color: #e7e9e9;
+  text-decoration: none;
+}

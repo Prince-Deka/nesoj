@@ -19,6 +19,7 @@ import NewDiscussion from './components/Landing/Forumn/NewDiscussion/NewDiscussi
 import OpenDiscussion from './components/Landing/Forumn/OpenDiscussion/OpenDiscussion'
 import Reset from './components/Login/Reset/Reset'
 import Error from './components/Error/Error'
+import Logout from './components/Logout/Logout'
 
 
 
@@ -47,10 +48,10 @@ function App() {
         <Route path="/openDiscussion" element={<OpenDiscussion />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="*" element={<Error />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
-
+    {/* In store/auth.jsx, remove the error from api(console.log('Error while getting user data', error);) and replace it with a toast message. */}
     </BrowserRouter>
-
 
   )
 }

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./Register.css";
+import { useAuth } from "../../store/auth";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
+  const {storeTokenInLs} = useAuth();
 
   const [user, setUser] = useState({
     firstName: "",
@@ -100,11 +102,15 @@ const Signup = () => {
           "Content-Type": "application/json",
         },
       });
-      console.log("Response: ", response);
-      if(response.statusText==="Created"){
-        setUser({firstName: "",middleName: "",lastName: "",email: "",confEmail: "",gender: "",phone: "",confPhone: "",residence: "",dateOfBirth: "",idType: "",idNumber: "",address: "",cityTown: "",landmark: "",stateName: "",district: "",pincode: "",motherName: "",fatherName: "",noSiblings: "",uniName: "Lovely Professional University",regNo: "",course: "",specialization: "",gradYear: "",username: "",password: "",confPassword: ""});
-        navigate('/login'); // Navigate to login page
-      }
+      if(response.status === 201) {
+        try {
+          storeTokenInLs(response.data.token);
+          setUser({firstName: "",middleName: "",lastName: "",email: "",confEmail: "",gender: "",phone: "",confPhone: "",residence: "",dateOfBirth: "",idType: "",idNumber: "",address: "",cityTown: "",landmark: "",stateName: "",district: "",pincode: "",motherName: "",fatherName: "",noSiblings: "",uniName: "Lovely Professional University",regNo: "",course: "",specialization: "",gradYear: "",username: "",password: "",confPassword: ""});
+          navigate('/login');
+        } catch (error) {
+            console.error('Error: ', error);
+        }
+    }
     } catch (error) {
       console.error("Registration error: ", error);
     }

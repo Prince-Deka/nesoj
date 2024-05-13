@@ -1,11 +1,15 @@
 
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom"// for navigating through react-router-dom;
+import { useNavigate, Link } from "react-router-dom"// for navigating through react-router-dom;
 import "./Profile.css";
 import Popup from './Popup/Popup';
+import {useAuth} from '../../store/auth';
 
 function Profile() {
   const [activeTab, setActiveTab] = useState("account");
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
 
   const menuItems = [
     { id: "account", text: "Account", iconClass: "fa-solid fa-circle-user" },
@@ -39,7 +43,7 @@ function Profile() {
                 <div className="account-edit">
                     <div className="account-input-container">
                         <label htmlFor="first-name">First Name</label>
-                        <input type="text" placeholder='First Name'/>
+                        <input type="text" placeholder='First Name' />
                     </div>
                     <div className="account-input-container">
                         <label htmlFor="middle-name">Middle Name</label>
@@ -348,8 +352,8 @@ function Profile() {
           <div className="profile-header">
             <img src="src/components/Signup/user_456212.png" alt="" className='profile-img'/>
             <div className="profile-text-contaimer">
-                <h1 className="profile-title">User Name</h1>
-                <p className="profile-email">user@user.org</p>
+                <h1 className="profile-title">{user.userData?.username && user.userData.username}</h1>
+                <p className="profile-email">{user.userData?.email && user.userData.email}</p>
             </div>
         </div>
         <div className="profile-menu">
@@ -364,9 +368,9 @@ function Profile() {
                 {item.text}
               </a>
             ))}
-            <a href="#" className='menu-link'>
+            <Link to="/logout" className='menu-link'>
               <i className='fa-solid fa-right-from-bracket menu-icon'></i>Logout
-            </a>
+            </Link>
           </div>
         </div>
 
