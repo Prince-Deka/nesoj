@@ -1,5 +1,6 @@
 import React, { createContext, useContext , useEffect, useState} from 'react';
 import axios from 'axios';
+import { set } from 'zod';
 
 export const AuthContext = createContext();
 
@@ -8,6 +9,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState({});
+    const [news, setNews] = useState([]);
 
     const storeTokenInLs = (serverToken) => {
         setToken(serverToken);
@@ -40,14 +42,28 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+
+    // to get the news data 
+    const getNews = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/api/data/news');
+            console.log(response.data);
+            setNews(response.data);
+        } catch (error) {
+            console.log('Error while getting news data', error);
+        }
+    };
+
+
     useEffect(() => {
+        getNews();
         userAuthentication();
     },[]);
 
 
     // --------------------------
     return (
-        <AuthContext.Provider value={{ storeTokenInLs, LogoutUser, user }}>
+        <AuthContext.Provider value={{ storeTokenInLs, LogoutUser, user, news }}>
             {children}
         </AuthContext.Provider>
     );

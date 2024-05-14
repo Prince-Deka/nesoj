@@ -7,7 +7,11 @@ const cors = require('cors');
 const connectDB = require("./utils/db");
 const contactRoute = require("./routes/contact-router");
 const authRoute = require("./routes/auth-router")
+const newsRoute = require("./routes/news-router");
+const photosRoute = require("./routes/gallery-router");
+const videosRoute = require("./routes/gallery-router");
 const errorMiddleware = require("./middlewares/error-middleware");
+
 
 // Handling Cors Policy
 const corsOptions = {
@@ -24,6 +28,8 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/form", contactRoute);
+app.use('/api/data', newsRoute, photosRoute, videosRoute);
+
 
 
 //Get
