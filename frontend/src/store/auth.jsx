@@ -9,7 +9,6 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState({});
-    const [news, setNews] = useState([]);
 
     const storeTokenInLs = (serverToken) => {
         setToken(serverToken);
@@ -28,42 +27,36 @@ export const AuthProvider = ({ children }) => {
     const userAuthentication = async () => {
         try {
             const response = await axios.get('http://localhost:3000/api/auth/user', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
             });
-    
             if (response.status === 200) {
-                const userData = response.data;
-                setUser(userData);
+              setUser(response.data);
             }
-        } catch (error) {
-            console.log('Error while getting user data', error);
+          } catch (error) {
+            // console.log('Error while getting user data', error);
         }
     };
 
 
-    // to get the news data 
-    const getNews = async () => {
-        try {
-            const response = await axios.get('http://localhost:3000/api/data/news');
-            console.log(response.data);
-            setNews(response.data);
-        } catch (error) {
-            console.log('Error while getting news data', error);
-        }
-    };
+    
+
+
+   
 
 
     useEffect(() => {
-        getNews();
-        userAuthentication();
-    },[]);
+        if (token) { // Only authenticate if there's a token
+            userAuthentication();
+        }
+      }, [token]); // Re-run effect when token changes
+    
 
 
     // --------------------------
     return (
-        <AuthContext.Provider value={{ storeTokenInLs, LogoutUser, user, news }}>
+        <AuthContext.Provider value={{ storeTokenInLs, LogoutUser, user }}>
             {children}
         </AuthContext.Provider>
     );

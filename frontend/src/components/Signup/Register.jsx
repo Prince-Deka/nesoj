@@ -103,16 +103,15 @@ const Signup = () => {
         },
       });
       if(response.status === 201) {
-        try {
-          storeTokenInLs(response.data.token);
-          setUser({firstName: "",middleName: "",lastName: "",email: "",confEmail: "",gender: "",phone: "",confPhone: "",residence: "",dateOfBirth: "",idType: "",idNumber: "",address: "",cityTown: "",landmark: "",stateName: "",district: "",pincode: "",motherName: "",fatherName: "",noSiblings: "",uniName: "Lovely Professional University",regNo: "",course: "",specialization: "",gradYear: "",username: "",password: "",confPassword: ""});
-          navigate('/login');
-        } catch (error) {
-            console.error('Error: ', error);
-        }
-    }
+        storeTokenInLs(response.data.token);
+        setUser({firstName: "",middleName: "",lastName: "",email: "",confEmail: "",gender: "",phone: "",confPhone: "",residence: "",dateOfBirth: "",idType: "",idNumber: "",address: "",cityTown: "",landmark: "",stateName: "",district: "",pincode: "",motherName: "",fatherName: "",noSiblings: "",uniName: "Lovely Professional University",regNo: "",course: "",specialization: "",gradYear: "",username: "",password: "",confPassword: ""});
+        navigate('/login');
+      }else{
+        alert("Not a valid registration");
+      }
     } catch (error) {
-      console.error("Registration error: ", error);
+      const error_msg = error.response.data;
+      console.log("Registration Error: ", error_msg.extraDetails?error_msg.extraDetails:error_msg.message)
     }
   };
 
@@ -311,7 +310,7 @@ const Signup = () => {
                     onChange={handleInput}
                     required
                   >
-                    <option value="default">--Select ID Type--</option>
+                    <option value="">--Select ID Type--</option>
                     <option value="aadhaar">Aadhaar Card</option>
                     <option value="voter-id">Voter ID Card</option>
                     <option value="passport">Indian Passport</option>
@@ -397,7 +396,7 @@ const Signup = () => {
                     onChange={handleInput}
                     required
                   >
-                    <option value="default">--Select State--</option>
+                    <option value="">--Select State--</option>
                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                     <option value="Assam">Assam</option>
                     <option value="Nagaland">Nagaland</option>
@@ -520,7 +519,7 @@ const Signup = () => {
                       onChange={handleInput}
                       required
                     >
-                      <option value="default">--Select Course--</option>
+                      <option value="">--Select Course--</option>
                       <option value="btech">B.Tech</option>
                       <option value="mba">MBA</option>
                       <option value="bba">BBA</option>

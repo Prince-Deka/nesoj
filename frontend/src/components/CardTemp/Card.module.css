@@ -220,3 +220,10 @@
         background-position: 0% 50%;
     }
 }
+
+.cardsContainer .card footer p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}

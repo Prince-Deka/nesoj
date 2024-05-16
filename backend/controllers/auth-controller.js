@@ -1,5 +1,6 @@
 const User = require("../models/userSchema");
 const bcrypt = require("bcryptjs");
+const jwt = require ("jsonwebtoken");
 
 const home = async (req, res) => {
     try {
@@ -13,13 +14,19 @@ const home = async (req, res) => {
 
 const register = async (req, res, next) => { // Add next as a parameter
     try {
-        console.log(req.body);
         const { 
             firstName, middleName, lastName, email, gender, phone, residence, dateOfBirth, idType, idNumber, address, cityTown, landmark, stateName, district, pincode, motherName, fatherName, noSiblings, uniName, regNo, course, specialization, gradYear,
              username, password } = req.body;
-        const userExist = await User.findOne({ username });
-        if (userExist) {
-            return res.status(400).json({ message: "User already exists" });
+             const existingUser = await User.findOne({
+                $or: [{ email }, { phone }, { username }]
+            });
+        if (existingUser) {
+            let duplicateField = "";
+            if (existingUser.email === email) duplicateField = "Email";
+            if (existingUser.phone === phone) duplicateField = "Phone";
+            if (existingUser.username === username) duplicateField = "Username";
+            
+            return res.status(400).json({ message: `${duplicateField} is already registered` });
         }
 
         // // HASH THE PASSWORD
@@ -60,7 +67,7 @@ const login = async(req,res,next) => {
                 userId: UserExist._id.toString()
             });
         }else{
-            const error = new Error("Invalid credentials");
+            const error = new Error("Invalid credentials. Please check your username and password."); 
             error.status = 401;
             throw error;
         }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import Navbar from "../NavBar/Navbar";
 import "slick-carousel/slick/slick.css";
@@ -7,7 +7,8 @@ import "./About.css";
 import Footer from '../Footer/Footer'
 import Card from '../../CardTemp/Card'
 import { Link, useLocation } from "react-router-dom";
-import {useAuth} from '../../../store/auth';
+import { useAuth } from '../../../store/auth';
+import axios from 'axios';
 
 
 function NextArrow(props) {
@@ -29,7 +30,7 @@ function PrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "#fff", borderRadius: "50%"}}
+      style={{ ...style, display: "block", background: "#fff", borderRadius: "50%" }}
       onClick={onClick}
     >
       <i className="fa fa-chevron-left" style={{ color: "#0ac5ab", fontSize: "30px" }}></i>
@@ -77,15 +78,31 @@ export default function About() {
   };
 
   const items = [
-    { id: 1, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Arunachal Students\' Club Jalandhar' },
-    { id: 2, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg' , name: 'Assam Students\' Union Jalandhar' },
-    { id: 3, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Jalandhar Mizo Zirlai Pawl' },
-    { id: 4, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Manipur Students\' Union Phagwara' },
-    { id: 5, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Meghalaya Students\' Union Jalandhar' },
-    { id: 6, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Naga Students\' Union Phagwara' },
-    { id: 7, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Sikkimese Gorkha Students\' Union Jalandhar' },
-    { id: 8, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg' , name: 'Tripura Students\' Association Jalandhar' }
+    { id: 1, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Arunachal Students\' Club Jalandhar' },
+    { id: 2, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg', name: 'Assam Students\' Union Jalandhar' },
+    { id: 3, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Jalandhar Mizo Zirlai Pawl' },
+    { id: 4, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Manipur Students\' Union Phagwara' },
+    { id: 5, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Meghalaya Students\' Union Jalandhar' },
+    { id: 6, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Naga Students\' Union Phagwara' },
+    { id: 7, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Sikkimese Gorkha Students\' Union Jalandhar' },
+    { id: 8, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Tripura Students\' Association Jalandhar' }
   ];
+
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/data/nesojExecutives');
+        console.log('Members data:', response.data);
+        setMembers(response.data);
+      } catch (error) {
+        console.log('Error while getting members data', error);
+      }
+    };
+
+    fetchMembers();
+  }, []); // Empty dependency array to ensure this runs only once when the component mounts
 
 
   return (
@@ -101,10 +118,20 @@ export default function About() {
         <h2 className="font-weight-light">Executive Board 2023-34</h2>
         <div className="row mx-auto my-auto">
           <Slider {...settings}>
-            {items.map(item => (
-              <div key={item.id} className="px-3">
+            {members.map(member => (
+              <div key={member._id} className="px-3">
                 <div className="card card-body cards-aboutUs-Landing">
-                  <Card name={item.name}/>
+                  <Card
+                    name={member.name}
+                    role={member.role}
+                    whatsApp={member.whatsApp}
+                    email={member.email}
+                    linkedIn={member.linkedIn}
+                    facebook={member.facebook}
+                    instagram={member.instagram}
+                    twitter={member.twitter}
+                    imgUrl={member.imgUrl} // Assuming you have imgUrl in your data
+                  />
                 </div>
               </div>
             ))}
@@ -123,7 +150,7 @@ export default function About() {
                   <img className="img-fluid StateLogo" src={item.src} alt={`Slide ${item.id}`} />
                   <div className="orgNameDiv"><p className="card-title OrgName">{item.name}</p></div>
                   <button className="custom-btn orgDetailsBtn">
-                    <Link  to={"/state"} state={{stateId: item.id}}><span>Read More</span></Link>
+                    <Link to={"/state"} state={{ stateId: item.id }}><span>Read More</span></Link>
                   </button>
                 </div>
               </div>

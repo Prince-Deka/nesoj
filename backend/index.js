@@ -11,6 +11,7 @@ const newsRoute = require("./routes/news-router");
 const photosRoute = require("./routes/gallery-router");
 const videosRoute = require("./routes/gallery-router");
 const errorMiddleware = require("./middlewares/error-middleware");
+const nesojExecutivesRoute = require("./routes/nesojExe-router");
 
 
 // Handling Cors Policy
@@ -28,7 +29,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/form", contactRoute);
-app.use('/api/data', newsRoute, photosRoute, videosRoute);
+app.use('/api/data', newsRoute, photosRoute, videosRoute, nesojExecutivesRoute);
 
 
 

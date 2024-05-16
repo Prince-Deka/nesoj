@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from "react-router-dom"// for navigating through react-router-dom;
 import "./Profile.css";
 import Popup from './Popup/Popup';
@@ -9,14 +9,27 @@ function Profile() {
   const [activeTab, setActiveTab] = useState("account");
   const navigate = useNavigate();
   const { user } = useAuth();
+  let menuItems = [];
+  const checkAdmin = user.userData?.isAdmin && user.userData.isAdmin;
 
-
-  const menuItems = [
+  const menuAdmin = [
     { id: "account", text: "Account", iconClass: "fa-solid fa-circle-user" },
     { id: "notifications", text: "Notifications", iconClass: "fa-solid fa-bell" },
     { id: "approvals", text: "Approvals", iconClass: "fa-solid fa-person-circle-check" },
     
   ];
+  const menuNonAdmin = [
+    { id: "account", text: "Account", iconClass: "fa-solid fa-circle-user" },
+    { id: "notifications", text: "Notifications", iconClass: "fa-solid fa-bell" },
+  ];
+
+
+  if (checkAdmin){
+    menuItems = menuAdmin;
+  }
+  else{
+    menuItems = menuNonAdmin;
+  }
 
   const [popupOpen, setPopupOpen] = useState(false);
 

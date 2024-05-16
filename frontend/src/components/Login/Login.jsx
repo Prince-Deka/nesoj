@@ -9,6 +9,7 @@ const Login = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [alert, setAlert] = useState({ type: '', message: '' });
   const {storeTokenInLs} = useAuth();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [user, setUser] = useState({
     username: "",
@@ -24,13 +25,14 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
-    if (!username || !password) {
+    const { username, password } = user;
+    if (username==="" || password==="") {
       setAlert({ type: 'warning', message: 'Both username and password must be filled out' });
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
+      return;
     } else {
       try {
         const response = await axios.post("http://localhost:3000/api/auth/login", user, {
@@ -38,8 +40,7 @@ const Login = () => {
             "Content-Type": "application/json",
           },
         });
-        console.log("login Form", response);
-        if (response.statusText === "OK") {
+        if (response.status === 200){
           storeTokenInLs(response.data.token);
           setUser({ username: "", password: "" });
           setAlert({ type: 'success', message: 'Login Successful, redirecting to home in 3 sec...' });
@@ -50,11 +51,14 @@ const Login = () => {
           }, 3000);
         }
       } catch (error) {
-        console.error(error);
-      }
+        const error_msg = error.response.data;
+          setAlert({ type: 'warning', message: `${error_msg.extraDetails?error_msg.extraDetails:error_msg.message}` });
+          setShowAlert(true);
+          setTimeout(() => {
+            setShowAlert(false);
+          }, 3000);
     }
-
-
+    }
   };
 
   useEffect(() => {
@@ -103,7 +107,6 @@ const Login = () => {
                 placeholder="Enter your username"
                 value={user.username}
                 onChange={handleInput}
-                required
               />
             </div>
             <div className="field-input">
@@ -117,7 +120,6 @@ const Login = () => {
                 placeholder="Enter your password"
                 value={user.password}
                 onChange={handleInput}
-                required
               />
               <span className="toggle-password">
                 <i className="fa-solid fa-eye"></i>

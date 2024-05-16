@@ -137,6 +137,11 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    isApproved: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 
