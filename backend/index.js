@@ -42,8 +42,6 @@ app.use('/api/admin', adminRoute);
 // For post
 app.use('/api', postRoutes);
 
-
-
 //Get
 
 app.use(errorMiddleware);
