@@ -10,8 +10,11 @@ const authRoute = require("./routes/auth-router")
 const newsRoute = require("./routes/news-router");
 const photosRoute = require("./routes/gallery-router");
 const videosRoute = require("./routes/gallery-router");
+const adminRoute = require("./routes/admin-router");
+const postRoutes = require("./routes/post-router");
 const errorMiddleware = require("./middlewares/error-middleware");
 const nesojExecutivesRoute = require("./routes/nesojExe-router");
+const bodyParser = require('body-parser');
 
 
 // Handling Cors Policy
@@ -21,7 +24,9 @@ const corsOptions = {
     credentials: true,
 };
 app.use(cors(corsOptions));
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 app.use(express.json());
@@ -30,6 +35,12 @@ app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/form", contactRoute);
 app.use('/api/data', newsRoute, photosRoute, videosRoute, nesojExecutivesRoute);
+
+//For admin
+app.use('/api/admin', adminRoute);
+
+// For post
+app.use('/api', postRoutes);
 
 
 

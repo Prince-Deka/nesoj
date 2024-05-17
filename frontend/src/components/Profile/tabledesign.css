@@ -1,0 +1,157 @@
+.approvals {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .approvals-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .approvals-title {
+    color: #343a40;
+  }
+  
+  .approvals-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    background-color: #0ac5ab;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 0;
+  }
+  
+  .btn {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left; 
+    padding: 10px 15px;
+  }
+
+  .btn:focus{
+    box-shadow: none;
+  }
+
+  .btn:hover {
+    background-color: #0ac5ab;
+    color: #ffffff;
+  }
+  
+  .approval-table {
+    width: 100%;
+  }
+
+  .approval-table tbody tr{
+    background-color: #0ac5ab !important;
+    padding: 0 20px;
+  }
+  
+  .app-item-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .app-col-table-data {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .app-user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+  }
+  
+  .details-tab {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+  }
+  
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .detail-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #ececec;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .detail-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .detail-value {
+    font-size: 14px;
+  }
+  
+  .button-container-approve {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .remark-box {
+    flex: 1;
+  }
+  
+  .remark-textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .button-wrapper-approve {
+    margin-left: 10px;
+  }
+  
+  .approve-button,
+  .reject-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  .approve-button {
+    background-color: #28a745;
+  }
+  
+  .reject-button {
+    background-color: #dc3545;
+  }
+  

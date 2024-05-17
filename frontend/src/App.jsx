@@ -20,6 +20,8 @@ import OpenDiscussion from './components/Landing/Forumn/OpenDiscussion/OpenDiscu
 import Reset from './components/Login/Reset/Reset'
 import Error from './components/Error/Error'
 import Logout from './components/Logout/Logout'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -27,6 +29,8 @@ function App() {
 
 
   return (
+    <>
+    <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} /> {/* 👈 Renders at /app/ */}
@@ -52,7 +56,7 @@ function App() {
       </Routes>
     {/* In store/auth.jsx, remove the error from api(console.log('Error while getting user data', error);) and replace it with a toast message. */}
     </BrowserRouter>
-
+    </>
   )
 }
 
