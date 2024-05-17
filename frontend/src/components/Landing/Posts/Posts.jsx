@@ -6,14 +6,12 @@ import post from "./Post.module.css";
 import Popup from './CreatePostPopup/CreatePostPopup';
 import { useAuth } from '../../../store/auth';
 
-
 function Posts() {
   const [showPopup, setShowPopup] = useState(false);
   const [posts, setPosts] = useState([]);
   const { user } = useAuth();
-
   const checkAdmin = user.userData?.isAdmin && user.userData.isAdmin;
-
+  const checkAdmin = user.userData?.isAdmin && user.userData.isAdmin;
   useEffect(() => {
     fetchPosts();
   }, []);
