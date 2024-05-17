@@ -4,11 +4,14 @@ import Navbar from "../NavBar/Navbar";
 import Footer from "../Footer/Footer";
 import post from "./Post.module.css";
 import Popup from './CreatePostPopup/CreatePostPopup';
+import { useAuth } from '../../../store/auth';
 
 function Posts() {
   const [showPopup, setShowPopup] = useState(false);
   const [posts, setPosts] = useState([]);
+  const { user } = useAuth();
 
+  const checkAdmin = user.userData?.isAdmin && user.userData.isAdmin;
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -31,14 +34,14 @@ function Posts() {
   return (
     <div className={post.outerPost}>
       <Navbar />
-      {showPopup && (
+      { showPopup  && (
         <div className={post.PopupOnPost} onClick={handleOutsideClick}>
           <button className={post.closeButton} onClick={() => setShowPopup(false)}>&#x2715;</button>
           <Popup onClose={() => { setShowPopup(false); fetchPosts(); }} />
         </div>
       )}
       <div className={post.postContainer}>
-        <div className={post.createPost}>
+        {checkAdmin && (<div className={post.createPost}>
           <div className={post.firstRowPost}>
             <img src="assets/nesoj.png" alt="" />
             <button className={post.createBtn} onClick={() => setShowPopup(true)}>
@@ -46,7 +49,7 @@ function Posts() {
               <a href="#"><i className="fa-regular fa-image"></i></a>
             </button>
           </div>
-        </div>
+        </div>)}
         {posts.map((postItem) => (
           <div className={post.postDiv} key={postItem._id}>
             <div className={post.posterInfo}>
