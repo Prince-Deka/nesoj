@@ -11,6 +11,8 @@ const photosRoute = require("./routes/gallery-router");
 const videosRoute = require("./routes/gallery-router");
 const adminRoute = require("./routes/admin-router");
 const postRoutes = require("./routes/post-router");
+const newsRoute = require("./routes/news-router");
+const stateDataRoute = require("./routes/stateData-router");
 const errorMiddleware = require("./middlewares/error-middleware");
 const nesojExecutivesRoute = require("./routes/nesojExe-router");
 const bodyParser = require('body-parser');
@@ -33,7 +35,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/form", contactRoute);
-app.use('/api/data', photosRoute, videosRoute, nesojExecutivesRoute);
+app.use('/api/data', newsRoute, photosRoute, videosRoute, nesojExecutivesRoute);
 
 //For admin
 app.use('/api/admin', adminRoute);
@@ -41,7 +43,8 @@ app.use('/api/admin', adminRoute);
 // For post
 app.use('/api', postRoutes);
 
-//Get
+// To fetch State Data
+app.use('/api', stateDataRoute);
 
 app.use(errorMiddleware);
 // Start the server on port 3000

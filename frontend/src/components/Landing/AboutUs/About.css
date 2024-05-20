@@ -100,6 +100,10 @@ transform: translateX(0);
   align-items: center;
 }
 
+.heading-about{
+  text-align: center;
+}
+
 .orgDetailsBtn{
   width: 130px;
   height: 40px;

@@ -1,5 +1,5 @@
 // Register.js
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./Register.css";
@@ -65,6 +65,7 @@ const Signup = () => {
     reader.onloadend = () => {
       setBgImage(`url(${reader.result})`);
     };
+    setProfilePic(file);
 
     if (file) {
       reader.readAsDataURL(file);
@@ -87,33 +88,47 @@ const Signup = () => {
     }
 
     setSelectedFileId(file);
-    setProfilePic(file);
   };
+  
 
   // Submit form using Axios
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
+
     const { confEmail, confPhone, confPassword, ...userDataToSend } = user;
     
+    const formData = new FormData();
+
+    Object.keys(userDataToSend).forEach(key => {
+      formData.append(key, userDataToSend[key]);
+    });
+
+    if (profilePic) formData.append("profilePic", profilePic);
+    if (selectedFileId) formData.append("idFile", selectedFileId);
+
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
+
     try {
-      // Make API request with Axios
-      const response = await axios.post("http://localhost:3000/api/auth/register", userDataToSend, {
+      const response = await axios.post("http://localhost:3000/api/auth/register", formData, {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'multipart/form-data',
         },
       });
-      if(response.status === 201) {
+      if (response.status === 201) {
         storeTokenInLs(response.data.token);
-        setUser({firstName: "",middleName: "",lastName: "",email: "",confEmail: "",gender: "",phone: "",confPhone: "",residence: "",dateOfBirth: "",idType: "",idNumber: "",address: "",cityTown: "",landmark: "",stateName: "",district: "",pincode: "",motherName: "",fatherName: "",noSiblings: "",uniName: "Lovely Professional University",regNo: "",course: "",specialization: "",gradYear: "",username: "",password: "",confPassword: ""});
+        setUser({
+          firstName: "", middleName: "", lastName: "", email: "", confEmail: "", gender: "", phone: "", confPhone: "", residence: "", dateOfBirth: "", idType: "", idNumber: "", address: "", cityTown: "", landmark: "", stateName: "", district: "", pincode: "", motherName: "", fatherName: "", noSiblings: "", uniName: "Lovely Professional University", regNo: "", course: "", specialization: "", gradYear: "", username: "", password: "", confPassword: ""
+        });
         navigate('/login');
-      }else{
+      } else {
         alert("Not a valid registration");
       }
     } catch (error) {
-      const error_msg = error.response.data;
-      console.log("Registration Error: ", error_msg.extraDetails?error_msg.extraDetails:error_msg.message)
+      console.log("Registration Error:", error.response?.data || error.message); // Detailed error message
     }
-  };
+  }, [user, profilePic, selectedFileId, storeTokenInLs, navigate]);
 
 
 

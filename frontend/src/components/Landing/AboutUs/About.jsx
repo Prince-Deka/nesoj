@@ -94,7 +94,6 @@ export default function About() {
     const fetchMembers = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/data/nesojExecutives');
-        console.log('Members data:', response.data);
         setMembers(response.data);
       } catch (error) {
         console.log('Error while getting members data', error);
@@ -115,7 +114,7 @@ export default function About() {
       </div>
 
       <div className="secondRowAbout container text-center my-3">
-        <h2 className="font-weight-light">Executive Board 2023-34</h2>
+        <h2 className="font-weight-light heading-about">Executive Board 2023-24</h2>
         <div className="row mx-auto my-auto">
           <Slider {...settings}>
             {members.map(member => (
@@ -130,7 +129,7 @@ export default function About() {
                     facebook={member.facebook}
                     instagram={member.instagram}
                     twitter={member.twitter}
-                    imgUrl={member.imgUrl} // Assuming you have imgUrl in your data
+                    imgUrl={member.imageURL}
                   />
                 </div>
               </div>
@@ -141,7 +140,7 @@ export default function About() {
 
 
       <div className="thirdRowAbout container text-center my-3">
-        <h2 className="font-weight-light">State Organization Under NESOJ</h2>
+        <h2 className="font-weight-light heading-about">State Organization Under NESOJ</h2>
         <div className="row mx-auto my-auto">
           <Slider {...settings}>
             {items.map(item => (

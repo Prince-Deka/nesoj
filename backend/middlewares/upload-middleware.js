@@ -1,7 +1,6 @@
 const multer = require('multer');
-const { BlobServiceClient, generateBlobSASQueryParameters, BlobSASPermissions, StorageSharedKeyCredential } = require('@azure/storage-blob');
+const { BlobServiceClient } = require('@azure/storage-blob');
 const { v1: uuidv1 } = require('uuid');
-const dayjs = require('dayjs');
 require('dotenv').config();
 
 const {
@@ -10,13 +9,13 @@ const {
   AZURE_STORAGE_CONTAINER_NAME,
 } = process.env;
 
-// Configure multer storage
+// Configure multer storage - storing files in memory
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 const uploadToAzure = async (req, res, next) => {
   if (!req.file) {
-    return next();
+    return next(); // No file part of the request, continue
   }
 
   const blobServiceClient = BlobServiceClient.fromConnectionString(
@@ -25,24 +24,17 @@ const uploadToAzure = async (req, res, next) => {
   const containerClient = blobServiceClient.getContainerClient(AZURE_STORAGE_CONTAINER_NAME);
 
   try {
-    // Create the container if it doesn't exist
-    await containerClient.createIfNotExists();
+    // Ensure the container exists
+    await containerClient.createIfNotExists({
+      access: 'blob' // Public read access
+    });
 
     const blobName = `images/${uuidv1()}-${req.file.originalname}`;
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-
+    // Upload the file - consider using uploadStream for larger files
     await blockBlobClient.upload(req.file.buffer, req.file.size);
-
-    // Generate a SAS token for the uploaded blob
-    const sharedKeyCredential = new StorageSharedKeyCredential(AZURE_STORAGE_ACCOUNT_NAME, AZURE_STORAGE_ACCOUNT_KEY);
-    const sasToken = generateBlobSASQueryParameters({
-      containerName: AZURE_STORAGE_CONTAINER_NAME,
-      blobName: blobName,
-      permissions: BlobSASPermissions.parse("r"), // Read permission
-      expiresOn: dayjs().add(1, 'day').toDate(), // Token expiry time
-    }, sharedKeyCredential).toString();
-
-    req.file.location = `${blockBlobClient.url}?${sasToken}`;
+    // Simplify the response to just return the URL of the blob
+    req.file.location = blockBlobClient.url;
     next();
   } catch (error) {
     console.error('Error uploading to Azure Blob Storage:', error);

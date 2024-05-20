@@ -142,6 +142,14 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    profilePicUrl: {
+        type: String,
+        required: true,
+    },
+    idFileUrl:{
+        type: String,
+        required: true,
     }
 });
 

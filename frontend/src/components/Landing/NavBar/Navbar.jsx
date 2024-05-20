@@ -17,7 +17,7 @@ function Navbar() {
     <div className="custom-navbar-outer">
       {/* TOP NAVIGATION BAR */}
       <div className="container">
-        <div className="row">
+        <div className="row"> 
           <div className="col-10">
             <div className="custom-button-outer-div">
               <button className="btn btn-primary custom-button-navbar">

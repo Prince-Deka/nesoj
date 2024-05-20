@@ -9,10 +9,10 @@ function Card({ name, role, whatsApp, email, linkedIn, facebook, instagram, twit
         <div className={`${style.card} ${style.cardTwo}`}>
           <header>
             <div className={style.avatar}>
-              <img
-                src={imgUrl || "assets/Executives/ASUJ/PesidentASUJ.jpg"} // Dynamic image URL
-                alt={name}
-              />
+            <img
+              src={imgUrl === "" ? "assets/BlankProfile/BlankProfile.png" : imgUrl}
+              alt={name}
+            />
             </div>
           </header>
           <img className={style.watermark} src={nesojImage} alt="Watermark" />
@@ -22,7 +22,7 @@ function Card({ name, role, whatsApp, email, linkedIn, facebook, instagram, twit
           
           <div className={style.contacts}>
             <a
-              href={`https://wa.me/${whatsApp}`}
+              href={whatsApp}
               target="_blank"
               title="Direct connection on WhatsApp"
             >
