@@ -29,6 +29,9 @@ function Posts() {
       setShowPopup(false);
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={post.outerPost}>

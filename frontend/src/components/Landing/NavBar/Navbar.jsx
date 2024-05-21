@@ -21,7 +21,8 @@ function Navbar() {
           <div className="col-10">
             <div className="custom-button-outer-div">
               <button className="btn btn-primary custom-button-navbar">
-              <Link to='/profile' className="navbar-userName-top">{user.userData?.firstName && user.userData.firstName}</Link>
+                <img src={user.userData?.profilePicUrl && user.userData.profilePicUrl} alt="" />
+                <Link to='/profile' className="navbar-userName-top"><span>&nbsp;&nbsp;</span>{user.userData?.firstName && user.userData.firstName}</Link>
               </button>
             </div>
           </div>

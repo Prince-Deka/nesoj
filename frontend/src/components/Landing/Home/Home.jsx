@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import Navbar from "../NavBar/Navbar";
 import "./Home.css";
 import Footer from "../Footer/Footer";
@@ -226,29 +227,33 @@ function Home() {
         <div class="post-title title-home">
           <i class="fa-solid fa-plus"></i>Post
         </div>
+
         <div class="third-custom-column">
           <div class="container-third-row post-cont">
             <div class="post-name">
-              <a href="#">
+              <Link to='/posts'>
                 <div class="post-container">
                   <img src="/assets/post.JPG" alt="" />
                 </div>
                 <div class="post-overlay">POST</div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
+
       </div>
 
       {/* GALLERY */}
-      <div class="gallery-title-home title-home">
-        <i class="fa-regular fa-images"></i>Gallery
-      </div>
-      <div class="gallery-cont">
-        <a href="">
-          <div class="gallery-overlay">GALLERY</div>
-        </a>
-      </div>
+      <Link to='/gallery'>
+        <div class="gallery-title-home title-home">
+          <i class="fa-regular fa-images"></i>Gallery
+        </div>
+        <div class="gallery-cont">
+          <a href="">
+            <div class="gallery-overlay">GALLERY</div>
+          </a>
+        </div>
+      </Link>
 
       {/* IMPORT FOOTER */}
       <Footer />

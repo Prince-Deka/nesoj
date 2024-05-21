@@ -12,6 +12,7 @@ function Profile() {
   const { user } = useAuth();
   let menuItems = [];
   const checkAdmin = user.userData?.isAdmin && user.userData.isAdmin;
+  console.log(user);
 
   const menuAdmin = [
     { id: "account", text: "Account", iconClass: "fa-solid fa-circle-user" },
@@ -282,13 +283,19 @@ function Profile() {
         return <div>Content not found!</div>;
     }
   };
-
+  // "src/components/Signup/user_456212.png"
   return (
     <div className='profile-outer'>
+      <div className="home-btn-profile">
+        <Link to="/homemain" className='home-btn-link'>
+          <i className='fa-solid fa-home home-icon'> Home</i>
+        </Link>
+      </div>
       <div className="profile-container">
         <div className="profile">
           <div className="profile-header">
-            <img src="src/components/Signup/user_456212.png" alt="" className='profile-img' />
+            <img src={user.userData?.profilePicUrl
+              && user.userData.profilePicUrl} alt="" className='profile-img' />
             <div className="profile-text-contaimer">
               <h1 className="profile-title">{user.userData?.username && user.userData.username}</h1>
               <p className="profile-email">{user.userData?.email && user.userData.email}</p>

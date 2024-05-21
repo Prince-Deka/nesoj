@@ -1,71 +1,65 @@
 const multer = require('multer');
 const { BlobServiceClient } = require('@azure/storage-blob');
+const path = require('path');
+const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();
 
-const {
-  AZURE_STORAGE_ACCOUNT_NAME,
-  AZURE_STORAGE_ACCOUNT_KEY,
-  AZURE_STORAGE_CONTAINER_USER,
-} = process.env;
+const AZURE_STORAGE_CONNECTION_STRING = `DefaultEndpointsProtocol=https;AccountName=${process.env.AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${process.env.AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net`;
+const containerName = process.env.AZURE_STORAGE_CONTAINER_USER;
 
-const storage = multer.memoryStorage();
+const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+const containerClient = blobServiceClient.getContainerClient(containerName);
 
-const upload = multer({
-    storage: storage,
-    limits: { fileSize: 10 * 1024 * 1024 },
-    fileFilter: (req, file, cb) => {
-        const allowedTypes = ["image/jpeg", "image/jpg", "application/pdf"];
-        if (!allowedTypes.includes(file.mimetype)) {
-            const error = new Error("Invalid file type. Only JPG, JPEG, and PDF are allowed.");
-            error.status = 400;
-            return cb(error);
-        }
-        cb(null, true);
-    }
-});
-
-const blobServiceClient = BlobServiceClient.fromConnectionString(
-  `DefaultEndpointsProtocol=https;AccountName=${AZURE_STORAGE_ACCOUNT_NAME};AccountKey=${AZURE_STORAGE_ACCOUNT_KEY};EndpointSuffix=core.windows.net`
-);
-const containerClient = blobServiceClient.getContainerClient(AZURE_STORAGE_CONTAINER_USER);
-
-const uploadToBlob = async (buffer, blobName, mimetype) => {
-  const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-  await blockBlobClient.uploadData(buffer, {
-    blobHTTPHeaders: { blobContentType: mimetype },
-  });
-  return blockBlobClient.url;
+// Ensure the container exists or create it
+const ensureContainerExists = async () => {
+  const exists = await containerClient.exists();
+  if (!exists) {
+    await containerClient.create();
+    console.log(`Container ${containerName} created`);
+  }
 };
 
-const uploadToAzure = async (req, res, next) => {
-  if (!req.files) {
-    return next(); // No files part of the request, continue
+// Set up multer for file upload
+const upload = multer({ storage: multer.memoryStorage() });
+
+const uploadFilesToAzure = async (req, res, next) => {
+  if (!req.files) return next();
+
+  const uploads = [];
+
+  if (req.files.profilePic) {
+    const profilePicFile = req.files.profilePic[0];
+    uploads.push(uploadToAzure(profilePicFile));
+  }
+
+  if (req.files.idFile) {
+    const idFile = req.files.idFile[0];
+    uploads.push(uploadToAzure(idFile));
   }
 
   try {
-    // Process profilePic
-    if (req.files.profilePic) {
-      const profilePic = req.files.profilePic[0];
-      const profilePicBlobName = `user-data/${req.body.username}-PP.${profilePic.originalname.split('.').pop()}`;
-      const profilePicUrl = await uploadToBlob(profilePic.buffer, profilePicBlobName, profilePic.mimetype);
-      req.body.profilePicUrl = profilePicUrl;
-      console.log('Profile Pic URL:', profilePicUrl);
-    }
+    // Ensure the container exists before uploading files
+    await ensureContainerExists();
 
-    // Process idFile
-    if (req.files.idFile) {
-      const idFile = req.files.idFile[0];
-      const idFileBlobName = `user-data/${req.body.username}-ID.${idFile.originalname.split('.').pop()}`;
-      const idFileUrl = await uploadToBlob(idFile.buffer, idFileBlobName, idFile.mimetype);
-      req.body.idFileUrl = idFileUrl;
-      console.log('ID File URL:', idFileUrl);
-    }
-
+    const results = await Promise.all(uploads);
+    req.body.profilePicUrl = results[0] || '';
+    req.body.idFileUrl = results[1] || '';
     next();
   } catch (error) {
-    console.error('Error uploading to Azure Blob Storage:', error);
-    res.status(500).json({ message: 'Failed to upload files to Azure Blob Storage', error });
+    console.error('Error uploading to Azure:', error);
+    res.status(500).send('Error uploading files');
   }
 };
 
-module.exports = { upload, uploadToAzure };
+const uploadToAzure = async (file) => {
+  const extension = path.extname(file.originalname);
+  const blobName = `${uuidv4()}${extension}`;
+  const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+  await blockBlobClient.uploadData(file.buffer);
+  return blockBlobClient.url;
+};
+
+module.exports = {
+  upload,
+  uploadFilesToAzure
+};

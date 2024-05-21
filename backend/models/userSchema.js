@@ -133,6 +133,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    profilePicUrl: {
+        type: String,
+        trim: true
+    },
+    idFileUrl: {
+        type: String,
+        trim: true
+    },
     isAdmin: {
         type: Boolean,
         required: true,
@@ -142,14 +150,6 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
-    },
-    profilePicUrl: {
-        type: String,
-        required: true,
-    },
-    idFileUrl:{
-        type: String,
-        required: true,
     }
 });
 
@@ -178,8 +178,6 @@ userSchema.methods.comparePassword = async function(password){
     }
 }
 
-
-
 // json web token
 userSchema.methods.generateToken = async function(){
     try{
@@ -194,6 +192,6 @@ userSchema.methods.generateToken = async function(){
     }
 };
 
-// define the model kla
+// define the model
 const User = new mongoose.model("User", userSchema);
 module.exports = User;

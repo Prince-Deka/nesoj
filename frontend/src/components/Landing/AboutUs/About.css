@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fjord+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 /* ABOUT US in BRIEF */
 .topRowAbout{
-  height: 500px;
   margin: 30px;
   border: 2px solid #0ac5ab;
   border-top-left-radius: 20px;
@@ -193,4 +192,57 @@ transform: translateX(0);
 }
 .orgDetailsBtn span:hover:after {
   width: 100%;
+}
+
+
+
+
+/* About Us Content */
+
+.about-content {
+  display: flex;
+  align-items: center; /* Centers content vertically */
+  justify-content: start; /* Aligns content to the start horizontally */
+  gap: 20px; /* Adds space between the image and content */
+  padding: 20px; /* Adds padding around the container */
+  width: 75%;
+  margin: auto;
+}
+
+
+.establishment-img , .mission-img , .highlights-img, .value-img{
+  flex-basis: 40%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  
+}
+
+.establishment-about img ,.mission-img img, .highlights-img img, .value-img img{
+  max-width: 170px; /* Limits the image width */
+  height: auto; /* Maintains the aspect ratio */
+}
+
+.content-establishment, .mission-content, .highlights-content, .value-content {
+  flex-basis: 60%;
+  margin: 10px 30px;
+}
+
+.content-establishment h4 , .mission-content h4, .highlights-content h4, .value-content h4{
+  margin: 0;
+  font-size: 2em;
+  font-family: "Fjord One", serif;
+}
+
+.highlights-content ul{
+  padding-left: 0%;
+}
+
+.content-establishment p , .mission-content p, .highlights-content li, .value-content p{
+  margin-top: 10px;
+  font-size: 1em;
+  line-height: 1.5;
+  font-family: 'Lato', sans-serif;
+  list-style: none;
+  text-align: justify;
 }

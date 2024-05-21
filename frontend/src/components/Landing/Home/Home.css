@@ -275,25 +275,30 @@
 }
 .post-container {
   display: block;
+  overflow: hidden;
   width: 100%; /* Ensures the image container fills the link */
+}
+
+.post-container img{
+  object-fit: contain;
 }
 
 .post-overlay {
   position: absolute;
-  top: 50%; /* Centers vertically */
-  left: 50%; /* Centers horizontally */
-  transform: translate(-50%, -50%); /* Aligns the center of the element with the center of the parent */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
   visibility: hidden;
-  color: white; /* Text color */
+  color: white;
   font-family: 'Poppins', sans-serif;
   font-size: 48px;
   font-weight: 500;
-  text-align: center; /* Ensures the text is centered */
-  width: 100%; /* Match the width of the a tag */
-  pointer-events: none; /* Allows clicks to pass through to the link below */
+  text-align: center;
+  width: 100%;
+  pointer-events: none;
   z-index: 9999;
-  transition: opacity 0.3s ease-out, visibility 0.3s ease-out; /* Smooth transition for appearance */
+  transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
 }
 
 .post-name a {

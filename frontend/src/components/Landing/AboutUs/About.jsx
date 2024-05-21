@@ -109,8 +109,54 @@ export default function About() {
       <Navbar />
 
       <div className="topRowAbout">
-        <h2>About Us</h2>
-        <p>Here goes your long text about the organization...</p>
+        <div className="establishment-about about-content">
+          <div className="establishment-img">
+            <img src="assets/About/establishment.png" alt="" />
+          </div>
+          <div className="content-establishment">
+            <h4>Established in 2013</h4>
+            <p>
+              North-East Students’ Organization Jalandhar (NESOJ) is an inclusive community established in 2013 with a vision to promote integrity, prosperity, and excellence among the students residing in Jalandhar and Phagwara areas of Punjab, hailing from the eight northeastern states of India - Arunachal Pradesh, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Sikkim, and Tripura.
+            </p>
+          </div>
+        </div>
+
+        <div className="mission-about about-content">
+          <div className="mission-content">
+            <h4>Our Mission</h4>
+            <p>
+              To facilitate students from the northeastern states' academic, cultural, and social integration into the dynamic tapestry of Jalandhar and Phagwara, NESOJ is committed to establishing a supportive and welcoming environment.
+            </p>
+          </div>
+          <div className="mission-img">
+            <img src="assets/About/mission.png" alt="" />
+          </div>
+        </div>
+
+        <div className="highlights-about about-content">
+          <div className="highlights-img">
+            <img src="assets/About/highlights.png" alt="" />
+          </div>
+          <div className="highlights-content">
+            <h4>Annual Highlights</h4>
+            <ul>
+              <li><strong>NESOJ Sports Week:</strong> NESOJ Sports is an annual sporting event that brings together members of the northeastern community to celebrate camaraderie and sportsmanship. Through various sporting activities, NESOJ Sports promotes physical fitness, teamwork, and friendly competition.
+              </li>
+              <li><strong>NESOJ Fiesta:</strong> Northeast Fiesta is the flagship cultural extravaganza organized by NESOJ, showcasing the rich and diverse cultural heritage of Northeast India. Through music, dance, cuisine, and art, the Northeast Fiesta brings together members of the community to showcase their talents and traditions, fostering cultural exchange and appreciation.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="value-about about-content">
+        <div className="value-content">
+        <h4>Our Values</h4>
+        <p> NESOJ is dedicated to preserving the principles of cooperation, respect, and inclusivity. Regardless of one's background or identity, we want to foster a supportive and inspiring environment where each member feels appreciated and respected.</p>
+        </div>
+        <div className="value-img">
+          <img src="assets/About/value.png" alt="" />
+        </div>
+        </div>
+        
       </div>
 
       <div className="secondRowAbout container text-center my-3">

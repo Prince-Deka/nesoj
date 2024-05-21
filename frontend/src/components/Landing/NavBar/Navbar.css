@@ -23,11 +23,15 @@
 .custom-button-navbar {
   position: relative;
   left: 80%;
-  width: 250px; /* Set button width */
+  height: 40px;
+  width: 200px; /* Set button width */
   background-color: black !important; /* Set button color */
   border: none; /* Remove border */
   border-radius: 0 !important; /* Remove border radius */
   color: white; /* Set text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* LOGO-BAR */
@@ -125,10 +129,16 @@
   color: #e7e9e9;
   text-decoration: none;
   display: inline-block;
-  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .navbar-userName-top:hover{
   color: #e7e9e9;
   text-decoration: none;
+}
+
+.custom-button-navbar img{
+  height: 30px;
+  border-radius: 50%;
 }
