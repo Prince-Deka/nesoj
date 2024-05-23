@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Tac+One&display=swap');
+
+.custom-navbar-outer::before {
+  content: "";
+  display: block;
+  height: 8px; /* Height of the ribbon */
+  background-color: #0ac5ab; /* Ribbon color */
+  width: 100%; /* Use 100% instead of 100vw */
+  position: fixed; /* Fixed at the top */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it's above most elements */
+}
+
+.custom-navbar-outer {
+  padding-top: 10px; /* Make space for the ribbon */
+}
+
+.custom-button-outer-div {
+  position: relative;
+}
+
+.custom-button-navbar {
+  position: relative;
+  left: 80%;
+  height: 40px;
+  width: 200px; /* Set button width */
+  background-color: black !important; /* Set button color */
+  border: none; /* Remove border */
+  border-radius: 0 !important; /* Remove border radius */
+  color: white; /* Set text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* LOGO-BAR */
+
+.custom-logo-bar {
+  height: 150px; /* Set the height of the navbar */
+  background-color: white !important;
+}
+
+.navbar-custom-logo-div{
+    margin-left: 15%;
+    height: 100%;
+    background-color: white;
+}
+
+.custom-logo-click {
+  display: flex; /* Enables Flexbox */
+  align-items: center; /* Vertically centers the flex items (logo and text) */
+  gap: 10px; /* Optional: Adds some space between the logo and the text */
+  height: 100%;
+}
+
+.custom-logo-click img {
+  height: 100%; /* Adjusts the height of the image to fit the navbar height */
+}
+
+
+.custom-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically centers the text content */
+}
+
+.custom-neso, .custom-jal {
+  margin: 0; /* Removes default margins from span elements if necessary */
+}
+
+.custom-neso {
+  font-family: "Tac One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #0ac5ab;
+  font-size: 40px;
+  line-height: 25px;
+}
+
+.custom-link-bar {
+  background-color: #e7e9e9;
+  height: 40px;
+}
+
+.custom-link-bar .nav-link {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  width: 100%; /* Ensure it takes up the full width */
+}
+
+.custom-link-bar .navbar-nav span {
+  width: 2px;
+  background-color: white;
+}
+
+.custom-link-bar .nav-link {
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+
+.custom-link-bar .nav-link.active, .custom-link-bar .nav-item.active {
+  background-color: black !important; /* Black background color for active tab */
+  color: white !important; /* White text color for active tab */
+  border-radius: 0px;
+}
+
+.custom-link-bar .nav-link:hover, .custom-link-bar .nav-item:hover {
+  background-color: grey !important; /* Grey background color for hovered tab */
+  color: white !important; /* White text color for hovered tab */
+  border-radius: 0px;
+}
+
+/* Add this CSS to your existing stylesheet */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+.Gallery-dropdown-navbar {
+  border-radius: 0;
+  border: none;
+  background-color: #f8f9fa;
+  margin: 0;
+}
+
+.navbar-userName-top{
+  color: #e7e9e9;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.navbar-userName-top:hover{
+  color: #e7e9e9;
+  text-decoration: none;
+}
+
+.custom-button-navbar img{
+  height: 30px;
+  border-radius: 50%;
+}

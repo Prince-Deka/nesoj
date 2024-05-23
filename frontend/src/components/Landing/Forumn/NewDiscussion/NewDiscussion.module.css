@@ -1,0 +1,125 @@
+
+
+/* Manipulate row should take full width */
+.manupulateButton {
+    display: flex;
+    justify-content: space-between; /* Ensures items are spaced out to the container's edges */
+    align-items: center;            /* Aligns items vertically in the center */
+    margin-bottom: 20px;            /* Space below the manipulate row */
+}
+
+.switchContainer {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.switchContainer label {
+    margin: 0;
+    margin-left: 5px;               /* Space between text and label */
+}
+
+.manupulateButton .magnify,
+.manupulateButton .close {
+    margin: 0 10px;
+}
+
+.rightIcons {
+    display: flex;
+    gap: 10px;                      /* Space between the magnify and close icons */
+}
+
+.manupulateButton .magnify,
+.manupulateButton .close {
+    cursor: pointer;               /* Indicates clickable items */
+}
+
+.openComposer {
+    margin: 20px 30px;
+    padding: 15px;                  /* Padding inside the container */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    grid-template-rows: 15px;
+    min-height: 500px;      /* Minimum height of the container */
+    max-height: 60vh;
+    overflow: hidden;                      /* Space between sections */
+}
+
+.editorCont {
+    display: flex;
+    gap: 10px;                      /* Gap between editor and preview */
+}
+
+.editorCont .textAreaColumn,
+.editorCont .previewColumn {
+    flex: 1;                        /* Both take equal width */
+    min-width: 0;                   /* Prevent overflow */
+}
+
+.textAreaColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;                      /* Space between form elements */
+}
+
+.textAreaColumn form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.textAreaColumn form > *:not(.richTextEditorRow) {
+    height: 40px;
+}
+
+.textAreaColumn input[type="text"] {
+    width: 100%;                    /* Full-width input field */
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.textAreaColumn form .selectContainer {
+    display: flex;                  /* Makes children (selects) line up in a row */
+    gap: 10px;                      /* Gap between two select elements */
+    width: 100%;               /* Full width to contain both select elements */
+    margin-bottom: 10px;
+}
+
+.selectContainer select{
+    padding: 0 10px;
+    height: 100% !important;
+    flex: 1;
+    -webkit-appearance: none; /* Remove default styling on select */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2212%22%20height%3D%227%22%20viewBox%3D%220%200%2012%207%22%20fill%3D%22none%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M1%201L6%206L11%201%22%20stroke%3D%22%23333%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Position for arrow icon */
+    background-color: #fff; /* Background color */
+}
+
+.richTextEditorRow {
+    flex: 1;  /* Takes up all available space */
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 0;  /* Necessary for Firefox to allow shrinking below content size */
+}
+
+
+.submitButton {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submitButton .submitButtonDiscussion{
+    padding: 0 20px;
+    border: none;
+    background-color: rgb(169, 169, 169);
+    transition: background-color, color 0.3s ease;
+}
+
+.submitButton .submitButtonDiscussion:hover {
+    background-color: rgb(128, 128, 128);
+    color: #fff;
+}

@@ -1,25 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+.loginMainDiv{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    height: 100%;
 }
 
 
   .outer{
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #0ac5ab;
+    overflow-y: hidden;
 }
 
 .out-container{
     position: relative;
     max-width: 450px; /* ADJUSTED */
-    height: 470px;
+    height: auto;
     width: 100%;
     border-radius: 6px;
     padding: 30px;
@@ -42,9 +44,8 @@
 .out-container form{
     position: relative;
     margin-top: 16px;
-    min-height: 490px;
+    min-height: auto;
     overflow: hidden;
-    overflow-y: scroll;
 }
 
 .field-input{
@@ -122,3 +123,12 @@
 .signup-link a, .forgot-password a{
     text-decoration: none;
 }
+
+.loginAlert, .resetAlert
+    {
+        position: fixed;
+        top: 10px; /* Adjust as needed */
+        left: 50%; /* Move to the middle of the viewport */
+        transform: translateX(-50%); /* Shift back by half its own width */
+        z-index: 9999; /* High z-index to ensure it's on top */
+    }

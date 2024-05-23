@@ -1,0 +1,468 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+.profile-outer{
+    min-height: 100vh;
+}
+
+.home-btn-profile{
+    margin: 20px 50px;
+    margin-bottom: 0;
+    height: 40px;
+    display: grid;
+    justify-content: start;
+}
+
+.home-btn-profile .home-btn-link{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #0ac5ab;
+    width: 120px;
+    color: #fff;
+    height: 100%;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.profile-container{
+    display: flex;
+    margin: 20px 10px 0 10px;
+}
+
+.profile {
+    flex: 1;
+    margin-right: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 5px;
+    height: max-content;
+}
+
+
+.profile-header {
+    display: flex;
+    margin-left: 15px;
+}
+
+.profile-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.profile-text-contaimer{
+    line-height: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-title {
+    font-family: "Poppins", sans-serif;
+    color: #0ac5ab;
+    font-size: 20px;
+    margin: 10px 0 !important;
+}
+.profile-email {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+}
+
+.profile-menu{
+    margin: 0 20px;
+}
+
+.menu-link{
+    display: block;
+    text-decoration: none;
+    color: #768499;
+    font-family: 'Poppins',sans-serif;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.menu-icon{
+    margin-right: 10px;
+}
+
+.menu-link-active {
+    color: #fff !important;
+    background-color: #0ac5ab !important;
+}
+  
+
+.menu-link:hover{
+    background-color: #f1f5f9;
+    color: #333;
+    text-decoration: none;
+}
+
+
+
+/* ----------------Account Setttings CSS starts here----------------- */
+
+
+.account-form{
+    margin-left: 10px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    border-radius: 5px;
+    height: max-content;
+}
+
+.account-header, .notifications-header, .approvals-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #768499;
+}
+
+.account-title, .notifications-title, .approvals-title{
+    font-family: 'Poppins',sans-serif;
+    font-size: 20px;
+    color: #1e293b;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.profile-button-container{
+    margin-right: 5px;
+}
+
+.button-cancel{
+    width: 8em;
+    height: 3em;
+    cursor: pointer;
+    border: 1px solid #768499;
+    border-radius: 2em;
+    color: #1e393b;
+    font-weight: bold;
+    margin-right: 5px;
+    background-color: #fff;
+    transition-duration: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.button-cancel:hover{
+    background-color: #f1f5f9;
+}
+
+.button-save{
+    width: 8em;
+    height: 3em;
+    cursor: pointer;
+    border: 1px solid #fff;
+    border-radius: 2em;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 5px;
+    background-color: #0ac5ab;
+    transition-duration: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+.button-save:hover{
+    background-color: #09917f;
+}
+
+.account-edit {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.account-input-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.account-input-container label{
+    font-family: 'Poppins',sans-serif;
+    color: #333;
+    font-size: 14px;
+}
+
+.account-input-container input{
+    height: 35px;
+    border: 1.5px solid #333;
+    border-radius: 5px;
+    padding: 5px;
+    color: #333;
+    font-family: 'Poppins',sans-serif;
+}
+
+.account-input-container input:is(:focus):not([type="radio"]) {
+    outline: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+
+.profile-radio-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-radio-container label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none !important;
+    vertical-align: middle;
+}
+
+.profile-radio-container input{
+    padding: 0 !important;
+    margin: 0 5px !important
+}
+
+@media screen and (max-width: 768px) {
+    .profile-container {
+      flex-direction: column;
+    }
+    .profile {
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+    .account-form, .notifications{
+        margin: 0 !important;
+    }
+
+    .account-header, .notifications-header{
+        flex-direction: column;
+    }
+    .account-edit{
+        flex-direction: column;
+        margin: 10px;
+    }
+
+    .account-title, .notifications-title{
+        margin-left: 0 !important;
+    }
+
+
+    .account-input-container{
+        margin: 10px;
+    }
+
+    .account-input-container input{
+        margin-right: 10px;
+    }
+}
+
+/* ----------------Account Setttings CSS ends here----------------- */
+
+
+/* ----------------Notifications CSS starts here----------------- */
+
+.notifications{
+    margin-left: 10px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    border-radius: 5px;
+    height: max-content;
+}
+
+.button-maar{
+    width: 12em;
+    height: 3em;
+    cursor: pointer;
+    border: 1px solid #fff;
+    border-radius: 2em;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 5px;
+    background-color: #0ac5ab;
+    transition-duration: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+.button-maar:hover{
+    background-color: #09917f;
+}
+
+.notification-container{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.notification-item{
+    width: 100%;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.notification-item:hover{
+    background-color: #f1f5f9;
+    border-radius: 6px;
+}
+
+.notification-upper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notification-upper > * {
+    display: inline-block;
+    margin: 0;
+}
+
+.notification-upper img{
+    width: 40px;
+    border-radius: 50%;
+}
+
+.notification-upper h2{
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.notification-upper .date-time{
+    text-align: right;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.date-time-differentiator{
+    padding: 0 3px;
+}
+
+.notification-content p{
+    padding: 0 30px;
+}
+
+.red{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+
+/* ------------- Approval Style Starts ------------- */
+
+.approval-itembox, .approval-itembox h5, .approval-itembox button, .approval-itembox table, .approval-itembox tr{
+    width: 100%;
+    padding: 0;
+}
+
+.app-item-head {
+    border-collapse: collapse; /* Collapse borders for consistent spacing */
+    width: 100%; /* Ensure the table occupies full width */
+}
+
+.app-col-table-data {
+    padding: 0;
+    text-align: center; /* Center-align content */
+}
+
+.app-col-table-data p{
+    margin: 0;
+    margin-left: 5px;
+    padding: 0;
+    display: inline;
+
+}
+
+
+.approval-table-row img{
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.details-tab {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.details-tab {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.detail-row {
+    flex: 0 0 50%; /* Two items per row */
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.detail-label {
+    font-weight: bold;
+}
+
+.detail-value {
+    margin-left: 10px; /* Adjust as needed for spacing between label and value */
+}
+
+/* Media query for screens below 900px */
+@media screen and (max-width: 1020px) {
+    .detail-row {
+        flex: 0 0 100%; /* Display one item per row below 900px */
+    }
+}
+
+.button-container-approve {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.button-wrapper-approve {
+    margin: 0 10px; /* Adjust margin between buttons */
+}
+
+.approve-button,
+.reject-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.approve-button {
+    background-color: #11a116 !important;
+    border: none !important;
+    color: white;
+}
+
+.reject-button {
+    background-color: #f65549 !important;
+    border: none !important;
+    color: white;
+}
+
+.approve-button:hover,
+.reject-button:hover {
+    opacity: 0.8;
+}
+
+.remark-textarea{
+    padding: 5px 8px;
+    height: 42.5px;
+}

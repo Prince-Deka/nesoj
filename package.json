@@ -1,5 +1,15 @@
 {
   "dependencies": {
-    "jquery": "^3.7.1"
+    "babel-polyfill": "^6.26.0",
+    "draft-js": "^0.11.7",
+    "jquery": "^3.7.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.1",
+    "postcss-loader": "^8.1.1",
+    "style-loader": "^4.0.0"
   }
 }

@@ -1,47 +1,56 @@
+// server.js (or equivalent)
+require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
 const app = express();
-const mongoDb = require('./dbconnect.js');
-const PORT = process.env.PORT || 3000;
-
-
-
-
+const PORT = 3000;
 const cors = require('cors');
-let bodyParser = require('body-parser');
+const connectDB = require("./utils/db");
+const contactRoute = require("./routes/contact-router");
+const authRoute = require("./routes/auth-router")
+const photosRoute = require("./routes/gallery-router");
+const videosRoute = require("./routes/gallery-router");
+const adminRoute = require("./routes/admin-router");
+const postRoutes = require("./routes/post-router");
+const newsRoute = require("./routes/news-router");
+const stateDataRoute = require("./routes/stateData-router");
+const errorMiddleware = require("./middlewares/error-middleware");
+const nesojExecutivesRoute = require("./routes/nesojExe-router");
+const discussionRoute = require("./routes/discussion-router");
+const bodyParser = require('body-parser');
+
+
+// Handling Cors Policy
+const corsOptions = {
+    origin: "http://localhost:5173",
+    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+    credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
-
-// Set up CORS middleware
-app.use(cors());
-
-// Specify allowed origins
-const allowedOrigins = [
-  // 'http://localhost:5173', // Add your local frontend origin
-  'https://nesoj.netlify.app', 
-  
-];
-
-// Configure CORS with dynamic origin based on request origin
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://nesoj.netlify.app');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 
-//for checking on render (testing purpose only)
-app.get('/register', (req, res)=>{ 
-   res.send("backend register server working")
-})
+app.use(express.json());
+//  This line of code adds Express middleware that parses incoming request bodies with JSON payloads. It's important to place this before any routes that need to handle JSON data in the request body. This middleware is responsible for parsing JSON data from requests, and it should be applied at the beginning of your middleware stack to ensure it's available for all subsequent route handlers.
 
+app.use("/api/auth", authRoute);
+app.use("/api/form", contactRoute);
+app.use('/api/data', newsRoute, photosRoute, videosRoute, nesojExecutivesRoute, stateDataRoute);
 
-const register = require('./controllers/registrationController.js');
-app.use('/register', register);
+//For admin
+app.use('/api/admin', adminRoute);
 
-const login = require( './controllers/loginCheck.js' );
-app.use("/login", login);
+// For post
+app.use('/api', postRoutes);
 
-app.listen(PORT, () => {
-  console.log("The server is running at Port No 3000...")
+// For discussion
+app.use('/api', discussionRoute);
+
+app.use(errorMiddleware);
+// Start the server on port 3000
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is listening on port: ${PORT}`);
+    });
 });

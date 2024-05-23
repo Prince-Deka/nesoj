@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjord+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+/* ABOUT US in BRIEF */
+.topRowAbout{
+  margin: 30px;
+  border: 2px solid #0ac5ab;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 30px;
+}
+
+.topRowAbout h2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topRowAbout p{
+  text-align: justify;
+}
+
+/* EXECUTIVE-CAROUSEL */
+@media (max-width: 768px) {
+  .carousel-inner-aboutUs-Landing .carousel-item > div {
+      display: none;
+  }
+  .carousel-inner-aboutUs-Landing .carousel-item > div:first-child {
+      display: block;
+  }
+}
+
+.carousel-inner-aboutUs-Landing .carousel-item.active,
+.carousel-inner-aboutUs-Landing .carousel-item-next,
+.carousel-inner-aboutUs-Landing .carousel-item-prev {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  
+  .carousel-inner-aboutUs-Landing .carousel-item-right.active,
+  .carousel-inner-aboutUs-Landing .carousel-item-next {
+    transform: translateX(33.333%);
+  }
+  
+  .carousel-inner-aboutUs-Landing .carousel-item-left.active, 
+  .carousel-inner-aboutUs-Landing .carousel-item-prev {
+    transform: translateX(-33.333%);
+  }
+}
+
+
+.carousel-inner-aboutUs-Landing .carousel-item-right,
+.carousel-inner-aboutUs-Landing .carousel-item-left{ 
+transform: translateX(0);
+}
+
+.slick-next:before, .slick-prev:before {
+  content: none !important;
+}
+
+.slick-dots{
+  display: none !important;
+}
+
+
+.thirdRowAbout{
+  margin: 70px auto !important;
+}
+
+.thirdRowAbout h2, .secondRowAbout h2{
+  margin-bottom: 30px;
+}
+
+.cards-aboutUs-Landing{
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px !important;
+}
+
+.cards-aboutUs-Landing .StateLogo{
+  width: 80%;
+}
+
+.cards-aboutUs-Landing .OrgName{
+  margin-top: 5px;
+  font-size: 18px;
+  font-family: 400;
+  margin: 0;
+}
+
+.orgNameDiv{
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.heading-about{
+  text-align: center;
+}
+
+
+
+
+
+
+/* About Us Content */
+
+.about-content {
+  display: flex;
+  align-items: center; /* Centers content vertically */
+  justify-content: start; /* Aligns content to the start horizontally */
+  gap: 20px; /* Adds space between the image and content */
+  padding: 20px; /* Adds padding around the container */
+  width: 75%;
+  margin: auto;
+}
+
+
+.establishment-img , .mission-img , .highlights-img, .value-img{
+  flex-basis: 40%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  
+}
+
+.establishment-about img ,.mission-img img, .highlights-img img, .value-img img{
+  max-width: 170px; /* Limits the image width */
+  height: auto; /* Maintains the aspect ratio */
+}
+
+.content-establishment, .mission-content, .highlights-content, .value-content {
+  flex-basis: 60%;
+  margin: 10px 30px;
+}
+
+.content-establishment h4 , .mission-content h4, .highlights-content h4, .value-content h4{
+  margin: 0;
+  font-size: 2em;
+  font-family: "Fjord One", serif;
+}
+
+.highlights-content ul{
+  padding-left: 0%;
+}
+
+.content-establishment p , .mission-content p, .highlights-content li, .value-content p{
+  margin-top: 10px;
+  font-size: 1em;
+  line-height: 1.5;
+  font-family: 'Lato', sans-serif;
+  list-style: none;
+  text-align: justify;
+}
