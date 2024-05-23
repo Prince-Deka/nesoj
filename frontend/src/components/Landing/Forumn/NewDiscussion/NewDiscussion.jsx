@@ -9,7 +9,57 @@ function NewDiscussion({ handleClose }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [isAnonymous, setIsAnonymous] = useState(false);
   const quillRef = useRef(null);
+
+  const handleToggleAnonymous = () => {
+    setIsAnonymous(!isAnonymous);
+  };
+
+  const handleImageUpload = async (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      return data.url; // Return the URL from the response
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      return null;
+    }
+  };
+
+  const modules = {
+    toolbar: {
+      container: [
+        ["bold", "italic", "underline"],
+        [{ list: "bullet" }, { list: "ordered" }],
+        ["link", "image"],
+      ],
+      handlers: {
+        image: () => {
+          const input = document.createElement("input");
+          input.setAttribute("type", "file");
+          input.setAttribute("accept", "image/*");
+          input.click();
+          input.onchange = async () => {
+            const file = input.files[0];
+            const imageUrl = await handleImageUpload(file);
+            if (imageUrl) {
+              const range = quillRef.current.getEditor().getSelection();
+              quillRef.current.getEditor().insertEmbed(range.index, "image", imageUrl);
+            }
+          };
+        },
+      },
+    },
+  };
+
+  const formats = ["bold", "italic", "underline", "list", "bullet", "link", "image"];
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,11 +70,11 @@ function NewDiscussion({ handleClose }) {
       category: document.getElementById("category-select").value,
       tags: document.getElementById("tags-select").value,
       description: content,
+      isAnonymous: isAnonymous,
     };
 
     try {
-      // Placeholder: replace with your actual API call
-      const response = await fetch("your-api-endpoint", {
+      const response = await fetch("/api/topics", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,32 +88,8 @@ function NewDiscussion({ handleClose }) {
     }
 
     setIsSubmitting(false);
-    handleClose(); // Close form or clear states
+    handleClose();
   };
-
-  
-
-
-
-  const modules = {
-    toolbar: {
-      container: [
-        ["bold", "italic", "underline"],
-        [{ list: "bullet" }, { list: "ordered" }],
-        ["link", "image"],
-      ]
-    },
-  };
-
-  const formats = [
-    "bold",
-    "italic",
-    "underline",
-    "list",
-    "bullet",
-    "link",
-    "image",
-  ];
 
   return (
     <>
@@ -75,6 +101,8 @@ function NewDiscussion({ handleClose }) {
               id="cmn-toggle-4"
               className="cmn-toggle cmn-toggle-round-flat"
               type="checkbox"
+              checked={isAnonymous}
+              onChange={handleToggleAnonymous}
             />
             <label htmlFor="cmn-toggle-4"></label>
           </div>
@@ -97,23 +125,13 @@ function NewDiscussion({ handleClose }) {
                 <select name="category" id="category-select">
                   <option value="">--Select a category--</option>
                   <option value="Ideas">Ideas</option>
-                  <option value="Academics and Career">
-                    Academics and Career
-                  </option>
+                  <option value="Academics and Career">Academics and Career</option>
                   <option value="Cultural Exchange">Cultural Exchange</option>
                   <option value="Student Support">Student Support</option>
-                  <option value="Events and Activities">
-                    Events and Activities
-                  </option>
-                  <option value="Advocacy and Awareness">
-                    Advocacy and Awareness
-                  </option>
-                  <option value="Networking and Collaboration">
-                    Networking and Collaboration
-                  </option>
-                  <option value="Travel and Exploration">
-                    Travel and Exploration
-                  </option>
+                  <option value="Events and Activities">Events and Activities</option>
+                  <option value="Advocacy and Awareness">Advocacy and Awareness</option>
+                  <option value="Networking and Collaboration">Networking and Collaboration</option>
+                  <option value="Travel and Exploration">Travel and Exploration</option>
                 </select>
                 <select name="tags" id="tags-select">
                   <option value="">--Optional Tags--</option>
@@ -126,6 +144,7 @@ function NewDiscussion({ handleClose }) {
               </div>
               <div className={newD.richTextEditorRow}>
                 <ReactQuill
+                  ref={quillRef}
                   theme="snow"
                   value={content}
                   onChange={setContent}
@@ -135,8 +154,10 @@ function NewDiscussion({ handleClose }) {
                 />
               </div>
               <div className={newD.submitButton}>
-                    <button className={newD.submitButtonDiscussion}><i class="fa-solid fa-plus newDiscussion"></i> Submit</button>
-                </div>
+                <button className={newD.submitButtonDiscussion} disabled={isSubmitting}>
+                  <i className="fa-solid fa-plus newDiscussion"></i> Submit
+                </button>
+              </div>
             </form>
           </div>
         </div>

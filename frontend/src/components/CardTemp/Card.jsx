@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Card.module.css";
 import nesojImage from '../../../public/assets/nesoj.png';
 
-function Card({ name, role, whatsApp, email, linkedIn, facebook, instagram, twitter, imgUrl }) {
+function Card({ name, role, whatsApp, email, linkedIn, facebook, instagram, twitter, imageUrl, stateLogo }) {
   return (
     <div>
       <div className={style.cardsContainer}>
@@ -10,19 +10,19 @@ function Card({ name, role, whatsApp, email, linkedIn, facebook, instagram, twit
           <header>
             <div className={style.avatar}>
             <img
-              src={imgUrl === "" ? "assets/BlankProfile/BlankProfile.png" : imgUrl}
+              src={imageUrl === "" ? "assets/BlankProfile/BlankProfile.png" : imageUrl}
               alt={name}
             />
             </div>
           </header>
-          <img className={style.watermark} src={nesojImage} alt="Watermark" />
+          <img className={style.watermark} src={stateLogo === ""? nesojImage: stateLogo} alt="Watermark" />
 
           <h3>{name}</h3>
           <h4 className={style.PostName}>{role}</h4>
           
           <div className={style.contacts}>
             <a
-              href={whatsApp}
+              href={`https://wa.me/91${whatsApp}`}
               target="_blank"
               title="Direct connection on WhatsApp"
             >
@@ -49,7 +49,7 @@ function Card({ name, role, whatsApp, email, linkedIn, facebook, instagram, twit
             </a>
             <a
               href={`mailto:${email}`}
-              title="Suggestion or Complaints"
+              title="Mail to connect"
             >
               <i
                 className="fa fa-envelope"

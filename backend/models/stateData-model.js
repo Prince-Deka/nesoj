@@ -32,6 +32,8 @@ const stateDataSchema = new mongoose.Schema({
         required: true
     },
     stateLogo: String,
+    motto: String,
+    about: String,
     stateMembers: [stateMemberSchema]
 }, { timestamps: true });
 

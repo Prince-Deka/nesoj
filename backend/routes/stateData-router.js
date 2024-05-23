@@ -1,9 +1,9 @@
 const express = require('express');
-const stateData = require('../controllers/stateData-controller');
-const verifyUser = require('../middlewares/auth-middleware');
+const getStateData = require('../controllers/stateData-controller');
+const authMiddleware = require("../middlewares/auth-middleware.js");
 const router = express.Router();
 
 
-router.get('/stateData', verifyUser, stateData);
+router.get('/stateDetails', authMiddleware, getStateData);
 
 module.exports = router;

@@ -78,14 +78,14 @@ export default function About() {
   };
 
   const items = [
-    { id: 1, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Arunachal Students\' Club Jalandhar' },
+    { id: 1, src: 'assets/StateLogos/500x500/ASCJ/ArunachalPradesh.png', name: 'Arunachal Students\' Club Jalandhar' },
     { id: 2, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_Colorful.jpg', name: 'Assam Students\' Union Jalandhar' },
-    { id: 3, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Jalandhar Mizo Zirlai Pawl' },
-    { id: 4, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Manipur Students\' Union Phagwara' },
-    { id: 5, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Meghalaya Students\' Union Jalandhar' },
-    { id: 6, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Naga Students\' Union Phagwara' },
-    { id: 7, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Sikkimese Gorkha Students\' Union Jalandhar' },
-    { id: 8, src: 'assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg', name: 'Tripura Students\' Association Jalandhar' }
+    { id: 3, src: 'assets/StateLogos/500x500/JMZP/Mizoram.png', name: 'Jalandhar Mizo Zirlai Pawl' },
+    { id: 4, src: 'assets/StateLogos/500x500/MSUP/Manipur.png', name: 'Manipur Students\' Union Phagwara' },
+    { id: 5, src: 'assets/StateLogos/500x500/MSUJ/Meghalaya.png', name: 'Meghalaya Students\' Union Jalandhar' },
+    { id: 6, src: 'assets/StateLogos/500x500/NSUJ/Nagaland.png', name: 'Naga Students\' Union Phagwara' },
+    { id: 7, src: 'assets/StateLogos/500x500/SGSUJ/Sikkim.png', name: 'Sikkimese Gorkha Students\' Union Jalandhar' },
+    { id: 8, src: 'assets/StateLogos/500x500/TSAJ/Tripura.png', name: 'Tripura Students\' Association Jalandhar' }
   ];
 
   const [members, setMembers] = useState([]);
@@ -175,7 +175,7 @@ export default function About() {
                     facebook={member.facebook}
                     instagram={member.instagram}
                     twitter={member.twitter}
-                    imgUrl={member.imageURL}
+                    imageUrl={member.imageURL}
                   />
                 </div>
               </div>
@@ -193,10 +193,7 @@ export default function About() {
               <div key={item.id} className="px-3">
                 <div className="card card-body cards-aboutUs-Landing">
                   <img className="img-fluid StateLogo" src={item.src} alt={`Slide ${item.id}`} />
-                  <div className="orgNameDiv"><p className="card-title OrgName">{item.name}</p></div>
-                  <button className="custom-btn orgDetailsBtn">
-                    <Link to={"/state"} state={{ stateId: item.id }}><span>Read More</span></Link>
-                  </button>
+                  <div className="orgNameDiv"><p className="card-title OrgName text-center">{item.name}</p></div>
                 </div>
               </div>
             ))}

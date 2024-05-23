@@ -3,7 +3,8 @@ const router = express.Router();
 const authControllers = require("../controllers/auth-controller.js");
 const {signupSchema,loginSchema} = require("../validators/auth-validator.js");
 const validate = require("../middlewares/validate-middleware.js");
-const authMiddlewate = require("../middlewares/auth-middleware.js");
+const authMiddleware = require("../middlewares/auth-middleware.js");
+const { getUserData } = require("../controllers/user-controller");
 const { upload, uploadFilesToAzure } = require("../middlewares/user-middleware.js");
 
 router.route("/").get(authControllers.home);
@@ -13,9 +14,9 @@ router.route("/register")
     uploadFilesToAzure,
     validate(signupSchema),
     authControllers.register
-  );
+  ); 
 router.route("/login").post(validate(loginSchema),authControllers.login);
-router.route("/user").get(authMiddlewate,authControllers.user); 
+router.route("/user").get(authMiddleware,getUserData); 
 
 module.exports = router;
 

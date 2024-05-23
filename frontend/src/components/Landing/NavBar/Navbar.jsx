@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
-import {useAuth} from '../../../store/auth';
+import { useAuth } from '../../../store/auth';
 
 
 function Navbar() {
@@ -17,12 +17,12 @@ function Navbar() {
     <div className="custom-navbar-outer">
       {/* TOP NAVIGATION BAR */}
       <div className="container">
-        <div className="row"> 
+        <div className="row">
           <div className="col-10">
             <div className="custom-button-outer-div">
               <button className="btn btn-primary custom-button-navbar">
-                <img src={user.userData?.profilePicUrl && user.userData.profilePicUrl} alt="" />
-                <Link to='/profile' className="navbar-userName-top"><span>&nbsp;&nbsp;</span>{user.userData?.firstName && user.userData.firstName}</Link>
+                <img src={user.profilePicUrl && user.profilePicUrl} alt="" />
+                <Link to='/profile' className="navbar-userName-top"><span>&nbsp;&nbsp;</span>{user?.firstName && user.firstName}</Link>
               </button>
             </div>
           </div>
@@ -30,24 +30,25 @@ function Navbar() {
       </div>
 
       {/* LOGO */}
-      <nav className="navbar bg-body-tertiary custom-logo-bar">
-        <div className="container-fluid navbar-custom-logo-div">
-          <a className="navbar-brand custom-logo-click" href="#">
-            <img
-              src="/assets/nesoj.png"
-              alt="@"
-              height="150px"
-              className="d-inline-block align-text-top"
-            />
-            <div className="custom-text">
-              <span className="custom-neso">
-                NORTH-EAST STUDENTS' ORGANIZATION
-              </span>
-              <span className="custom-jal">JALANDHAR</span>
-            </div>
-          </a>
-        </div>
-      </nav>
+      
+        <nav className="navbar bg-body-tertiary custom-logo-bar">
+          <div className="container-fluid navbar-custom-logo-div">
+            <a className="navbar-brand custom-logo-click" href="#">
+              <img
+                src="/assets/nesoj.png"
+                alt="@"
+                height="150px"
+                className="d-inline-block align-text-top"
+              />
+              <div className="custom-text">
+                <span className="custom-neso">
+                  NORTH-EAST STUDENTS' ORGANIZATION
+                </span>
+                <span className="custom-jal">JALANDHAR</span>
+              </div>
+            </a>
+          </div>
+        </nav>
 
       {/* CONTENTS NAVBAR */}
       <nav className="navbar navbar-expand-lg bg-body-tertiary custom-link-bar">
@@ -71,9 +72,8 @@ function Navbar() {
               <li className="nav-item">
                 <Link
                   to="/homemain"
-                  className={`nav-link ${
-                    isActive("/homemain") ? "active" : ""
-                  }`}
+                  className={`nav-link ${isActive("/homemain") ? "active" : ""
+                    }`}
                   aria-current="page"
                 >
                   Home
@@ -90,9 +90,8 @@ function Navbar() {
               <li className="nav-item">
                 <Link
                   to="/activities"
-                  className={`nav-link ${
-                    isActive("/activities") ? "active" : ""
-                  }`}
+                  className={`nav-link ${isActive("/activities") ? "active" : ""
+                    }`}
                 >
                   Activities
                 </Link>
@@ -151,10 +150,18 @@ function Navbar() {
               </li>
               <li className="nav-item">
                 <Link
+                  to="/forumn"
+                  className={`nav-link ${isActive("/forumn") ? "active" : ""}`}
+                >
+                  Forumn
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
                   to="/state"
                   className={`nav-link ${isActive("/state") ? "active" : ""}`}
                 >
-                  {user.userData?.stateName && user.userData.stateName}
+                  {user.stateName && user.stateName}
                 </Link>
               </li>
             </ul>

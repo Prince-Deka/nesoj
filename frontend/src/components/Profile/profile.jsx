@@ -11,8 +11,7 @@ function Profile() {
   const navigate = useNavigate();
   const { user } = useAuth();
   let menuItems = [];
-  const checkAdmin = user.userData?.isAdmin && user.userData.isAdmin;
-  console.log(user);
+  const checkAdmin = user?.isAdmin && user.isAdmin;
 
   const menuAdmin = [
     { id: "account", text: "Account", iconClass: "fa-solid fa-circle-user" },
@@ -294,11 +293,11 @@ function Profile() {
       <div className="profile-container">
         <div className="profile">
           <div className="profile-header">
-            <img src={user.userData?.profilePicUrl
-              && user.userData.profilePicUrl} alt="" className='profile-img' />
+            <img src={user?.profilePicUrl
+              && user.profilePicUrl} alt="" className='profile-img' />
             <div className="profile-text-contaimer">
-              <h1 className="profile-title">{user.userData?.username && user.userData.username}</h1>
-              <p className="profile-email">{user.userData?.email && user.userData.email}</p>
+              <h1 className="profile-title">{user.username && user.username}</h1>
+              <p className="profile-email">{user.email && user.email}</p>
             </div>
           </div>
           <div className="profile-menu">

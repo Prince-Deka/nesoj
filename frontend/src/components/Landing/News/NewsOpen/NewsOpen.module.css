@@ -26,12 +26,25 @@
 }
 .newsOpenContainer .content{
     display: flex;
+    gap: 50px;
     justify-content: center;
+    align-items: center;
+    margin: 50px;
 }
 
+.newsOpenContainer .content img {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+
 .content .mainItem{
-    width: 70%;
+    width: 60%;
+    font-family: Georgia,Times,Times New Roman,serif;
     text-align: justify;
+    font-size: 20px;
 }
 
 .Headline{
