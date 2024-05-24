@@ -116,7 +116,7 @@ function Navbar() {
              
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle"
+                  className={`nav-link dropdown-toggle ${isActive("/gallery") ? "active" : ""}`}
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -125,14 +125,14 @@ function Navbar() {
                   Gallery
                   </a>
                   <ul className="dropdown-menu Gallery-dropdown-navbar">
-                    <li>
-                      <a href="" className="dropdown-item" onClick={(e)=>{handleGallery('all')}}>All</a>
+                    <li className={`nav-item`}>
+                      <a href="" className={`dropdown-item nav-link`} onClick={(e)=>{handleGallery('all')}}>All</a>
                     </li>
-                    <li>
-                      <a href="" className="dropdown-item" onClick={(e)=>{handleGallery('photos')}}>Photos</a>
+                    <li className={`nav-item`}>
+                      <a href="" className="dropdown-item nav-link" onClick={(e)=>{handleGallery('photos')}}>Photos</a>
                     </li>
-                    <li>
-                      <a href="" className="dropdown-item" onClick={(e)=>{handleGallery('videos')}}>Videos</a>
+                    <li className={`nav-item`}>
+                      <a href="" className="dropdown-item nav-link" onClick={(e)=>{handleGallery('videos')}}>Videos</a>
                     </li>
 
                   </ul>

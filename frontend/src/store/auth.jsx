@@ -1,4 +1,4 @@
-import React, { createContext, useContext , useEffect, useState} from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { set } from 'zod';
 
@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState({});
     const [stateDetails, setStateDetails] = useState({});
+    const [forumData, setForumData] = useState({});
 
     const storeTokenInLs = (serverToken) => {
         setToken(serverToken);
@@ -30,14 +31,14 @@ export const AuthProvider = ({ children }) => {
     const userAuthentication = async () => {
         try {
             const response = await axios.get('http://localhost:3000/api/auth/user', {
-              headers: {
-                Authorization: `Bearer ${token}`
-              }
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             });
             if (response.status === 200) {
-              setUser(response.data);
+                setUser(response.data);
             }
-          } catch (error) {
+        } catch (error) {
             // console.log('Error while getting user data', error);
         }
     };
@@ -59,22 +60,39 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // Fetch the discussion topics
+    const fetchDiscussions = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/api/forum/topics', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (response.status === 200) {
+                setForumData(response.data);
+            }
+        } catch (error) {
+            console.log('Error while getting forum data', error);
+        }
+    };
 
-    
 
 
-   
+
+
+
 
 
     useEffect(() => {
         if (token) { // Only authenticate if there's a token
             userAuthentication();
             fetchStateDetails();
+            fetchDiscussions();
         }
-      }, [token]); // Re-run effect when token changes
+    }, [token]); // Re-run effect when token changes
     // --------------------------
     return (
-        <AuthContext.Provider value={{ storeTokenInLs, LogoutUser, user, stateDetails }}>
+        <AuthContext.Provider value={{ storeTokenInLs, LogoutUser, user, stateDetails, forumData }}>
             {children}
         </AuthContext.Provider>
     );
@@ -83,7 +101,7 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => {
     const authContextValue = useContext(AuthContext);
-    if(!authContextValue){
+    if (!authContextValue) {
         throw new Error('useAuth must be used within an AuthProvider');
     }
     return authContextValue;
