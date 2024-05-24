@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'; // Assuming you are using react-router-dom for navigation
 import './Hero.css';
@@ -16,35 +16,35 @@ function Hero() {
 
 
     const [contact, setContact] = useState({
-        name:"",
-        email:"",
-        message:""
+        name: "",
+        email: "",
+        message: ""
     });
 
     const handleInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        setContact({...contact, [name]:value});
+        setContact({ ...contact, [name]: value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try{
-        const response = await axios.post("http://localhost:3000/api/form/contact", contact, {
-        headers: {
-          "Content-Type": "application/json",
-        }
-      });
-      if(response.status === 200) {
         try {
-          setContact({name:"",email:"",message:""});
+            const response = await axios.post("http://localhost:3000/api/form/contact", contact, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            if (response.status === 200) {
+                try {
+                    setContact({ name: "", email: "", message: "" });
+                } catch (error) {
+                    console.error('Error: ', error);
+                }
+            }
         } catch (error) {
-            console.error('Error: ', error);
+            console.error("Message not sent: ", error);
         }
-    }
-    } catch (error) {
-      console.error("Message not sent: ", error);
-    }
     };
 
     return (
@@ -52,7 +52,7 @@ function Hero() {
             <nav className="navbar bg-body-tertiary logo-bar">
                 <div className="container-fluid logo-div">
                     <a className="navbar-brand logo-click" href="#">
-                        <img src="/public/assets/nesoj150x150.png" alt="@" height="150px" className="d-inline-block align-text-top"/>
+                        <img src="/public/assets/nesoj150x150.png" alt="@" height="150px" className="d-inline-block align-text-top" />
                         <div className='bar-after-logo'></div>
                         <div className="text">
                             <span className="neso">NORTH-EAST</span>
@@ -76,18 +76,18 @@ function Hero() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav main-list">
-                    <li className="nav-item">
-                        <a className="nav-link" href="#who-are-we">Who are we? </a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#what-we-do">What we Do?</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#carouselExampleIndicators">Gallery</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#contact-us-form">Contact Us</a>
-                    </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#who-are-we">Who are we? </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#what-we-do">What we Do?</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#carouselExampleIndicators">Gallery</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#contact-us-form">Contact Us</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -104,7 +104,7 @@ function Hero() {
                         <h2>Integrity, Prosperity and Excellence</h2>
                     </div>
                     <div className="join-us-div">
-                        <button className="join-us" style={{marginTop: "20px"}} onClick={handleClickSignup}>JOIN US</button>
+                        <button className="join-us" style={{ marginTop: "20px" }} onClick={handleClickSignup}>JOIN US</button>
                     </div>
                 </div>
             </section>
@@ -114,7 +114,7 @@ function Hero() {
                 <h2 className="org-section-title">Organizations under NESOJ</h2>
                 <div className="organizations-container">
                     <div className="organization">
-                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg"  alt="Organization 1" />
+                        <img src="assets/StateLogos/500x500/ASCJ/ArunachalPradesh.png" alt="Organization 1" />
                         <p>Arunachal Students’ Club Jalandhar</p>
                     </div>
                     <div className="organization">
@@ -122,31 +122,32 @@ function Hero() {
                         <p>Assam Students' Union Jalandhar</p>
                     </div>
                     <div className="organization">
-                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="assets/StateLogos/500x500/JMZP/Mizoram.png" alt="Organization 2" />
                         <p>Jalandhar Mizo Zirlai Pawl</p>
                     </div>
                     <div className="organization">
-                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="assets/StateLogos/500x500/MSUP/Manipur.png" alt="Organization 2" />
                         <p>Manipur Students' Union Phagwara</p>
                     </div>
                     <div className="organization">
-                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="assets/StateLogos/500x500/MSUJ/Meghalaya.png" alt="Organization 2" />
                         <p>Meghalaya Students Union Jalandhar</p>
                     </div>
                     <div className="organization">
-                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="assets/StateLogos/500x500/NSUJ/Nagaland.png" alt="Organization 2" />
                         <p>Naga Students Union Phagwara</p>
                     </div>
                     <div className="organization">
-                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="assets/StateLogos/500x500/SGSUJ/Sikkim.png" alt="Organization 2" />
                         <p>Sikkimese Gorkha Students Union Jalandhar</p>
                     </div>
                     <div className="organization">
-                        <img src="/public/assets/StateLogos/500x500/ASUJ/ASUJ_500x500.jpg" alt="Organization 2" />
+                        <img src="assets/StateLogos/500x500/TSAJ/Tripura.png" alt="Organization 2" />
                         <p>Tripura Students’ Association Jalandhar</p>
                     </div>
                 </div>
             </section>
+
 
 
 
@@ -157,14 +158,14 @@ function Hero() {
                     </div>
                     <div className="waw-answer sec-info-ans">
                         <p>A vibrant community Where the spirit
-                        of the Northeast thrives in every corner
-                        of our activities. We are a group of
-                        passionate Students from the diverse
-                        and picturesque northeast region of
-                        our country united on this campus
-                        to bring the rich tapestry of our culture,
-                        traditions and aspirations to the forefront
-                        of our collective student experience.</p>
+                            of the Northeast thrives in every corner
+                            of our activities. We are a group of
+                            passionate Students from the diverse
+                            and picturesque northeast region of
+                            our country united on this campus
+                            to bring the rich tapestry of our culture,
+                            traditions and aspirations to the forefront
+                            of our collective student experience.</p>
                     </div>
                 </div>
             </section>
@@ -178,14 +179,14 @@ function Hero() {
                     </div>
                     <div className="wwd-answer sec-info-ans">
                         <p>A vibrant community Where the spirit
-                        of the Northeast thrives in every corner
-                        of our activities. We are a group of
-                        passionate Students from the diverse
-                        and picturesque northeast region of
-                        our country united on this campus
-                        to bring the rich tapestry of our culture,
-                        traditions and aspirations to the forefront
-                        of our collective student experience.</p>
+                            of the Northeast thrives in every corner
+                            of our activities. We are a group of
+                            passionate Students from the diverse
+                            and picturesque northeast region of
+                            our country united on this campus
+                            to bring the rich tapestry of our culture,
+                            traditions and aspirations to the forefront
+                            of our collective student experience.</p>
                     </div>
                 </div>
             </section>
@@ -201,13 +202,13 @@ function Hero() {
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                    <img className="d-block w-100" src="/public/assets/hero.jpg" alt="First slide"/>
+                        <img className="d-block w-100" src="/public/assets/hero.jpg" alt="First slide" />
                     </div>
                     <div className="carousel-item">
-                    <img className="d-block w-100" src="/public/assets/hero.jpg" alt="Second slide"/>
+                        <img className="d-block w-100" src="/public/assets/hero.jpg" alt="Second slide" />
                     </div>
                     <div className="carousel-item">
-                    <img className="d-block w-100" src="/public/assets/hero.jpg" alt="Third slide"/>
+                        <img className="d-block w-100" src="/public/assets/hero.jpg" alt="Third slide" />
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -252,33 +253,33 @@ function Hero() {
                             <form onSubmit={handleSubmit}>
                                 <div className="contact-input-box">
                                     <input type="text"
-                                    placeholder='Enter your name'
-                                    name = "name" 
-                                    id="name"
-                                    value={contact.name}
-                                    onChange={handleInput}
-                                    autoComplete='off'
-                                    required />
+                                        placeholder='Enter your name'
+                                        name="name"
+                                        id="name"
+                                        value={contact.name}
+                                        onChange={handleInput}
+                                        autoComplete='off'
+                                        required />
                                 </div>
                                 <div className="contact-input-box">
                                     <input type="email"
-                                    placeholder='Enter your Email'
-                                    name="email"
-                                    id="email"
-                                    value={contact.email}
-                                    onChange={handleInput}
-                                    autoComplete='off'
-                                    required/>
+                                        placeholder='Enter your Email'
+                                        name="email"
+                                        id="email"
+                                        value={contact.email}
+                                        onChange={handleInput}
+                                        autoComplete='off'
+                                        required />
                                 </div>
                                 <div className="contact-input-box message-box">
                                     <textarea
-                                    placeholder='Type your message here...'
-                                    name="message"
-                                    id="message"
-                                    value={contact.message}
-                                    onChange={handleInput}
-                                    autoComplete='off'
-                                    required ></textarea>
+                                        placeholder='Type your message here...'
+                                        name="message"
+                                        id="message"
+                                        value={contact.message}
+                                        onChange={handleInput}
+                                        autoComplete='off'
+                                        required ></textarea>
                                 </div>
                                 <div className="contact-button">
                                     <button type='submit'>Send</button>

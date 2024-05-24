@@ -3,7 +3,19 @@ const Reply = require('../models/discussion-reply-model');
 
 const createTopic = async (req, res) => {
   try {
-    const topic = new Topic(req.body);
+    const { title, author, category, tag, description, isAnonymous, imageUrl } = req.body;
+    
+    const topic = new Topic({
+      title,
+      author,
+      isAnonymous,
+      category,
+      tag,
+      description,
+      isAnonymous,
+      imageUrl
+    });
+
     await topic.save();
     res.status(201).json(topic);
   } catch (error) {

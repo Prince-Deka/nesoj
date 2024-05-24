@@ -153,7 +153,7 @@ function Navbar() {
                   to="/forumn"
                   className={`nav-link ${isActive("/forumn") ? "active" : ""}`}
                 >
-                  Forumn
+                  Forum
                 </Link>
               </li>
               <li className="nav-item">

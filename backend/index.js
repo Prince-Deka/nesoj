@@ -45,7 +45,7 @@ app.use('/api/admin', adminRoute);
 app.use('/api', postRoutes);
 
 // For discussion
-app.use('/api', discussionRoute);
+app.use('/api/forum', discussionRoute);
 
 app.use(errorMiddleware);
 // Start the server on port 3000
