@@ -1,3 +1,5 @@
+// App.jsx
+
 import './App.css';
 import Home from './components/Home/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -45,7 +47,7 @@ function App() {
           <Route path="/videos" element={<Videos />} />
           <Route path="/forumn" element={<Forumn />} />
           <Route path="/newDiscussion" element={<NewDiscussion />} />
-          <Route path="/openDiscussion" element={<OpenDiscussion />} />
+          <Route path="/discussions/:id" element={<OpenDiscussion />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="*" element={<Error />} />
           <Route path="/logout" element={<Logout />} />

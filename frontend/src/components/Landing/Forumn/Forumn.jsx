@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../NavBar/Navbar";
 import Footer from "../Footer/Footer";
 import NewDiscussion from "./NewDiscussion/NewDiscussion";
+import { useAuth } from "../../../store/auth";
 import forumn from "./Forumn.module.css";
 
 function Forumn() {
-  const [forumData, setForumData] = useState([]);
+  const { forumData, fetchDiscussions, fetchParticularDiscussion, token } = useAuth();
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(10);
-
   const [isNewDiscussionOpen, setIsNewDiscussionOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleNewDiscussionClick = () => {
     setIsNewDiscussionOpen(true);
@@ -17,7 +19,17 @@ function Forumn() {
 
   const handleCloseDiscussion = () => {
     setIsNewDiscussionOpen(false);
+    fetchDiscussions();
   };
+
+  const handleOpenDiscussion = async (id) => {
+    await fetchParticularDiscussion(id);
+    navigate(`/discussions/${id}`);
+  };
+
+  const indexOfLastPost = currentPage * rowsPerPage;
+  const indexOfFirstPost = indexOfLastPost - rowsPerPage;
+  const currentPosts = forumData.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
     <div>
@@ -53,51 +65,45 @@ function Forumn() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <h4>Topic Name</h4>
-                    <p>
-                      Started by <span>AuthorName</span> on{" "}
-                      <span>Time Date</span>
-                    </p>
-                  </td>
-                  <td>15</td>
-                  <td>320</td>
-                  <td>Yesterday</td>
-                </tr>
-                <tr>
-                  <td>
-                    <h4>Topic Name</h4>
-                    <p>
-                      Started by <span>AuthorName</span> on{" "}
-                      <span>Time Date</span>
-                    </p>
-                  </td>
-                  <td>15</td>
-                  <td>320</td>
-                  <td>Yesterday</td>
-                </tr>
-                <tr>
-                  <td>
-                    <h4>Topic Name</h4>
-                    <p>
-                      Started by <span>AuthorName</span> on{" "}
-                      <span>Time Date</span>
-                    </p>
-                  </td>
-                  <td>15</td>
-                  <td>320</td>
-                  <td>Yesterday</td>
-                </tr>
+                {currentPosts.map((topic) => (
+                  <tr key={topic._id}>
+                    <td onClick={() => handleOpenDiscussion(topic._id)}>
+                      <h4>{topic.title}</h4>
+                      <p>
+                        Started by{" "}
+                        <span>{topic.isAnonymous ? "Anonymous" : topic.author}</span>{" "}
+                        on <span>{new Date(topic.datePosted).toLocaleString()}</span>
+                      </p>
+                    </td>
+                    <td>{topic.repliesCount}</td>
+                    <td>{topic.views}</td>
+                    <td>
+                      {topic.replies.length > 0
+                        ? new Date(topic.replies[topic.replies.length - 1].datePosted).toLocaleString()
+                        : new Date(topic.datePosted).toLocaleString()}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
         <div className={`forumn.columnTwo ml-5 w-100`}>
           <form className={`d-flex ${forumn.searchBarForm}`} role="search">
-          <input className="form-control" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success" style={{borderRadius:"none"}} type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
+            <input
+              className="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              className="btn btn-outline-success"
+              style={{ borderRadius: "none" }}
+              type="submit"
+            >
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
           <div className="accordion accordion-flush" id="accordionFlushExample">
             <div className="accordion-item">
               <h2 className="accordion-header">
@@ -166,7 +172,7 @@ function Forumn() {
           ></div>
           <div
             className={`${forumn.discussionModal} ${
-              isNewDiscussionOpen ? forumn.open : ""
+              isNewDiscussionOpen ? forumn.open : ""}
             }`}
           >
             <NewDiscussion handleClose={handleCloseDiscussion} />
