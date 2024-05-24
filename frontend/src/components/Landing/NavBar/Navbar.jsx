@@ -96,7 +96,7 @@ function Navbar() {
                   About Us
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   to="/activities"
                   className={`nav-link ${isActive("/activities") ? "active" : ""
@@ -104,7 +104,7 @@ function Navbar() {
                 >
                   Activities
                 </Link>
-              </li>
+              </li> */}
               <li className={`nav-item ${isActive("/news") ? "active" : ""}`}>
                 <Link
                   to="/news"
