@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from '../../../store/auth';
 
 
 function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate()
   const user = useAuth().user;
+  const [gallery, setGallery] = useState('')
+
+
+  const handleGallery = (e) =>{
+    event.preventDefault()
+    setGallery(e)
+    navigate('/gallery', {state: {gallery: e}});
+  }
 
   // Function to determine if a link should be active based on its path
   const isActive = (path) => {
@@ -104,14 +113,7 @@ function Navbar() {
                   News
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link
-                  to="/gallery"
-                  className={`nav-link ${isActive("/gallery") ? "active" : ""}`}
-                >
-                  Gallery
-                </Link>
-              </li>
+             
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -121,24 +123,22 @@ function Navbar() {
                   aria-expanded="false"
                 >
                   Gallery
-                </a>
-                <ul className="dropdown-menu Gallery-dropdown-navbar">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Photos
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Videos
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      All
-                    </a>
-                  </li>
-                </ul>
+                  </a>
+                  <ul className="dropdown-menu Gallery-dropdown-navbar">
+                    <li>
+                      <a href="" className="dropdown-item" onClick={(e)=>{handleGallery('all')}}>All</a>
+                    </li>
+                    <li>
+                      <a href="" className="dropdown-item" onClick={(e)=>{handleGallery('photos')}}>Photos</a>
+                    </li>
+                    <li>
+                      <a href="" className="dropdown-item" onClick={(e)=>{handleGallery('videos')}}>Videos</a>
+                    </li>
+
+                  </ul>
+                
+                  
+               
               </li>
               <li className="nav-item">
                 <Link
