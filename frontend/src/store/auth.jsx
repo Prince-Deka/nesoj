@@ -10,7 +10,8 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState({});
     const [stateDetails, setStateDetails] = useState({});
-    const [forumData, setForumData] = useState({});
+    const [forumData, setForumData] = useState([]);
+    const [particularForumData, setParticularForumData] = useState({});
 
     const storeTokenInLs = (serverToken) => {
         setToken(serverToken);
@@ -77,6 +78,23 @@ export const AuthProvider = ({ children }) => {
     };
 
 
+    // Fetch the particular discussion topic
+    const fetchParticularDiscussion = async (id) => {
+        try {
+            const response = await axios.get(`http://localhost:3000/api/forum/topics/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (response.status === 200) {
+                setParticularForumData(response.data);
+            }
+        } catch (error) {
+            console.log('Error while getting that forum data', error);
+        }
+    };
+
+
 
 
 
@@ -84,15 +102,15 @@ export const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-        if (token) { // Only authenticate if there's a token
+        if (token) {
             userAuthentication();
             fetchStateDetails();
             fetchDiscussions();
         }
-    }, [token]); // Re-run effect when token changes
+    }, [token]);
     // --------------------------
     return (
-        <AuthContext.Provider value={{ storeTokenInLs, LogoutUser, user, stateDetails, forumData }}>
+        <AuthContext.Provider value={{ storeTokenInLs, LogoutUser, user, stateDetails, forumData, particularForumData, fetchDiscussions, fetchParticularDiscussion }}>
             {children}
         </AuthContext.Provider>
     );
