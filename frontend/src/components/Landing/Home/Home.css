@@ -363,7 +363,7 @@
   height: 400px;
   border: 2px solid #0ac5ab;
   margin: 40px;
-  background-image: url(assets/gallery.jpg);
+  background-image: url(../../../../public/assets/gallery.jpg);
   background-size: cover;
   background-position: center;
   border-radius: 20px;

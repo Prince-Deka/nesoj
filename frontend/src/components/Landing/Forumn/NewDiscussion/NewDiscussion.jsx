@@ -8,7 +8,7 @@ import { FaFileImage } from "react-icons/fa";
 import { useAuth } from '../../../../store/auth';
 
 const NewDiscussion = ({ handleClose }) => {
-  const user = useAuth().user;
+  const { user, submitNewDiscussion } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -71,7 +71,6 @@ const NewDiscussion = ({ handleClose }) => {
     formData.append("isAnonymous", isAnonymous);
     formData.append("author", user.username);
 
-
     if (image) {
       formData.append("image", image);
     }
@@ -86,14 +85,7 @@ const NewDiscussion = ({ handleClose }) => {
     });
 
     try {
-      const response = await fetch("http://localhost:3000/api/forumn/topics", {
-        method: "POST",
-        body: formData,
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const result = await response.json();
+      const result = await submitNewDiscussion(formData);
       console.log("Response:", result);
     } catch (error) {
       console.error("Error submitting form:", error);

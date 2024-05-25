@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../NavBar/Navbar";
 import Footer from "../Footer/Footer";
@@ -7,11 +7,15 @@ import { useAuth } from "../../../store/auth";
 import forumn from "./Forumn.module.css";
 
 function Forumn() {
-  const { forumData, fetchDiscussions, fetchParticularDiscussion, token } = useAuth();
+  const { forumData, fetchDiscussions, fetchParticularDiscussion } = useAuth();
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(10);
   const [isNewDiscussionOpen, setIsNewDiscussionOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchDiscussions(); // Fetch discussions when component mounts
+  }, []);
 
   const handleNewDiscussionClick = () => {
     setIsNewDiscussionOpen(true);
@@ -25,6 +29,7 @@ function Forumn() {
   const handleOpenDiscussion = async (id) => {
     await fetchParticularDiscussion(id);
     navigate(`/discussions/${id}`);
+    fetchDiscussions(); // Re-fetch discussions to update view count
   };
 
   const indexOfLastPost = currentPage * rowsPerPage;
@@ -46,7 +51,7 @@ function Forumn() {
             >
               NEW DISCUSSION
             </button>
-            <div className={forumn.NumberSlider}> 1 2 3 4 ... 9 </div>
+            {/* <div className={forumn.NumberSlider}> 1 2 3 4 ... 9 </div> */}
           </div>
           <div className={forumn.thirdRowForumn}>
             <table>
@@ -66,8 +71,8 @@ function Forumn() {
               </thead>
               <tbody>
                 {currentPosts.map((topic) => (
-                  <tr key={topic._id}>
-                    <td onClick={() => handleOpenDiscussion(topic._id)}>
+                  <tr key={topic._id} onClick={() => handleOpenDiscussion(topic._id)}>
+                    <td>
                       <h4>{topic.title}</h4>
                       <p>
                         Started by{" "}
@@ -88,7 +93,7 @@ function Forumn() {
             </table>
           </div>
         </div>
-        <div className={`forumn.columnTwo ml-5 w-100`}>
+        {/* <div className={`forumn.columnTwo ml-5 w-100`}>
           <form className={`d-flex ${forumn.searchBarForm}`} role="search">
             <input
               className="form-control"
@@ -161,7 +166,7 @@ function Forumn() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       {isNewDiscussionOpen && (
         <>
@@ -172,7 +177,7 @@ function Forumn() {
           ></div>
           <div
             className={`${forumn.discussionModal} ${
-              isNewDiscussionOpen ? forumn.open : ""}
+              isNewDiscussionOpen ? forumn.open : ""
             }`}
           >
             <NewDiscussion handleClose={handleCloseDiscussion} />
