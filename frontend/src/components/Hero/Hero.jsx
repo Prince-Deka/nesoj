@@ -249,7 +249,7 @@ function Hero() {
                         </div>
                         <div className="contact-right-side">
                             <div className="topic-text">Send us a message</div>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta facere id suscipit, ab recusandae sunt harum reiciendis pariatur quasi expedita.</p>
+                            <p>North-East Students' Organization Jalandhar supports students from India's eight northeastern states studying in Jalandhar and Phagwara, Punjab. NESOJ fosters academic, cultural, and social integration in a welcoming environment.</p>
                             <form onSubmit={handleSubmit}>
                                 <div className="contact-input-box">
                                     <input type="text"

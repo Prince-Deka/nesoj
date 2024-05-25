@@ -42,8 +42,9 @@
     margin: 50px 40px;
     border-radius: 20px;
     border: solid 2px #0ac5ab;
+    box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.6);
     width: calc(100% - 80px);
-    background-image: url("https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb29.png");
+    /* background-image: url("https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb29.png"); */
     background-position-x: initial;
     background-position-y: initial;
     background-size: cover;
@@ -232,8 +233,9 @@
   .second-row-second-column-landing{
     width: calc(30% - 20px);
     height: 100%;
-    background-color: rgb(0, 0, 0);
+    background-color: white;
     border: 2px solid #0ac5ab;
+    box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.6);
     border-radius: 20px;
   }
 
@@ -454,4 +456,23 @@
   top: 655px;
   left: 1060px;
   z-index: 9999;
+}
+
+
+
+.home-profile {
+  margin-top: 3rem;
+  object-fit: cover;
+  width:150px;
+  height:150px;
+  display:"flex";
+  justify-content:"center"
+}
+
+.home-profile-details{
+  border: 2px solid black;
+}
+
+.home-div{
+  box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.6);
 }

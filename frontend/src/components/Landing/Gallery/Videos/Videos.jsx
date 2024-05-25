@@ -15,32 +15,32 @@ function Videos() {
 
   const VideoData = [
     {
-      src: "https://www.youtube.com/embed/SMs0GnYze34?si=ncNq4NdwuE9IlSSG&amp;controls=0",
-      description: "Video Description 1",
-      date: "DD MON YYYY",
+      src: "https://nesoj.blob.core.windows.net/gallery/videos/%E2%80%9CHeart%20of…",
+      description: "NESOJ Sports Week",
+      date: "2024-02-28",
     },
     {
-      src: "https://www.youtube.com/embed/qoq8B8ThgEM?si=qxkpTnk_n60hZoVl&amp;controls=0",
-      description: "Video Description 2",
-      date: "DD MON YYYY",
+      src: "https://nesoj.blob.core.windows.net/gallery/videos/Representing%20Arun…",
+      description: "Arunachal in One World",
+      date: "2024-04-18",
     },
     {
-      src: "https://www.youtube.com/embed/0JLRExeOH-k?si=kn2k6E-2DovNj4o8&amp;controls=0",
-      description: "Video Description 3",
-      date: "DD MON YYYY",
+      src: "https://nesoj.blob.core.windows.net/gallery/videos/9th%20NESOJ%20SPORT…",
+      description: "Champion Assam",
+      date: "2024-02-29",
     },
     {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
+      src: "https://nesoj.blob.core.windows.net/gallery/videos/Immersing%20viewers…",
+      description: "Opening Sports Week",
+      date: "2024-02-17",
     },
     {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
+      src: "https://nesoj.blob.core.windows.net/gallery/videos/ManipurCandleMarch.…",
+      description: "Manipur Candle March",
+      date: "2024-05-02",
     },
     {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
+      src: "",
       description: "Video Description 4",
       date: "DD MON YYYY",
     },

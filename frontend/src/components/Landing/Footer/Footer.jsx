@@ -4,7 +4,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <div className="footer-home-outer">
-      <footer className="site-home-footer">
+      <footer className="site-home-footer" >
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-6">
@@ -22,31 +22,9 @@ function Footer() {
               </p>
             </div>
 
-            <div className="col-xs-6 col-md-3 categories-footer">
-              <h6>Categories</h6>
-              <ul className="footer-landing-links">
-                <li>
-                  <a href="#">C</a>
-                </li>
-                <li>
-                  <a href="#">UI Design</a>
-                </li>
-                <li>
-                  <a href="#">PHP</a>
-                </li>
-                <li>
-                  <a href="#">Java</a>
-                </li>
-                <li>
-                  <a href="#">Android</a>
-                </li>
-                <li>
-                  <a href="#">Templates</a>
-                </li>
-              </ul>
-            </div>
+            
 
-            <div className="col-xs-6 col-md-3">
+            <div className="col-xs-6 col-md-3 " style={{marginLeft:"240px"}}>
               <h6>Quick Links</h6>
               <ul className="footer-landing-links">
                 <li>

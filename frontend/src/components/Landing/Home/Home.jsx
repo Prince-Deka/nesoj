@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import Navbar from "../NavBar/Navbar";
 import "./Home.css";
 import Footer from "../Footer/Footer";
+import { useAuth } from '../../../store/auth';
 
 function Home() {
+  const user = useAuth().user;
   return (
     <div className="home-outer-nav">
       <Navbar />
@@ -16,11 +18,7 @@ function Home() {
         <div class="responsive-container-block Container">
           <p class="text-blk heading">About Us</p>
           <p class="text-blk subHeading">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu
+          NESOJ, founded in 2013, empowers Northeast Indian students in Jalandhar & Phagwara. We create a supportive community to help you excel academically, celebrate your culture, and feel welcome in Punjab.
           </p>
           <div class="social-icons-container">
             <a class="social-icon">
@@ -56,7 +54,7 @@ function Home() {
         <i class="fa-solid fa-calendar-day"></i> Happenings
       </div>
       <div className="profile-title title-home">
-        <i class="fa-regular fa-address-card"></i> Profile Details
+        <i class="fa-regular fa-address-card"></i> Profile
       </div>
       <div className="second-row-landing">
         <div className="second-row-first-column-landing">
@@ -149,7 +147,12 @@ function Home() {
           </div>
         </div>
 
-        <div className="second-row-second-column-landing"></div>
+        <div className="second-row-second-column-landing profile-div" style={{display: "flex-inline", justifyContent:"space-between"}}>
+          <div style={{marginTop:"2rem", display:"flex", justifyContent:"center"}}><img src={user.profilePicUrl && user.profilePicUrl} alt="" className="home-profile" style={{borderRadius:"50%"}}/></div>
+          <div style={{display:"flex", justifyContent:"center"}}> <h1>{user?.firstName && user.firstName}</h1> </div>
+          <div style={{display:"flex", justifyContent:"center"}}> <h4>{user?.uniName && user.uniName}</h4> </div>
+          <div style={{display:"flex", justifyContent:"center"}}> <h5>Address:</h5><h5> {user?.cityTown && user.cityTown}, {user?.stateName && user.stateName} </h5></div>
+        </div>
       </div>
 
       {/* NEWS AND POSTS */}

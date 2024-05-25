@@ -15,25 +15,25 @@ function Photos() {
 
   const photoData = [
     {
-      src: "https://drive.google.com/thumbnail?id=1scfdx4bPqSQyj5-cStssCkPlLJ-Ekr0w&sz=w1000",
-      description: "Photo Description 1",
-      date: "DD MON YYYY",
+      src: "https://nesoj.blob.core.windows.net/gallery/photos/NESOJMeeting.jpeg",
+      description: "Meeting for Sports Week",
+      date: "2023-11-12",
     },
 
     {
-      src: "assets/post.JPG",
-      description: "Photo Description 2",
-      date: "DD MON YYYY",
+      src: "https://nesoj.blob.core.windows.net/gallery/photos/Executives.jpeg",
+      description: "Executive Board 2023-24",
+      date: "2023-08-13",
     },
     {
-      src: "assets/post.JPG",
-      description: "Photo Description 3",
-      date: "12 Apr 2022",
+      src: "https://nesoj.blob.core.windows.net/gallery/photos/NEDonateBlood.jpeg",
+      description: "NE Student Donate Blood",
+      date: "2023-09-13",
     },
     {
-      src: "assets/post.JPG",
-      description: "Photo Description 4",
-      date: "DD MON YYYY",
+      src: "https://nesoj.blob.core.windows.net/gallery/photos/OneIndia.jpeg",
+      description: "One India Performance",
+      date: "2024-05-04",
     },
     {
       src: "assets/post.JPG",
