@@ -34,7 +34,7 @@ function Photos() {
       src: "https://nesoj.blob.core.windows.net/gallery/photos/OneIndia.jpeg",
       description: "One India Performance",
       date: "2024-05-04",
-    }
+
   ];
 
   const showPopup = () => {

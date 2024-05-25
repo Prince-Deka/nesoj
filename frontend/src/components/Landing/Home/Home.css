@@ -239,6 +239,7 @@
   border-radius: 20px;
 }
 
+
 .third-row-container {
 display: flex;
 justify-content: space-between;
@@ -453,14 +454,17 @@ z-index: 9999;
 }
 
 .profile-title {
+
 top: 655px;
 left: 1060px;
 z-index: 9999;
+
 }
 
 
 
 .home-profile {
+
 margin-top: 3rem;
 object-fit: cover;
 width:150px;
@@ -475,4 +479,6 @@ border: 2px solid black;
 
 .home-div{
 box-shadow: inset 0px 0px 20px 10px rgba(0,0,0,0.6);
+
+  
 }
