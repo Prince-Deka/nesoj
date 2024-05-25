@@ -178,7 +178,7 @@ function Hero() {
                         <img src="/assets/Home/WhatWeDo.png" alt="" />
                     </div>
                     <div className="wwd-answer sec-info-ans">
-                        <p>North-East Students' Organization Jalandhar supports students from India's eight northeastern states studying in Jalandhar and Phagwara, Punjab. NESOJ fosters academic, cultural, and social integration in a welcoming environment.</p>
+                        <p>The North East Students Organisation in Punjab unites students from the North East, fostering a sense of community and belonging. We come together to celebrate our unique festivals, play sports, and support each other in various aspects of student life. By creating a strong network, we ensure that every member feels at home, despite being far from their native region. Our activities promote cultural exchange, mutual assistance, and the preservation of our rich heritage, making our time in Punjab both enjoyable and enriching.</p>
                     </div>
                 </div>
             </section>
