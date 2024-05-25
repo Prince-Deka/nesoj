@@ -38,6 +38,7 @@ function Videos() {
       src: "https://nesoj.blob.core.windows.net/gallery/videos/ManipurCandleMarch.…",
       description: "Manipur Candle March",
       date: "2024-05-02",
+    }
   ];
   return (
     <div className={gallery.videosSection}>
