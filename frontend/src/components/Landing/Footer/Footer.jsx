@@ -22,7 +22,6 @@ function Footer() {
               </p>
             </div>
 
-            
 
             <div className="col-xs-6 col-md-3 " style={{marginLeft:"240px"}}>
               <h6>Quick Links</h6>

@@ -10,6 +10,36 @@
     margin: 0;
 }
 
+.backButton a{
+    text-decoration: none;
+}
+
+.backButton i{
+    margin-right: 5px;
+    color: #838383;
+    font-size: 14px;
+}
+
+.backButton span{
+    color: #838383;
+    font-size: 14px;
+}
+
+.backButton{
+    margin-bottom: 20px;
+}
+
+.imageContDisc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+
+.imageContDisc img{
+    max-height: 300px;
+}
+
 .viewDiscussionTabHeader, .viewDiscussionTabFooter {
     padding: 10px;
     background-color: #e1e1e1;

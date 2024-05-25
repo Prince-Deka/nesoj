@@ -38,47 +38,6 @@ function Videos() {
       src: "https://nesoj.blob.core.windows.net/gallery/videos/ManipurCandleMarch.…",
       description: "Manipur Candle March",
       date: "2024-05-02",
-    },
-    {
-      src: "",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
-    },
-    {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
-    },
-    {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
-    },
-    {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
-    },
-    {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
-    },
-    {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
-    },
-    {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
-    },
-    {
-      src: "https://www.youtube.com/embed/R5CxtjmrIE4?si=4nTnKIrb8xJtkaVg&amp;controls=0",
-      description: "Video Description 4",
-      date: "DD MON YYYY",
-    },
   ];
   return (
     <div className={gallery.videosSection}>

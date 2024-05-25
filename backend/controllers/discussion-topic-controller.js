@@ -23,21 +23,6 @@ const createTopic = async (req, res) => {
   }
 };
 
-const getTopicWithReplies = async (req, res) => {
-  try {
-      const topic = await Topic.findById(req.params.id).populate('replies');
-      if (!topic) {
-          return res.status(404).json({ error: "Topic not found" });
-      }
-      topic.views += 1; // Increment view count
-      await topic.save();
-      res.status(200).json(topic);
-  } catch (error) {
-      console.error("Error fetching topic with replies:", error.message);
-      res.status(404).json({ error: error.message });
-  }
-};
-
 
 
 // New method to get all topics
@@ -50,6 +35,28 @@ const getAllTopics = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+
+const getTopicWithReplies = async (req, res) => {
+  try {
+      const topic = await Topic.findById(req.params.id)
+          .populate({
+              path: 'replies',
+              populate: {
+                  path: 'author',
+                  select: 'firstName middleName lastName'
+              }
+          });
+      if (!topic) {
+          return res.status(404).json({ error: "Topic not found" });
+      }
+      res.status(200).json(topic);
+  } catch (error) {
+      console.error("Error fetching topic with replies:", error.message);
+      res.status(404).json({ error: error.message });
+  }
+};
+
 
 const upvoteTopic = async (req, res) => {
   try {
@@ -74,4 +81,25 @@ const upvoteTopic = async (req, res) => {
   }
 };
 
-module.exports = { createTopic, getTopicWithReplies, getAllTopics, upvoteTopic };
+const incrementViewCount = async (req, res) => {
+    try {
+        const topic = await Topic.findById(req.params.id);
+        if (!topic) {
+            return res.status(404).json({ error: "Topic not found" });
+        }
+
+        // Check if the user has already viewed the topic
+        if (!topic.viewedBy.includes(req.user._id)) {
+            topic.views += 1;
+            topic.viewedBy.push(req.user._id); // Add user ID to viewedBy array
+            await topic.save();
+        }
+
+        res.status(200).json({ message: "View count incremented" });
+    } catch (error) {
+        console.error("Error incrementing view count:", error.message);
+        res.status(500).json({ error: error.message });
+    }
+};
+
+module.exports = { createTopic, getTopicWithReplies, getAllTopics, incrementViewCount, upvoteTopic };

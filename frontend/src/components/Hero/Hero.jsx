@@ -154,7 +154,7 @@ function Hero() {
             <section id='who-are-we' className="who-are-we sec-info">
                 <div className="waw-container sec-info-container">
                     <div className="waw-ques sec-info-ques">
-                        Who are we?
+                        <img src="/assets/Home/WhoAreWe.png" alt="" />
                     </div>
                     <div className="waw-answer sec-info-ans">
                         <p>A vibrant community Where the spirit
@@ -175,18 +175,10 @@ function Hero() {
             <section id='what-we-do' className="what-we-do sec-info">
                 <div className="wwd-container sec-info-container">
                     <div className="wwd-ques sec-info-ques">
-                        What we do?
+                        <img src="/assets/Home/WhatWeDo.png" alt="" />
                     </div>
                     <div className="wwd-answer sec-info-ans">
-                        <p>A vibrant community Where the spirit
-                            of the Northeast thrives in every corner
-                            of our activities. We are a group of
-                            passionate Students from the diverse
-                            and picturesque northeast region of
-                            our country united on this campus
-                            to bring the rich tapestry of our culture,
-                            traditions and aspirations to the forefront
-                            of our collective student experience.</p>
+                        <p>North-East Students' Organization Jalandhar supports students from India's eight northeastern states studying in Jalandhar and Phagwara, Punjab. NESOJ fosters academic, cultural, and social integration in a welcoming environment.</p>
                     </div>
                 </div>
             </section>
