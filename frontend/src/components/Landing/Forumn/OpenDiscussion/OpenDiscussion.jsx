@@ -23,14 +23,13 @@ function OpenDiscussion() {
     }, [id]);
 
     const incrementViewCount = async () => {
-        if (!viewIncremented) {
+        if (token) {
             try {
                 await axios.post(`http://localhost:3000/api/forum/topics/${id}/view`, {}, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                setViewIncremented(true); // Ensure the view count is incremented only once
                 fetchDiscussions(); // Refresh the forum data to update the view count
             } catch (error) {
                 console.error("Error incrementing view count:", error);
@@ -109,6 +108,9 @@ function OpenDiscussion() {
                     <p>Started by <span>{particularForumData.isAnonymous ? "Anonymous" : particularForumData.author}</span> on <span>{new Date(particularForumData.datePosted).toLocaleString()}</span></p>
                 </div>
                 <div className={openD.viewDiscussionTabContent}>
+                <div className={openD.imageContDisc}>
+                    <img src={particularForumData.imageUrl} alt="" />
+                </div>
                 <p dangerouslySetInnerHTML={{ __html: particularForumData.description }}></p>
                 </div>
                 <div className={openD.viewDiscussionTabFooter}>

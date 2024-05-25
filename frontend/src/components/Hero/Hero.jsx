@@ -154,7 +154,7 @@ function Hero() {
             <section id='who-are-we' className="who-are-we sec-info">
                 <div className="waw-container sec-info-container">
                     <div className="waw-ques sec-info-ques">
-                        Who are we?
+                        <img src="/assets/Home/WhoAreWe.png" alt="" />
                     </div>
                     <div className="waw-answer sec-info-ans">
                         <p>A vibrant community Where the spirit
@@ -175,18 +175,10 @@ function Hero() {
             <section id='what-we-do' className="what-we-do sec-info">
                 <div className="wwd-container sec-info-container">
                     <div className="wwd-ques sec-info-ques">
-                        What we do?
+                        <img src="/assets/Home/WhatWeDo.png" alt="" />
                     </div>
                     <div className="wwd-answer sec-info-ans">
-                        <p>A vibrant community Where the spirit
-                            of the Northeast thrives in every corner
-                            of our activities. We are a group of
-                            passionate Students from the diverse
-                            and picturesque northeast region of
-                            our country united on this campus
-                            to bring the rich tapestry of our culture,
-                            traditions and aspirations to the forefront
-                            of our collective student experience.</p>
+                        <p>The North East Students Organisation in Punjab unites students from the North East, fostering a sense of community and belonging. We come together to celebrate our unique festivals, play sports, and support each other in various aspects of student life. By creating a strong network, we ensure that every member feels at home, despite being far from their native region. Our activities promote cultural exchange, mutual assistance, and the preservation of our rich heritage, making our time in Punjab both enjoyable and enriching.</p>
                     </div>
                 </div>
             </section>

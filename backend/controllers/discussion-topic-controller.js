@@ -82,18 +82,24 @@ const upvoteTopic = async (req, res) => {
 };
 
 const incrementViewCount = async (req, res) => {
-  try {
-      const topic = await Topic.findById(req.params.id);
-      if (!topic) {
-          return res.status(404).json({ error: "Topic not found" });
-      }
-      topic.views += 1;
-      await topic.save();
-      res.status(200).json({ message: "View count incremented" });
-  } catch (error) {
-      console.error("Error incrementing view count:", error.message);
-      res.status(500).json({ error: error.message });
-  }
+    try {
+        const topic = await Topic.findById(req.params.id);
+        if (!topic) {
+            return res.status(404).json({ error: "Topic not found" });
+        }
+
+        // Check if the user has already viewed the topic
+        if (!topic.viewedBy.includes(req.user._id)) {
+            topic.views += 1;
+            topic.viewedBy.push(req.user._id); // Add user ID to viewedBy array
+            await topic.save();
+        }
+
+        res.status(200).json({ message: "View count incremented" });
+    } catch (error) {
+        console.error("Error incrementing view count:", error.message);
+        res.status(500).json({ error: error.message });
+    }
 };
 
 module.exports = { createTopic, getTopicWithReplies, getAllTopics, incrementViewCount, upvoteTopic };

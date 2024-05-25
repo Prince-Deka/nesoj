@@ -2,8 +2,10 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import PStyle from './CreatePostPopup.module.css';
 import { toast } from 'react-toastify';
+import {useAuth} from '../../../../store/auth';
 
 function CreatePostPopup({ onClose }) {
+  const { user } = useAuth();
   const [image, setImage] = useState(null);
   const [imageLoad, setImageLoad] = useState(null);
   const [textAreaHeight, setTextAreaHeight] = useState('330px');
@@ -27,12 +29,12 @@ function CreatePostPopup({ onClose }) {
 
   const handlePost = useCallback(async () => {
     try {
+      console.log(user);
       const formData = new FormData();
-      const username = 'YourUsername'; // Replace with actual username
+      const username = user.username;
       formData.append('username', username);
       formData.append('content', content);
       if (imageLoad) {
-        // Generate new file name
         const date = new Date().toISOString().split('T')[0];
         const newFileName = `${username}_${date}${imageLoad.name.substring(imageLoad.name.lastIndexOf('.'))}`;
         

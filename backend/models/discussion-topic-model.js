@@ -14,7 +14,8 @@ const topicSchema = new Schema({
   imageUrl: { type: String }, // URL to the uploaded image
   isAnonymous: { type: Boolean, default: false }, // Added anonymous functionality
   replies: [{ type: Schema.Types.ObjectId, ref: 'Reply' }],
-  upvotedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }] // Track users who upvoted
+  upvotedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  viewedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }] // Track users who upvoted
 });
 
 module.exports = mongoose.model('Topic', topicSchema);

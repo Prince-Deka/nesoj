@@ -179,17 +179,12 @@ userSchema.methods.comparePassword = async function(password){
 }
 
 // json web token
-userSchema.methods.generateToken = async function(){
-    try{
-        return jwt.sign({
-            userId: this._id.toString(),
-            email: this.email,
-            isAdmin: this.isAdmin,
-        },
-        process.env.JWT_SECRET_KEY,{expiresIn: "30d"});
-    }catch(error){
-        console.error(error);
-    }
+userSchema.methods.generateToken = function () {
+    return jwt.sign({
+        userId: this._id.toString(),
+        email: this.email,
+        isAdmin: this.isAdmin,
+    }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
 };
 
 // define the model
